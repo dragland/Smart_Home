@@ -1,0 +1,17 @@
+/*Davy Ragland | dragland@stanford.edu
+  Home Automation System version 2.0 | 2016*/
+
+/*body*/
+body {
+	position: relative; 
+}
+
+/*Buffer*/
+#buffer {
+	padding-top:50px;
+}
+
+/*View*/
+#view {
+	height: 30px !important;
+}
