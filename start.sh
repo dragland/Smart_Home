@@ -2,8 +2,10 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 2.0 | 2016
 
-echo "var posters =" > js/posters.js
-echo "[" >> js/posters.js
+sudo git clone https://github.com/dragland/Smart_Home.git .
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+echo "var posters =" > html/js/posters.js
+echo "[" >> html/js/posters.js
 (IFS='
 '
 for x in `ls res/posters $1`; 
@@ -11,5 +13,5 @@ for x in `ls res/posters $1`;
 		printf '"'
 		printf $x
 		printf '",\n'; 
-done >> js/posters.js) 
-echo "];" >> js/posters.js 
+done >> html/js/posters.js) 
+echo "];" >> html/js/posters.js 
