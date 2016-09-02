@@ -19,6 +19,8 @@ echo "Updating..."
 sudo apt-get update
 sudo apt-get upgrade
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sudo git clone https://github.com/dragland/Smart_Home.git .
+sudo git clone https://github.com/dragland/Smart_Home.git temp
+sudo mv temp/* /var/www/
+sudo rm -rf temp
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 echo "done"
