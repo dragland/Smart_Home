@@ -44,14 +44,13 @@ def read_door(PIN_NUMBER):
 def read_lumin(PIN_NUMBER):
 	global lumin
 	time = 0
-    RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.OUT)
-    RPi.GPIO.output(PIN_NUMBER, RPi.GPIO.LOW)
-    time.sleep(0.1)
-    RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN)
-    while (RPi.GPIO.input(PIN_NUMBER) == RPi.GPIO.LOW):
-    	time += 1
-    lumin = time
-
+	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.OUT)
+	RPi.GPIO.output(PIN_NUMBER, RPi.GPIO.LOW)
+	time.sleep(0.1)
+	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN)
+	while (RPi.GPIO.input(PIN_NUMBER) == RPi.GPIO.LOW):
+		time += 1
+	lumin = time
 
 #function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
