@@ -7,10 +7,13 @@ echo "Coded by Davy Ragland [dragland@stanford.edu]"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Downloading..."
 echo "Apache2"
+echo "Python-rpi.gpio"
 echo "Python-dev"
 sudo apt-get update
 sudo apt-get install apache2 -y
+sudo apt-get install python-rpi.gpio -y
 sudo apt-get install build-essential python-dev -y
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Installing..."
 echo "DHT22 temp & humidity sensor"
