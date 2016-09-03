@@ -43,14 +43,14 @@ def read_door(PIN_NUMBER):
 #This function reads the data from an analog photoresistor.
 def read_lumin(PIN_NUMBER):
 	global lumin
-	time = 0
+	value = 0
 	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.OUT)
 	RPi.GPIO.output(PIN_NUMBER, RPi.GPIO.LOW)
-	time.sleep(0.1)
+	value.sleep(0.1)
 	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN)
 	while (RPi.GPIO.input(PIN_NUMBER) == RPi.GPIO.LOW):
-		time += 1
-	lumin = time
+		value += 1
+	lumin = value
 
 #function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
