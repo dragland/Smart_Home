@@ -13,8 +13,8 @@ import RPi.GPIO
 
 #Function to read data from AM2302 humidity and temperature sensor
 def read_rh_temp(PIN_NUMBER):
-	global rh
-	global temp_f
+	global rh = -1
+	global temp_f = -1
 	r_h, temp = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, PIN_NUMBER, 5, 3)
 	if r_h and temp is not None:
 		rh = r_h
@@ -23,7 +23,7 @@ def read_rh_temp(PIN_NUMBER):
 
 #Function to read data from magnetic door sensor
 def read_door(PIN_NUMBER):
-	global door
+	global door = -1
 	RPi.GPIO.setmode(RPi.GPIO.BCM)
 	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN, pull_up_down = RPi.GPIO.PUD_UP)
 	if RPi.GPIO.input(PIN_NUMBER):
@@ -45,11 +45,8 @@ def write_state():
 
 #Actual Program
 print("Executing program:")
-temp_f = 70
-rh = 50
-door = 0
-t1 = threading.Thread(target = read_rh_temp, args = (4))
-t2 = threading.Thread(target = read_door, args = (17))
+t1 = threading.Thread(target = read_rh_temp, args = (4,))
+t2 = threading.Thread(target = read_door, args = (17,))
 t1.start()
 t2.start()
 while True:	
