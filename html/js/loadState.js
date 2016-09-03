@@ -16,8 +16,8 @@ function update_state(){
 	var state = str.split(",");
 	document.getElementById("time").innerHTML   = state[0];
 	document.getElementById("temp").innerHTML   = state[1];
-	document.getElementById("co2").innerHTML    = state[2];
-	document.getElementById("rh").innerHTML     = state[3];
+	document.getElementById("rh").innerHTML     = state[2];
+	document.getElementById("co2").innerHTML    = state[3];
 	document.getElementById("energy").innerHTML = state[4];
 	document.getElementById("door").innerHTML   = state[5];
 	document.getElementById("light").innerHTML  = state[6];
