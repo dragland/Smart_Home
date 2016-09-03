@@ -46,7 +46,7 @@ def read_lumin(PIN_NUMBER):
 	value = 0
 	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.OUT)
 	RPi.GPIO.output(PIN_NUMBER, RPi.GPIO.LOW)
-	value.sleep(0.1)
+	time.sleep(0.1)
 	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN)
 	while (RPi.GPIO.input(PIN_NUMBER) == RPi.GPIO.LOW):
 		value += 1
