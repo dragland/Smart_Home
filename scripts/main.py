@@ -55,11 +55,11 @@ t2.start()
 while True:	
 	if t1.is_alive()is False:
 		del t1
-		t1 = threading.Thread(target = read_rh_temp, args = (4))
+		t1 = threading.Thread(target = read_rh_temp, args = (4,))
 		t1.start()
 	if t2.is_alive()is False:
 		del t2
-		t2 = threading.Thread(target = read_door, args = (17))
+		t2 = threading.Thread(target = read_door, args = (17,))
 		t2.start()
 	write_state()
 	time.sleep(1)
