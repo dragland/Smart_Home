@@ -39,23 +39,10 @@ def read_door(PIN_NUMBER):
 		door = 0
 	time.sleep(0.1)
 
-#function: read_lumin
-#This function reads the data from an analog photoresistor.
-def read_lumin(PIN_NUMBER):
-	global lumin
-	value = 0
-	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.OUT)
-	RPi.GPIO.output(PIN_NUMBER, RPi.GPIO.LOW)
-	time.sleep(0.1)
-	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN)
-	while (RPi.GPIO.input(PIN_NUMBER) == RPi.GPIO.LOW):
-		value += 1
-	lumin = value
-
 #function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%d, %d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temp_f, rh, door, lumin))
+	data = str("%s,%3.1f,%3.1f,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temp_f, rh, door))
 	state = open("html/state.txt", "w")
 	state.write(data + "\n")
 	state.close()
@@ -71,13 +58,10 @@ print("Executing program:")
 temp_f = 70
 rh = 50
 door = 0
-lumin = 0
 t1 = threading.Thread(target = read_rh_temp, args = (4,))
 t2 = threading.Thread(target = read_door, args = (17,))
-t3 = threading.Thread(target = read_lumin, args = (21,))
 t1.start()
 t2.start()
-t3.start()
 while True:	
 	if t1.is_alive()is False:
 		del t1
@@ -87,9 +71,5 @@ while True:
 		del t2
 		t2 = threading.Thread(target = read_door, args = (17,))
 		t2.start()
-	if t3.is_alive()is False:
-		del t3
-		t3 = threading.Thread(target = read_lumin, args = (21,))
-		t3.start()
 	write_state()
 	time.sleep(1)
