@@ -2,7 +2,9 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 2.0 | 2016
 
-#Import libraries 
+#*********************************************************************
+#                           SETUP
+#*********************************************************************
 import os
 import sys
 import time
@@ -11,7 +13,11 @@ import threading
 import Adafruit_DHT
 import RPi.GPIO
 
-#Function to read data from AM2302 humidity and temperature sensor
+#*********************************************************************
+#                          FUNCTIONS
+#*********************************************************************
+#function: read_rh_temp
+#This function reads the data from DHT22 AM2302 humidity and temperature sensor.
 def read_rh_temp(PIN_NUMBER):
 	global rh
 	global temp_f
@@ -21,7 +27,8 @@ def read_rh_temp(PIN_NUMBER):
 		temp_f = temp * 1.8 + 32.0
 	time.sleep(2)
 
-#Function to read data from magnetic door sensor
+#function: read_door
+#This function reads the data from a magnetic door sensor.
 def read_door(PIN_NUMBER):
 	global door
 	RPi.GPIO.setmode(RPi.GPIO.BCM)
@@ -32,7 +39,8 @@ def read_door(PIN_NUMBER):
 		door = 0
 	time.sleep(0.1)
 
-#Function to print and write current data from each sensor module to state CSV
+#function: write_state
+#This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
 	data = str("%s,%3.1f,%3.1f,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temp_f, rh, door))
 	state = open("html/state.txt", "w")
@@ -43,7 +51,9 @@ def write_state():
 	sys.stdout.flush()
 	print "\r",
 
-#Actual Program
+#*********************************************************************
+#                            MAIN
+#*********************************************************************
 print("Executing program:")
 temp_f = 70
 rh = 50
