@@ -7,6 +7,7 @@ import os
 import sys
 import time
 import datetime
+import threading
 import Adafruit_DHT
 
 #Function to read data from AM2302 humidity and temperature sensor
