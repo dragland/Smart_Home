@@ -19,6 +19,7 @@ sudo apt-get install build-essential python-dev -y
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Installing..."
 echo "DHT22 temp & humidity sensor"
+echo "WiringPi CGI library"
 sudo git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 cd Adafruit_Python_DHT
 sudo python setup.py install
