@@ -9,10 +9,11 @@ import os
 import sys
 import time
 import datetime
-import threading
 import subprocess
 import Adafruit_DHT
 import RPi.GPIO
+import threading
+import config
 
 #*********************************************************************
 #                          FUNCTIONS
@@ -20,50 +21,45 @@ import RPi.GPIO
 #Function: read_rh_temp
 #This function reads the data from DHT22 AM2302 humidity and temperature sensor.
 def read_rh_temp(PIN_NUMBER):
-	global rh
-	global temp_f
 	r_h, temp = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, PIN_NUMBER, 5, 3)
 	if r_h and temp is not None:
-		rh = r_h
-		temp_f = temp * 1.8 + 32.0
+		config.rh = r_h
+		config.temp_f = temp * 1.8 + 32.0
 	time.sleep(2)
 
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
 def read_door(PIN_NUMBER):
-	global door
 	RPi.GPIO.setmode(RPi.GPIO.BCM)
 	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN, pull_up_down = RPi.GPIO.PUD_UP)
 	if RPi.GPIO.input(PIN_NUMBER):
-		door = 1
+		config.door = 1
 	else:
-		door = 0
+		config.door = 0
 	time.sleep(0.1)
 
 #Function: read_lights
 #This function reads the data from a relay.
 def read_lights(PIN_NUMBER):
-	global lights
 	if read_state(int(PIN_NUMBER)) == "1":
-		lights = 0
+		config.lights = 0
 	else:
-		lights = 1
+		config.lights = 1
 	time.sleep(0.1)
 
 #Function: read_fan
 #This function reads the data from a relay.
 def read_fan(PIN_NUMBER):
-	global fan
 	if read_state(int(PIN_NUMBER)) == "1":
-		fan = 0
+		config.fan = 0
 	else:
-		fan = 1
+		config.fan = 1
 	time.sleep(0.1)
 
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), temp_f, rh, door, lights, fan))
+	data = str("%s,%3.1f,%3.1f,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights, config.fan))
 	state = open("html/state.txt", "w")
 	state.write(data + "\n")
 	state.close()
@@ -84,11 +80,6 @@ def read_state(PIN_NUMBER):
 #                            MAIN
 #*********************************************************************
 print("Executing program:")
-temp_f = 70
-rh = 50
-door = 0
-lights = 0
-fan = 0
 t1 = threading.Thread(target = read_rh_temp, args = (4,))
 t2 = threading.Thread(target = read_door, args = (17,))
 t3 = threading.Thread(target = read_lights, args = (2,))
