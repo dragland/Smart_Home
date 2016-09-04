@@ -59,7 +59,7 @@ temp_f = 70
 rh = 50
 door = 0
 t1 = threading.Thread(target = read_rh_temp, args = (4,))
-t2 = threading.Thread(target = read_door, args = (17,))
+t2 = threading.Thread(target = read_door, args = (18,))
 t1.start()
 t2.start()
 while True:	
@@ -69,7 +69,7 @@ while True:
 		t1.start()
 	if t2.is_alive()is False:
 		del t2
-		t2 = threading.Thread(target = read_door, args = (17,))
+		t2 = threading.Thread(target = read_door, args = (18,))
 		t2.start()
 	write_state()
 	time.sleep(1)
