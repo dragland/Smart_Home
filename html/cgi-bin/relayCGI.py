@@ -23,11 +23,3 @@ def header():
 	print "Status: 204 No Content"
 	print "Content-type: text/plain"
 	print ""
-
-#Actual program
-os.system("gpio mode 1 out")
-if read_state(int(1)) == "1":
-	relay_on(int(1))
-else:
-	relay_off(int(1))
-header()
