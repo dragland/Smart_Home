@@ -87,6 +87,8 @@ print("Executing program:")
 temp_f = 70
 rh = 50
 door = 0
+lights = 0
+fan = 0
 t1 = threading.Thread(target = read_rh_temp, args = (4,))
 t2 = threading.Thread(target = read_door, args = (17,))
 t3 = threading.Thread(target = read_lights, args = (2,))
