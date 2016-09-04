@@ -10,6 +10,7 @@ import sys
 import time
 import datetime
 import threading
+import subprocess
 import Adafruit_DHT
 import RPi.GPIO
 
