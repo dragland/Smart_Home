@@ -25,9 +25,9 @@ def header():
 	print ""
 
 #Actual program
-os.system("gpio mode 15 out")
-if read_state(int(15)) == "1":
-	relay_on(int(15))
+os.system("gpio mode 2 out")
+if read_state(int(2)) == "1":
+	relay_on(int(2))
 else:
-	relay_off(int(15))
+	relay_off(int(2))
 header()

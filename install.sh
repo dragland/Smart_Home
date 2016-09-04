@@ -7,10 +7,12 @@ echo "Coded by Davy Ragland [dragland@stanford.edu]"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Downloading..."
 echo "Apache2"
+echo "Git-core"
 echo "Python-rpi.gpio"
 echo "Python-dev"
 sudo apt-get update
 sudo apt-get install apache2 -y
+sudo apt-get install git-core
 sudo apt-get install python-rpi.gpio -y
 sudo apt-get install build-essential python-dev -y
 
@@ -20,6 +22,10 @@ echo "DHT22 temp & humidity sensor"
 sudo git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 cd Adafruit_Python_DHT
 sudo python setup.py install
+cd /home/pi
+sudo git clone git://git.drogon.net/wiringPi
+cd wiringPi
+sudo ./build
 cd /home/pi
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Updating..."
