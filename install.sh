@@ -46,6 +46,13 @@ echo "hostname -I"
 
 echo "sudo crontab -e"
 echo "@reboot /var/www/run.sh &"
+
+echo "sudo a2enmod cgi"
+echo "Edit /etc/apache2/conf-available/serve-cgi-bin.conf"
+echo "ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/"
+echo "<Directory "/var/www/html/cgi-bin">"
+echo "	AddHandler cgi-script .py"
+echo "</Directory>"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 echo "done! Restarting now..."
 sudo shutdown -r now

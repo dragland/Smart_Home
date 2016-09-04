@@ -18,10 +18,10 @@ function update_state(){
 	document.getElementById("temp").innerHTML   = state[1];
 	document.getElementById("rh").innerHTML     = state[2];
 	document.getElementById("door").innerHTML   = state[3];
-	document.getElementById("energy").innerHTML  = state[4];
-	document.getElementById("co2").innerHTML    = state[5];
-	document.getElementById("light").innerHTML  = state[6];
-	document.getElementById("fan").innerHTML    = state[7];
+	document.getElementById("light").innerHTML  = state[4];
+	document.getElementById("fan").innerHTML    = state[5];
+	document.getElementById("energy").innerHTML = state[6];
+	document.getElementById("co2").innerHTML    = state[7];
 	document.getElementById("event").innerHTML  = state[8];
 }
 
