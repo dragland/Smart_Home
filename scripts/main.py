@@ -5,7 +5,7 @@
 #*********************************************************************
 #                           SETUP
 #*********************************************************************
-import time
+import time 
 import threading
 import smartHome
 import config
@@ -18,7 +18,7 @@ t1 = threading.Thread(target = smartHome.read_rh_temp, args = (4,))
 t2 = threading.Thread(target = smartHome.read_door, args = (18,))
 t3 = threading.Thread(target = smartHome.read_lights, args = (2,))
 t4 = threading.Thread(target = smartHome.read_fan, args = (3,))
-t4 = threading.Thread(target = smartHome.read_event, args = (0,))
+t5 = threading.Thread(target = smartHome.read_event, args = (0,))
 t1.start()
 t2.start()
 t3.start()
