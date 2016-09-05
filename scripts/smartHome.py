@@ -55,10 +55,19 @@ def read_fan(PIN_NUMBER):
 		config.fan = 1
 	time.sleep(0.1)
 
+#Function: read_event
+#This function reads the data from a relay.
+def read_event(PIN_NUMBER):
+	if read_state(int(PIN_NUMBER)) == "1":
+		config.event = 0
+	else:
+		config.event = 1
+	time.sleep(0.1)
+
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights, config.fan))
+	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights, config.fan, config.event))
 	state = open("html/state.txt", "w")
 	state.write(data + "\n")
 	state.close()

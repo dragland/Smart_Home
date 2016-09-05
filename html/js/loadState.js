@@ -20,9 +20,9 @@ function update_state(){
 	document.getElementById("door").innerHTML   = state[3];
 	document.getElementById("light").innerHTML  = state[4];
 	document.getElementById("fan").innerHTML    = state[5];
-	document.getElementById("energy").innerHTML = state[6];
-	document.getElementById("co2").innerHTML    = state[7];
-	document.getElementById("event").innerHTML  = state[8];
+	document.getElementById("event").innerHTML  = state[6];
+	document.getElementById("energy").innerHTML = state[7];
+	document.getElementById("co2").innerHTML    = state[8];
 }
 
 //refresh update_state() function

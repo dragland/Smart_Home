@@ -10,3 +10,4 @@ rh     = 50
 door   = 0
 lights = 0
 fan    = 0
+event  = 0
