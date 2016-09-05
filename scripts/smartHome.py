@@ -37,13 +37,31 @@ def read_door(PIN_NUMBER):
 		config.door = 0
 	time.sleep(0.1)
 
-#Function: read_lights
+#Function: read_lights_red
 #This function reads the data from a relay.
-def read_lights(PIN_NUMBER):
+def read_lighst_red(PIN_NUMBER):
 	if read_state(int(PIN_NUMBER)) == "1":
-		config.lights = 0
+		config.lights_red = 0
 	else:
-		config.lights = 1
+		config.lights_red = 1
+	time.sleep(0.1)
+
+#Function: read_lights_green
+#This function reads the data from a relay.
+def read_lights_green(PIN_NUMBER):
+	if read_state(int(PIN_NUMBER)) == "1":
+		config.lights_green = 0
+	else:
+		config.lights_green = 1
+	time.sleep(0.1)
+
+#Function: read_lights_blue
+#This function reads the data from a relay.
+def read_lights_blue(PIN_NUMBER):
+	if read_state(int(PIN_NUMBER)) == "1":
+		config.lights_blue = 0
+	else:
+		config.lights_blue = 1
 	time.sleep(0.1)
 
 #Function: read_fan
@@ -55,19 +73,10 @@ def read_fan(PIN_NUMBER):
 		config.fan = 1
 	time.sleep(0.1)
 
-#Function: read_event
-#This function reads the data from a relay.
-def read_event(PIN_NUMBER):
-	if read_state(int(PIN_NUMBER)) == "1":
-		config.event = 0
-	else:
-		config.event = 1
-	time.sleep(0.1)
-
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights, config.fan, config.event))
+	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
 	state = open("html/state.txt", "w")
 	state.write(data + "\n")
 	state.close()
