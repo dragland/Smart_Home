@@ -7,9 +7,9 @@ import os
 import relayCGI
 
 #Actual program
-os.system("gpio mode 3 out")
-if relayCGI.read_state(int(1)) == "1":
-	relayCGI.relay_on(int(1))
+os.system("gpio mode 4 out")
+if relayCGI.read_state(int(4)) == "1":
+	relayCGI.relay_on(int(4))
 else:
-	relayCGI.relay_off(int(1))
+	relayCGI.relay_off(int(4))
 relayCGI.header()

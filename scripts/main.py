@@ -19,7 +19,7 @@ t2 = threading.Thread(target = smartHome.read_door, args = (18,))
 t3 = threading.Thread(target = smartHome.read_lights_red, args = (0,))
 t4 = threading.Thread(target = smartHome.read_lights_green, args = (2,))
 t5 = threading.Thread(target = smartHome.read_lights_blue, args = (3,))
-t6 = threading.Thread(target = smartHome.read_fan, args = (1,))
+t6 = threading.Thread(target = smartHome.read_fan, args = (4,))
 t1.start()
 t2.start()
 t3.start()
@@ -49,7 +49,7 @@ while True:
 		t5.start()
 	if t6.is_alive()is False:
 		del t6
-		t6 = threading.Thread(target = smartHome.read_fan, args = (1,))
+		t6 = threading.Thread(target = smartHome.read_fan, args = (4,))
 		t6.start()
 	smartHome.write_state()
 	time.sleep(1)
