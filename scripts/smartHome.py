@@ -39,7 +39,7 @@ def read_door(PIN_NUMBER):
 
 #Function: read_lights_red
 #This function reads the data from a relay.
-def read_lighst_red(PIN_NUMBER):
+def read_lights_red(PIN_NUMBER):
 	if read_state(int(PIN_NUMBER)) == "1":
 		config.lights_red = 0
 	else:
