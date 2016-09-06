@@ -8,7 +8,6 @@
 import time 
 import threading
 import smartHome
-import config
 
 #*********************************************************************
 #                            MAIN
