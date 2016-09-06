@@ -1,7 +1,13 @@
 //Davy Ragland | dragland@stanford.edu
 //Home Automation System version 2.0 | 2016
 
-//Function to update values on sensor icons
+/*********************************************************************
+                           FUNCTIONS
+*********************************************************************/
+/*
+Function: update_state
+This function updates the values printed on the interface.
+*/
 function update_state(){		
 	var request = new XMLHttpRequest();
 	request.open("GET", "state.txt", false);
@@ -25,6 +31,3 @@ function update_state(){
 	document.getElementById("energy").innerHTML       = state[8];
 	document.getElementById("co2").innerHTML          = state[9];
 }
-
-//refresh update_state() function
-setInterval(function(){update_state() }, 1);

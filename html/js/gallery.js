@@ -1,14 +1,23 @@
 //Davy Ragland | dragland@stanford.edu
 //Home Automation System version 2.0 | 2016
 	
-//Function to update image
-function updateImage() {
+/*********************************************************************
+                           FUNCTIONS
+*********************************************************************/
+/*
+Function: updateImage
+This function updates the modal with a random image.
+*/
+function update_image() {
 	var source = "res/posters/" + posters[Math.floor(Math.random() * posters.length) + 0];
 	document.getElementById("source").src = source;
 }
 
-//Function to start gallery slideshow
-function startImageUpdate() {
+/*
+Function: startSlideshow
+This function startes the slideshow. 
+*/
+function start_slideshow() {
 	updateImage();
-	var threadImage = setInterval(function(){updateImage()}, 10 * 1000);
+	var thread = setInterval(function(){update_image()}, 10 * 1000);
 }

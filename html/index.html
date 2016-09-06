@@ -14,11 +14,12 @@
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="shortcut icon" href="favicon.ico"/>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<script src="js/loadState.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/switches.js"></script>
 		<script src="js/posters.js"></script>
 		<script src="js/gallery.js"></script>
-		<script src="js/loadState.js"></script>
-		<script src="js/switches.js"></script>
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
 		<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
@@ -29,14 +30,14 @@
 			        	<span class="icon-bar"></span>
 			        	<span class="icon-bar"></span>
 		     		</button>
-		      		<a class="navbar-brand" data-toggle="modal" data-target="#gallery" onclick="startImageUpdate()"><span class="glyphicon glyphicon-home"></span> RACHAEL</a>
+		      		<a class="navbar-brand" data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-home"></span> RACHAEL</a>
 		    	</div>
 			    <div class="collapse navbar-collapse" id="myNavbar">
 			      	<ul class="nav navbar-nav">
 				        <li><a href="#widgets"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
 				        <li><a href="#controls"><span class="glyphicon glyphicon-transfer"></span> Control System</a></li>
 				        <li><a href="#data"><span class="glyphicon glyphicon-stats"></span> Data Telemetry</a></li>
-				        <li><a data-toggle="modal" data-target="#gallery" onclick="startImageUpdate()"><span class="glyphicon glyphicon-film"></span> Gallery</a></li>
+				        <li><a data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-film"></span> Gallery</a></li>
 			      	</ul>
 					<ul class="nav navbar-nav navbar-right">
 					    <li><a href="."><span class="glyphicon glyphicon-refresh"></span></a></li>
