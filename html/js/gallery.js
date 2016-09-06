@@ -5,7 +5,7 @@
                            FUNCTIONS
 *********************************************************************/
 /*
-Function: updateImage
+Function: update_image
 This function updates the modal with a random image.
 */
 function update_image() {
@@ -18,6 +18,6 @@ Function: startSlideshow
 This function startes the slideshow. 
 */
 function start_slideshow() {
-	updateImage();
+	update_image();
 	var thread = setInterval(function(){update_image()}, 10 * 1000);
 }
