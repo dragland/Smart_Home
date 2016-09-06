@@ -34,5 +34,14 @@ var myLineChart = new Chart(ctx, {
                 spanGaps: false,
             }
         ]
+    },
+    options: {
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: "Smart Home"
+        }
     }
 });
