@@ -12,4 +12,10 @@ import relayCGI
 #*********************************************************************
 relayCGI.header("HTML")
 RANGE = relayCGI.get_value("RANGE")
-print RANGE
+print("Range = %s" % (RANGE))
+
+conn = sqlite3.connect("../archive.db")
+curs = conn.cursor()
+for row in curs.execute("SELECT * FROM data"):
+    print row
+conn.close()
