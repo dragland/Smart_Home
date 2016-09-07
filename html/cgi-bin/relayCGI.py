@@ -5,9 +5,9 @@
 #*********************************************************************
 #                           SETUP
 #*********************************************************************
-import time
-import subprocess
 import os
+import cgi
+import subprocess
 
 #*********************************************************************
 #                          FUNCTIONS
@@ -17,6 +17,11 @@ import os
 def get_value(KEY):
 	form = cgi.FieldStorage()
 	return form[KEY].value
+
+#Function: set_mode
+#This function sets the mode of a relay.
+def set_mode(PIN_NUMBER):
+	os.system("gpio mode %i out" % PIN_NUMBER)
 
 #Function: read_state
 #This function reads the state of a relay.
