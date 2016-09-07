@@ -6,13 +6,10 @@
 #                           SETUP
 #*********************************************************************
 import relayCGI
-import cgi
 
 #*********************************************************************
 #                            MAIN
 #*********************************************************************
-print "Content-Type: text/html"
-print ""
-
-form = cgi.FieldStorage()
-print form["PIN_NUMBER"].value
+relayCGI.html_header()
+RANGE = relayCGI.get_value("RANGE")
+print RANGE

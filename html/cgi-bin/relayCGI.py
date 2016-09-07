@@ -45,3 +45,9 @@ def blank_header():
 	print "Status: 204 No Content"
 	print "Content-type: text/plain"
 	print ""
+
+#Function: html_header
+#This function returns an HTML header.
+def html_header():
+	print "Content-Type: text/html"
+	print ""
