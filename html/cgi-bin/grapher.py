@@ -10,6 +10,6 @@ import relayCGI
 #*********************************************************************
 #                            MAIN
 #*********************************************************************
-relayCGI.html_header()
+relayCGI.header("HTML")
 RANGE = relayCGI.get_value("RANGE")
 print RANGE

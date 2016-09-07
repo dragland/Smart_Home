@@ -39,15 +39,12 @@ def relay_on(PIN_NUMBER):
 def relay_off(PIN_NUMBER):
 	os.system("gpio write %i 1" % (PIN_NUMBER))
 
-#Function: blank_header
-#This function returns a blank HTTP packet.
-def blank_header():
-	print "Status: 204 No Content"
-	print "Content-type: text/plain"
-	print ""
-
-#Function: html_header
-#This function returns an HTML header.
-def html_header():
-	print "Content-Type: text/html"
+#Function: header
+#This function returns the apropriate header.
+def header(TYPE):
+	if TYPE == "BLANK":
+		print "Status: 204 No Content"
+		print "Content-type: text/plain"
+	if TYPE == "HTML":
+		print "Content-Type: text/html"
 	print ""
