@@ -53,7 +53,7 @@ def write_state():
 #Function: write_archive
 #This function writes the current data from each sensor module to a SQL database.
 def write_archive():
-	conn = sqlite3.connect("/home/pi/archive.db")
+	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
 	curs.execute("INSERT INTO data values(date('now'), time('now'), (?), (?), (?), (?), (?), (?), (?))", (config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
 	conn.commit()
@@ -103,3 +103,12 @@ def read_fan(PIN_NUMBER):
 def read_state(PIN_NUMBER):
 	output = subprocess.check_output(["gpio read %i" % (PIN_NUMBER)], shell=True)
 	return str(output)[:1]
+
+#Function: init_archive
+#This function initializes the SQL database.
+def init_archive():
+	conn = sqlite3.connect("html/archive.db")
+	curs = conn.cursor()
+	curs.execute("CREATE TABLE IF NOT EXISTS data (date DATE, time TIME, temp_f NUMERIC, rh NUMERIC, door NUMERIC, lights_red NUMERIC, lights_green NUMERIC, lights_blue NUMERIC, fan NUMERIC)")
+	conn.commit()
+	conn.close()

@@ -57,11 +57,6 @@ echo "ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/"
 echo "<Directory "/var/www/html/cgi-bin">"
 echo "	AddHandler cgi-script .py"
 echo "</Directory>"
-
-echo "sqlite3"
-echo "BEGIN;"
-echo "CREATE TABLE data (date DATE, time TIME, temp_f NUMERIC, rh NUMERIC, door NUMERIC, lights_red NUMERIC, lights_green NUMERIC, lights_blue NUMERIC, fan NUMERIC);"
-echo "COMMIT;"
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 echo "done! Restarting now..."
 sudo shutdown -r now

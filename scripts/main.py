@@ -13,6 +13,7 @@ import smartHome
 #                            MAIN
 #*********************************************************************
 print("Executing program:")
+smartHome.init_archive()
 t1 = threading.Thread(target = smartHome.read_rh_temp, args = (4,))
 t2 = threading.Thread(target = smartHome.read_door, args = (18,))
 t3 = threading.Thread(target = smartHome.read_lights_red, args = (0,))
