@@ -12,6 +12,12 @@ import os
 #*********************************************************************
 #                          FUNCTIONS
 #*********************************************************************
+#Function: get_value
+#This function gets the value from an HTTP GET call.
+def get_value(KEY):
+	form = cgi.FieldStorage()
+	return form[KEY].value
+
 #Function: read_state
 #This function reads the state of a relay.
 def read_state(PIN_NUMBER):

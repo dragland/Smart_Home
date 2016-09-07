@@ -12,8 +12,7 @@ import cgi
 #*********************************************************************
 #                            MAIN
 #*********************************************************************
-form = cgi.FieldStorage()
-PIN_NUMBER = form["PIN_NUMBER"].value
+PIN_NUMBER = relayCGI.get_value("PIN_NUMBER")
 
 os.system("gpio mode %s out" % PIN_NUMBER)
 
