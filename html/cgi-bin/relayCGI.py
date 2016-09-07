@@ -14,19 +14,19 @@ import os
 #*********************************************************************
 #Function: read_state
 #This function reads the state of a relay.
-def read_state(PIN_NUMBER):
-	output = subprocess.check_output(["gpio read %i" % (PIN_NUMBER)], shell=True)
+def read_state(pin):
+	output = subprocess.check_output(["gpio read %i" % (pin)], shell=True)
 	return str(output)[:1]
 
 #Function: relay_on
 #This function turns on a relay.
-def relay_on(PIN_NUMBER):
-	os.system("gpio write %i 0" % (PIN_NUMBER))
+def relay_on(pin):
+	os.system("gpio write %i 0" % (pin))
 
 #Function: relay_off
 #This function turns off a relay.
-def relay_off(PIN_NUMBER):
-	os.system("gpio write %i 1" % (PIN_NUMBER))
+def relay_off(pin):
+	os.system("gpio write %i 1" % (pin))
 
 #Function: blank_header
 #This function returns a blank HTTP packet.
