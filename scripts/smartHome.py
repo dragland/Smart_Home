@@ -50,7 +50,7 @@ def write_state():
 	sys.stdout.flush()
 	print "\r",
 
-Function: write_archive
+#Function: write_archive
 #This function writes the current data from each sensor module to a SQL database.
 def write_archive():
 	conn = sqlite3.connect("/home/pi/archive.db")
