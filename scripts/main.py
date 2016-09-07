@@ -51,4 +51,5 @@ while True:
 		t6 = threading.Thread(target = smartHome.read_fan, args = (4,))
 		t6.start()
 	smartHome.write_state()
+	smartHome.write_archive()
 	time.sleep(1)

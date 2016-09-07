@@ -10,6 +10,7 @@ import sys
 import time
 import datetime
 import subprocess
+import sqlite3
 import Adafruit_DHT
 import RPi.GPIO
 import config
@@ -37,6 +38,30 @@ def read_door(PIN_NUMBER):
 		config.door = 0
 	time.sleep(0.1)
 
+#Function: write_state
+#This function prints and writes the current data from each sensor module to a state CSV.
+def write_state():
+	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
+	state = open("html/state.txt", "w")
+	state.write(data + "\n")
+	state.close()
+	print ">> System Status:",
+	print data,
+	sys.stdout.flush()
+	print "\r",
+
+Function: write_archive
+#This function writes the current data from each sensor module to a SQL database.
+def write_archive():
+	conn = sqlite3.connect("/home/pi/archive.db")
+	curs = conn.cursor()
+	curs.execute("INSERT INTO data values(date('now'), time('now'), (?), (?), (?), (?), (?), (?), (?))", (config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
+	conn.commit()
+	conn.close()
+
+#*********************************************************************
+#                          HELPERS
+#*********************************************************************
 #Function: read_lights_red
 #This function reads the data from a relay.
 def read_lights_red(PIN_NUMBER):
@@ -73,22 +98,8 @@ def read_fan(PIN_NUMBER):
 		config.fan = 1
 	time.sleep(0.1)
 
-#Function: write_state
-#This function prints and writes the current data from each sensor module to a state CSV.
-def write_state():
-	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
-	state = open("html/state.txt", "w")
-	state.write(data + "\n")
-	state.close()
-	print ">> System Status:",
-	print data,
-	sys.stdout.flush()
-	print "\r",
-
-#*********************************************************************
-#                          HELPERS
-#*********************************************************************
-#Function to return if state is true
+#Function: read_state
+#This function reads the state of a relay control pin.
 def read_state(PIN_NUMBER):
 	output = subprocess.check_output(["gpio read %i" % (PIN_NUMBER)], shell=True)
 	return str(output)[:1]
