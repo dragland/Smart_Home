@@ -20,7 +20,7 @@ print("<br>")
 
 conn = sqlite3.connect("../archive.db")
 curs = conn.cursor()
-for row in curs.execute("SELECT * FROM data WHERE time > datetime('now','-%s minutes')" % RANGE):
+for row in curs.execute("SELECT * FROM data WHERE time >= datetime('now','-1 minute')") :
     print row
     print("<br>")
 conn.close()
