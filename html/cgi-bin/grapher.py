@@ -12,11 +12,14 @@ import sqlite3
 #                            MAIN
 #*********************************************************************
 smartHomeCGI.header("HTML")
+
 RANGE = smartHomeCGI.get_value("RANGE")
 print("Range = %s" % (RANGE))
+print("<br>")
 
 conn = sqlite3.connect("../archive.db")
 curs = conn.cursor()
 for row in curs.execute("SELECT * FROM data"):
     print row
+    print("<br>")
 conn.close()
