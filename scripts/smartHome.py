@@ -55,7 +55,7 @@ def write_state():
 def write_archive():
 	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
-	curs.execute("INSERT INTO data values(current_timestamp, (?), (?), (?), (?), (?), (?), (?))", (config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
+	curs.execute("INSERT INTO data values(date('now'), time('now'), (?), (?), (?), (?), (?), (?), (?))", (config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
 	conn.commit()
 	conn.close()
 
@@ -109,6 +109,6 @@ def read_state(PIN_NUMBER):
 def init_archive():
 	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
-	curs.execute("CREATE TABLE IF NOT EXISTS data (timestap DATETIME, temp_f NUMERIC, rh NUMERIC, door NUMERIC, lights_red NUMERIC, lights_green NUMERIC, lights_blue NUMERIC, fan NUMERIC)")
+	curs.execute("CREATE TABLE IF NOT EXISTS data (date DATE, time TIME, temp_f NUMERIC, rh NUMERIC, door NUMERIC, lights_red NUMERIC, lights_green NUMERIC, lights_blue NUMERIC, fan NUMERIC)")
 	conn.commit()
 	conn.close()
