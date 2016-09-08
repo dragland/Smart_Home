@@ -7,6 +7,7 @@
 #*********************************************************************
 import smartHomeCGI
 import sqlite3
+import datetime
 
 #*********************************************************************
 #                            MAIN
@@ -19,7 +20,7 @@ print("<br>")
 
 conn = sqlite3.connect("../archive.db")
 curs = conn.cursor()
-for row in curs.execute("SELECT * FROM data"):
+for row in curs.execute("SELECT * FROM data WHERE time > datetime('now','-%s minutes')" % RANGE):
     print row
     print("<br>")
 conn.close()
