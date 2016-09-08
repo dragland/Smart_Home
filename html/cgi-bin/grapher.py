@@ -5,14 +5,14 @@
 #*********************************************************************
 #                           SETUP
 #*********************************************************************
-import relayCGI
+import smartHomeCGI
 import sqlite3
 
 #*********************************************************************
 #                            MAIN
 #*********************************************************************
-relayCGI.header("HTML")
-RANGE = relayCGI.get_value("RANGE")
+smartHomeCGI.header("HTML")
+RANGE = smartHomeCGI.get_value("RANGE")
 print("Range = %s" % (RANGE))
 
 conn = sqlite3.connect("../archive.db")

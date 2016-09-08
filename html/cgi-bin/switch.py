@@ -5,15 +5,15 @@
 #*********************************************************************
 #                           SETUP
 #*********************************************************************
-import relayCGI
+import smartHomeCGI
 
 #*********************************************************************
 #                            MAIN
 #*********************************************************************
-relayCGI.header("BLANK")
-PIN_NUMBER = int(relayCGI.get_value("PIN_NUMBER"))
-relayCGI.set_mode(PIN_NUMBER)
-if relayCGI.read_state(PIN_NUMBER) == "1":
-	relayCGI.relay_on(PIN_NUMBER)
+smartHomeCGI.header("BLANK")
+PIN_NUMBER = int(smartHomeCGI.get_value("PIN_NUMBER"))
+smartHomeCGI.set_mode(PIN_NUMBER)
+if smartHomeCGI.read_state(PIN_NUMBER) == "1":
+	smartHomeCGI.relay_on(PIN_NUMBER)
 else:
-	relayCGI.relay_off(PIN_NUMBER)
+	smartHomeCGI.relay_off(PIN_NUMBER)
