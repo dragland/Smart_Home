@@ -15,8 +15,9 @@ import subprocess
 #Function: get_value
 #This function gets the value from an HTTP GET call.
 def get_value(KEY):
-	form = cgi.FieldStorage()
-	return form[KEY].value
+	if not cgi.FieldStorage().empty:
+		form = cgi.FieldStorage()
+		return form[KEY].value
 
 #Function: set_mode
 #This function sets the mode of a relay.
