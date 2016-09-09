@@ -25,7 +25,4 @@ conn.close()
 
 for row in rows:
     row = str(row)[3:-1].replace("'","")
-
-for row in rows:
-	print row
     print("<br>")
