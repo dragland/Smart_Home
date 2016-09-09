@@ -15,12 +15,11 @@ import datetime
 smartHomeCGI.header("HTML")
 
 RANGE = smartHomeCGI.get_value("RANGE")
-print("Range = %s" % (RANGE))
-print("<br>")
+VALUE = smartHomeCGI.get_value("VALUE")
 
 conn = sqlite3.connect("../archive.db")
 curs = conn.cursor()
-curs.execute("SELECT * FROM data WHERE time >= time('now','-%i minutes')" % (int(RANGE))):
+curs.execute("SELECT * FROM data WHERE time >= time('now','-%i %s')" % (int(VALUE), RANGE))
 rows = curs.fetchall()
 conn.close()
 
