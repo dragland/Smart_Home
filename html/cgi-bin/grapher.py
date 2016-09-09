@@ -24,5 +24,5 @@ rows = curs.fetchall()
 conn.close()
 
 for row in rows:
-    row = str(row)[3:-1].replace("'","")
+    print str(row)[3:-1].replace("'","")
     print("<br>")
