@@ -19,7 +19,7 @@ VALUE = smartHomeCGI.get_value("VALUE")
 
 conn = sqlite3.connect("../archive.db")
 curs = conn.cursor()
-curs.execute("SELECT * FROM data WHERE time >= time('now','-%i %s')" % (int(VALUE), RANGE))
+curs.execute("SELECT * FROM data WHERE timestamp >= datetime('now','-%i %s')" % (int(VALUE), RANGE))
 rows = curs.fetchall()
 conn.close()
 
