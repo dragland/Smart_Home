@@ -39,8 +39,8 @@ def querryData(DATABASE, RANGE, VALUE):
 #This function formats the querried data so that the graph can display it.
 def formatData(ROWS):
 	for row in ROWS:
-    	print str(row)[3:-1].replace("'","")
-    	print("<br>")
+		print str(row)[3:-1].replace("'","")
+		print("<br>")
 
 #*********************************************************************
 #                          HELPERS
