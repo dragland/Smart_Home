@@ -59,6 +59,14 @@ def write_archive():
 	conn.commit()
 	conn.close()
 
+#Function: automate
+#This function automates the relay control based on setpoint values.
+def automate(PIN_NUMBER):
+	if temp_f > 80:
+		relay_on(int(PIN_NUMBER))
+	if temp_f < 40:
+		relay_off(int(PIN_NUMBER))
+
 #*********************************************************************
 #                          HELPERS
 #*********************************************************************
@@ -99,10 +107,20 @@ def read_fan(PIN_NUMBER):
 	time.sleep(0.1)
 
 #Function: read_state
-#This function reads the state of a relay control pin.
+#This function reads the state of a relay.
 def read_state(PIN_NUMBER):
 	output = subprocess.check_output(["gpio read %i" % (PIN_NUMBER)], shell=True)
 	return str(output)[:1]
+
+#Function: relay_on
+#This function turns on a relay.
+def relay_on(PIN_NUMBER):
+	os.system("gpio write %i 0" % (PIN_NUMBER))
+
+#Function: relay_off
+#This function turns off a relay.
+def relay_off(PIN_NUMBER):
+	os.system("gpio write %i 1" % (PIN_NUMBER))
 
 #Function: init_archive
 #This function initializes the SQL database.

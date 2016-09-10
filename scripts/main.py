@@ -51,6 +51,7 @@ while True:
 		del t6
 		t6 = threading.Thread(target = smartHome.read_fan, args = (4,))
 		t6.start()
+	smartHome.automate(4)
 	smartHome.write_state()
 	smartHome.write_archive()
 	time.sleep(1)
