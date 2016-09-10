@@ -202,18 +202,18 @@
 				<div class="panel-body">
 					<div class="container">
 			            <div class="panel panel-default">
-			 				<canvas id="grapher" width="100%" height="140%"></canvas>
+			 				<canvas id="grapher" width="100%" height="100%"></canvas>
 							<script src="js/grapher.js"></script>
 			            </div>
 			            <div class="panel panel-default">
 			            	<div class="btn-group-horizontal">
-					    		<button type="button" class="btn btn-default btn-lg">Minute</button>
-					    		<button type="button" class="btn btn-default btn-lg">Hour</button>
-					    		<button type="button" class="btn btn-default btn-lg">Day</button>
-					    		<button type="button" class="btn btn-default btn-lg">Week</button>
-					    		<button type="button" class="btn btn-default btn-lg">Month</button>
-					    		<button type="button" class="btn btn-default btn-lg">Year</button>
-					    		<button type="button" class="btn btn-default btn-lg">Archive</button>
+					    		<button type="button" class="btn btn-default btn-lg"><a href="cgi-bin/grapher.py?RANGE=seconds&VALUE=60" target="_blank">Minute</button>
+					    		<button type="button" class="btn btn-default btn-lg"><a href="cgi-bin/grapher.py?RANGE=minutes&VALUE=60" target="_blank">Hour</button>
+					    		<button type="button" class="btn btn-default btn-lg"><a href="cgi-bin/grapher.py?RANGE=days&VALUE=1" target="_blank">Day</button>
+					    		<button type="button" class="btn btn-default btn-lg"><a href="cgi-bin/grapher.py?RANGE=weeks&VALUE=1" target="_blank">Week</button>
+					    		<button type="button" class="btn btn-default btn-lg"><a href="cgi-bin/grapher.py?RANGE=months&VALUE=1" target="_blank">Month</button>
+					    		<button type="button" class="btn btn-default btn-lg"><a href="cgi-bin/grapher.py?RANGE=years&VALUE=1" target="_blank">Year</button>
+					    		<button type="button" class="btn btn-default btn-lg"><a href="cgi-bin/grapher.py?RANGE=years&VALUE=10" target="_blank">DECADE</a></button>
 					  		</div>
 			            </div>
 					</div>
