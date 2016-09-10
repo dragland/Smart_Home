@@ -206,6 +206,15 @@
 							<script src="js/grapher.js"></script>
 			            </div>
 			            <div class="panel panel-default">
+				            <form action="cgi-bin/grapher.py">
+								Value:
+								<input type="text" name="VALUE" value="60">
+								Range:
+								<input type="text" name="RANGE" value="seconds">
+								<input type="submit" value="Submit">
+							</form>
+			            </div>
+			            <div class="panel panel-default">
 			            	<div class="input-group">
 								<input type="text" class="form-control" placeholder="Value" value="60">
 								<span class="input-group-btn">
