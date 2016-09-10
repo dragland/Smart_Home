@@ -206,6 +206,9 @@ var myLineChart = new Chart(ctx, {
                     max: 100,
                     beginAtZero: true
                 }
+            }],
+            xAxes: [{
+                display: false
             }]
         }
     }
