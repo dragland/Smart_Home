@@ -7,10 +7,43 @@
 #*********************************************************************
 import os
 import cgi
+import sqlite3
+import datetime
 import subprocess
 
 #*********************************************************************
 #                          FUNCTIONS
+#*********************************************************************
+#Function: header
+#This function returns the apropriate header.
+def header(TYPE):
+	if TYPE == "BLANK":
+		print "Status: 204 No Content"
+		print "Content-type: text/plain"
+	if TYPE == "HTML":
+		print "Content-Type: text/html"
+	print ""
+
+#Function: querryData
+#This function querries the SQL data base with the appropriate
+#HTTP GET parmeters.
+def querryData(DATABASE, RANGE, VALUE):
+	conn = sqlite3.connect(DATABASE)
+	curs = conn.cursor()
+	curs.execute("SELECT * FROM data WHERE timestamp >= datetime('%s','-%i %s')" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), int(VALUE), RANGE))
+	rows = curs.fetchall()
+	conn.close()
+	return rows
+
+#Function: formatData
+#This function formats the querried data so that the graph can display it.
+def formatData(ROWS):
+	for row in ROWS:
+    print str(row)[3:-1].replace("'","")
+    print("<br>")
+
+#*********************************************************************
+#                          HELPERS
 #*********************************************************************
 #Function: get_value
 #This function gets the value from an HTTP GET call.
@@ -38,13 +71,3 @@ def relay_on(PIN_NUMBER):
 #This function turns off a relay.
 def relay_off(PIN_NUMBER):
 	os.system("gpio write %i 1" % (PIN_NUMBER))
-
-#Function: header
-#This function returns the apropriate header.
-def header(TYPE):
-	if TYPE == "BLANK":
-		print "Status: 204 No Content"
-		print "Content-type: text/plain"
-	if TYPE == "HTML":
-		print "Content-Type: text/html"
-	print ""
