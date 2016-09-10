@@ -62,9 +62,9 @@ def write_archive():
 #Function: automate
 #This function automates the relay control based on setpoint values.
 def automate(PIN_NUMBER):
-	if temp_f > 80:
+	if config.temp_f > 80:
 		relay_on(int(PIN_NUMBER))
-	if temp_f < 40:
+	if config.temp_f < 40:
 		relay_off(int(PIN_NUMBER))
 
 #*********************************************************************
