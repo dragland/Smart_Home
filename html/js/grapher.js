@@ -8,11 +8,28 @@ var ctx = document.getElementById("grapher");
 var myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: [
+            "2016-09-09 17:06:26", 
+            "2016-09-09 17:06:27", 
+            "2016-09-09 17:06:29", 
+            "2016-09-09 17:06:30", 
+            "2016-09-09 17:06:31", 
+            "2016-09-09 17:06:32", 
+            "2016-09-09 17:06:34"
+            ],
         datasets: [
             {
-                data: [65, 59, 80, 81, 56, 55, 40],
-                label: "Data",
+                data: 
+                [
+                    65, 
+                    59, 
+                    80, 
+                    81, 
+                    56, 
+                    55, 
+                    40
+                ],
+                label: "temp_f",
                 fill: true,
                 lineTension: 0.1,
                 backgroundColor: "rgba(75,192,192,0.4)",
@@ -38,10 +55,6 @@ var myLineChart = new Chart(ctx, {
     options: {
         legend: {
             display: false
-        },
-        title: {
-            display: true,
-            text: "Smart Home"
         }
     }
 });
