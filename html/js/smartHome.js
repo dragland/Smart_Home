@@ -66,14 +66,9 @@ Function: plotGraph
 This function plots the graph from an SQL querry.
 */
 function plotGraph(){
-	//var CSV = HTTP_GET();
-	//alert(CSV);
-
-	var ctx = document.getElementById("grapher");
-	var myLineChart = new Chart(ctx, {
-	    type: 'line',
-	    data: {
-	        labels: [
+	var CSV = HTTP_GET();
+	
+	var timestamp = [
 	            "2016-09-09 17:06:26", 
 	            "2016-09-09 17:06:27", 
 	            "2016-09-09 17:06:29", 
@@ -81,7 +76,13 @@ function plotGraph(){
 	            "2016-09-09 17:06:31", 
 	            "2016-09-09 17:06:32", 
 	            "2016-09-09 17:06:34"
-	            ],
+	            ];
+
+	var ctx = document.getElementById("grapher");
+	var myLineChart = new Chart(ctx, {
+	    type: 'line',
+	    data: {
+	        labels: timestamp,
 	        datasets: [
 	            {
 	                data: 
@@ -279,7 +280,7 @@ function plotGraph(){
 	    }
 	});
 
-	
+
 }
 
 /*********************************************************************
