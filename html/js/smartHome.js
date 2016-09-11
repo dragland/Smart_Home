@@ -1,4 +1,4 @@
-p//Davy Ragland | dragland@stanford.edu
+//Davy Ragland | dragland@stanford.edu
 //Home Automation System version 2.0 | 2016
 
 /*********************************************************************
@@ -61,14 +61,22 @@ function HTTP_GET() {
     return xmlHttp.responseText;
 }
 
+/*********************************************************************
+                           HELPERS
+*********************************************************************/
+/*
+Function: switch
+This function toggles the relay CGI script.
+*/
+function switch_relay(URL) {
+	document.location = URL;
+}
+
 /*
 Function: plotGraph
 This function plots the graph from an SQL querry.
 */
 function plotGraph(){
-	var CSV = HTTP_GET();
-	var lines = CSV.split("\n");
-
 	var timestamp_data    = [];
 	var temp_f_data       = [];
 	var rh_data           = [];
@@ -77,7 +85,8 @@ function plotGraph(){
 	var lights_green_data = [];
 	var lights_blue_data  = [];
 	var fan_data          = [];
-
+	
+	var lines = HTTP_GET().split("\n");
     for (var i = 0; i < lines.length; i++) {
        timestamp_data.push(               lines[i].split(",")[0]);
        temp_f_data.push(                  lines[i].split(",")[1]);
@@ -102,12 +111,12 @@ function plotGraph(){
 	                pointHoverBackgroundColor: "rgba(255,0,0,1)",
 	                backgroundColor: "rgba(255,0,0,.1)",
 	                lineTension: 0.1,
-	                borderWidth: 10,
-	                pointBorderWidth: 5,
-	                pointRadius: 5,
-	                pointHoverRadius: 10,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 2,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 2,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 6,
+	                pointHoverBorderWidth: 3,
 	                pointHoverBorderColor: "rgba(255,255,255,1)",
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
@@ -118,12 +127,12 @@ function plotGraph(){
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
 	                backgroundColor: "rgba(0,105,255,.1)",
 	                lineTension: 0.1,
-	                borderWidth: 10,
-	                pointBorderWidth: 5,
-	                pointRadius: 5,
-	                pointHoverRadius: 10,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 2,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 2,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 6,
+	                pointHoverBorderWidth: 3,
 	                pointHoverBorderColor: "rgba(255,255,255,1)",
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
@@ -134,12 +143,12 @@ function plotGraph(){
 	                pointHoverBackgroundColor: "rgba(255,242,37,1)",
 	                backgroundColor: "rgba(255,242,37,.1)",
 	                lineTension: 0.1,
-	                borderWidth: 10,
-	                pointBorderWidth: 5,
-	                pointRadius: 5,
-	                pointHoverRadius: 10,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 2,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 2,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 6,
+	                pointHoverBorderWidth: 3,
 	                pointHoverBorderColor: "rgba(255,255,255,1)",
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
@@ -150,12 +159,12 @@ function plotGraph(){
 	                pointHoverBackgroundColor: "rgba(255,0,0,1)",
 	                backgroundColor: "rgba(255,0,0,.1)",
 	                lineTension: 0.1,
-	                borderWidth: 10,
-	                pointBorderWidth: 5,
-	                pointRadius: 5,
-	                pointHoverRadius: 10,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 2,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 2,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 6,
+	                pointHoverBorderWidth: 3,
 	                pointHoverBorderColor: "rgba(255,255,255,1)",
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
@@ -166,12 +175,12 @@ function plotGraph(){
 	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
 	                backgroundColor: "rgba(42,200,73,.1)",
 	                lineTension: 0.1,
-	                borderWidth: 10,
-	                pointBorderWidth: 5,
-	                pointRadius: 5,
-	                pointHoverRadius: 10,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 2,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 2,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 6,
+	                pointHoverBorderWidth: 3,
 	                pointHoverBorderColor: "rgba(255,255,255,1)",
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
@@ -182,12 +191,12 @@ function plotGraph(){
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
 	                backgroundColor: "rgba(0,105,255,.1)",
 	                lineTension: 0.1,
-	                borderWidth: 10,
-	                pointBorderWidth: 5,
-	                pointRadius: 5,
-	                pointHoverRadius: 10,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 2,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 2,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 6,
+	                pointHoverBorderWidth: 3,
 	                pointHoverBorderColor: "rgba(255,255,255,1)",
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
@@ -198,12 +207,12 @@ function plotGraph(){
 	                pointHoverBackgroundColor: "rgba(163,73,164,1)",
 	                backgroundColor: "rgba(163,73,164,.1)",
 	                lineTension: 0.1,
-	                borderWidth: 10,
-	                pointBorderWidth: 5,
-	                pointRadius: 5,
-	                pointHoverRadius: 10,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 2,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 2,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 6,
+	                pointHoverBorderWidth: 3,
 	                pointHoverBorderColor: "rgba(255,255,255,1)",
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            }
@@ -227,15 +236,4 @@ function plotGraph(){
 	        }
 	    }
 	});
-}
-
-/*********************************************************************
-                           HELPERS
-*********************************************************************/
-/*
-Function: switch
-This function toggles the relay CGI script.
-*/
-function switch_relay(URL) {
-	document.location = URL;
 }
