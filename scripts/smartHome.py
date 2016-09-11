@@ -55,7 +55,7 @@ def write_state():
 def write_archive():
 	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
-	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
+	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), float("{0:.2f}".format(config.temp_f), float("{0:.2f}".format(config.rh), config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
 	conn.commit()
 	conn.close()
 
@@ -127,6 +127,6 @@ def relay_off(PIN_NUMBER):
 def init_archive():
 	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
-	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f INTEGER, rh INTEGER, door INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER, fan INTEGER)")
+	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, door INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER, fan INTEGER)")
 	conn.commit()
 	conn.close()
