@@ -56,9 +56,18 @@ This function performs an HTTP GET call.
 */
 function HTTP_GET() {
     var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "cgi-bin/grapher.py?RANGE=seconds&VALUE=10", false );
+    xmlHttp.open("GET", "cgi-bin/csv.py?RANGE=seconds&VALUE=10", false );
     xmlHttp.send(null);
-    alert(xmlHttp.responseText);
+    return xmlHttp.responseText;
+}
+
+/*
+Function: plotGraph
+This function plots the graph from an SQL querry.
+*/
+function plotGraph(){
+	var CSV = HTTP_GET();
+	alert(CSV);
 }
 /*********************************************************************
                            HELPERS
