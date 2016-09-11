@@ -19,7 +19,7 @@
 		<script src="js/smartHome.js"></script>
 		<script src="js/main.js"></script>
 	</head>
-	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<body data-spy="scroll" data-target=".navbar" data-offset="50"  onload="plotGraph()">
 		<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
 		  	<div class="container-fluid">
 		    	<div class="navbar-header">
@@ -205,7 +205,7 @@
 					<div class="container">
   						<h4><span class="glyphicon glyphicon-stats"></span> Data Telemetry</h4>
 			            <div class="panel panel-default">
-			 				<canvas id="grapher" width="100%" height="60%" onload="plotGraph()"></canvas>
+			 				<canvas id="grapher" width="100%" height="60%"></canvas>
 			            </div>
 			            <div class="panel panel-default">
 			            	<div class="btn-group btn-group-justified">
