@@ -77,5 +77,5 @@ Function: switch
 This function toggles the relay CGI script.
 */
 function switch(URL) {
-	document.location = "";
+	document.location = URL;
 }
