@@ -68,84 +68,26 @@ This function plots the graph from an SQL querry.
 function plotGraph(){
 	var CSV = HTTP_GET();
 	var lines = CSV.split("\n");
-	var first = [];
-    for (var i = 0; i < lines.length; i++) {
-       first.push(lines[i].split(",")[0]);
-    }
-    alert(first);
 
-	var timestamp_data = [
-	            "2016-09-09 17:06:26", 
-	            "2016-09-09 17:06:27", 
-	            "2016-09-09 17:06:29", 
-	            "2016-09-09 17:06:30", 
-	            "2016-09-09 17:06:31", 
-	            "2016-09-09 17:06:32", 
-	            "2016-09-09 17:06:34"
-	            ];
-	var temp_f_data = [
-						86, 
-	                    86, 
-	                    88, 
-	                    90, 
-	                    70, 
-	                    92, 
-	                    87
-	                ];
-	var rh_data = [
-	                    37, 
-	                    40, 
-	                    38, 
-	                    39, 
-	                    50, 
-	                    36, 
-	                    37
-	                ];
-	var door_data = [
-	                    0, 
-	                    20, 
-	                    20, 
-	                    20, 
-	                    0, 
-	                    0, 
-	                    0
-	                ];
-	var lights_red_data = [
-	                    10, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0
-	                ];
-	var lights_green_data = [
-	                    10, 
-	                    10, 
-	                    10, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0
-	                ];
-	var lights_blue_data = [
-	                    0, 
-	                    0, 
-	                    0, 
-	                    10, 
-	                    10, 
-	                    10, 
-	                    10
-	                ];
-	var fan_data = [
-	                    0, 
-	                    0, 
-	                    0, 
-	                    30, 
-	                    30, 
-	                    30, 
-	                    30
-	                ];
+	var timestamp_data = [];
+	var temp_f_data = [];
+	var rh_data = [];
+	var door_data = [];
+	var lights_red_data = [];
+	var lights_green_data = [];
+	var lights_blue_data = [];
+	var fan_data = [];
+
+    for (var i = 0; i < lines.length; i++) {
+       timestamp_data.push(lines[i].split(",")[0]);
+       temp_f_data.push(lines[i].split(",")[1]);
+       rh_data.push(lines[i].split(",")[2]);
+       door_data.push(lines[i].split(",")[3]);
+       lights_red_data.push(lines[i].split(",")[4]);
+       lights_green_data.push(lines[i].split(",")[5]);
+       lights_blue_data.push(lines[i].split(",")[6]);
+       fan_data.push(lines[i].split(",")[7]);
+    }
 
 	var ctx = document.getElementById("grapher");
 	var myLineChart = new Chart(ctx, {
