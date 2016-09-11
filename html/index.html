@@ -206,30 +206,24 @@
 							<script src="js/grapher.js"></script>
 			            </div>
 			            <div class="panel panel-default">
-				            <form action="cgi-bin/grapher.py">
-								Value:
-								<input type="text" name="VALUE" value="60">
-								Range:
-								<input type="text" name="RANGE" value="seconds">
-								<input type="submit" value="Submit">
+			            	<form action="cgi-bin/grapher.py" class="btn-group btn-group-justified">
+			            		<div class="btn-group">
+									<input class="btn btn-primary btn-lg" type="text" name="VALUE" value="60">
+								</div>
+								 <div class="btn-group">
+									<select class="btn btn-primary btn-lg" name="RANGE">
+									    <option value="minutes">Minutes</option>
+									    <option value="seconds">Seconds</option>
+									    <option value="hours">Hours</option>
+									    <option value="days">Days</option>
+									    <option value="months">Months</option>
+									    <option value="years">Years</option>
+									</select>
+								</div>
+								 <div class="btn-group">
+									<button class="btn btn-primary btn-lg" type="submit" value="Submit">PLOT</button>
+								</div>
 							</form>
-			            </div>
-			            <div class="panel panel-default">
-			            	<div class="input-group">
-								<input type="text" class="form-control" placeholder="Value" value="60">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Range <span class="caret"></span></button>
-							        <ul class="dropdown-menu dropdown-menu-right">
-										<li><a href="cgi-bin/grapher.py?RANGE=seconds&VALUE=60" target="_blank">Minute</a></li>
-										<li><a href="cgi-bin/grapher.py?RANGE=minutes&VALUE=60" target="_blank">Hour</a></li>
-										<li><a href="cgi-bin/grapher.py?RANGE=days&VALUE=1" target="_blank">Day</a></li>
-										<li><a href="cgi-bin/grapher.py?RANGE=days&VALUE=7" target="_blank">Week</a></li>
-										<li><a href="cgi-bin/grapher.py?RANGE=months&VALUE=1" target="_blank">Month</a></li>
-										<li><a href="cgi-bin/grapher.py?RANGE=years&VALUE=1" target="_blank">Year</a></li>
-							        </ul>
-									<button class="btn btn-default" type="button">PLOT</button>
-								</span>
-							</div>
     					</div>
 					</div>
 				</div>
