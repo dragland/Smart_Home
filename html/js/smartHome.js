@@ -67,8 +67,8 @@ This function plots the graph from an SQL querry.
 */
 function plotGraph(){
 	var CSV = HTTP_GET();
-	
-	var timestamp = [
+
+	var timestamp_data = [
 	            "2016-09-09 17:06:26", 
 	            "2016-09-09 17:06:27", 
 	            "2016-09-09 17:06:29", 
@@ -77,24 +77,78 @@ function plotGraph(){
 	            "2016-09-09 17:06:32", 
 	            "2016-09-09 17:06:34"
 	            ];
-
-	var ctx = document.getElementById("grapher");
-	var myLineChart = new Chart(ctx, {
-	    type: 'line',
-	    data: {
-	        labels: timestamp,
-	        datasets: [
-	            {
-	                data: 
-	                [
-	                    86, 
+	var temp_f_data = [
+						86, 
 	                    86, 
 	                    88, 
 	                    90, 
 	                    70, 
 	                    92, 
 	                    87
-	                ],
+	                ];
+	var rh_data = [
+	                    37, 
+	                    40, 
+	                    38, 
+	                    39, 
+	                    50, 
+	                    36, 
+	                    37
+	                ];
+	var door_data = [
+	                    0, 
+	                    20, 
+	                    20, 
+	                    20, 
+	                    0, 
+	                    0, 
+	                    0
+	                ];
+	var lights_red_data = [
+	                    10, 
+	                    0, 
+	                    0, 
+	                    0, 
+	                    0, 
+	                    0, 
+	                    0
+	                ];
+	var lights_green_data = [
+	                    10, 
+	                    10, 
+	                    10, 
+	                    0, 
+	                    0, 
+	                    0, 
+	                    0
+	                ];
+	var lights_blue_data = [
+	                    0, 
+	                    0, 
+	                    0, 
+	                    10, 
+	                    10, 
+	                    10, 
+	                    10
+	                ];
+	var fan_data = [
+	                    0, 
+	                    0, 
+	                    0, 
+	                    30, 
+	                    30, 
+	                    30, 
+	                    30
+	                ];
+
+	var ctx = document.getElementById("grapher");
+	var myLineChart = new Chart(ctx, {
+	    type: 'line',
+	    data: {
+	        labels: timestamp_data,
+	        datasets: [
+	            {
+	                data: temp_f_data,
 	                label: "temp_f",
 	                borderColor: "rgba(255,0,0,1)",
 	                pointHoverBackgroundColor: "rgba(255,0,0,1)",
@@ -110,16 +164,7 @@ function plotGraph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: 
-	                [
-	                    37, 
-	                    40, 
-	                    38, 
-	                    39, 
-	                    50, 
-	                    36, 
-	                    37
-	                ],
+	                data: rh_data,
 	                label: "rh",
 	                borderColor: "rgba(0,105,255,1)",
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
@@ -135,16 +180,7 @@ function plotGraph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: 
-	                [
-	                    0, 
-	                    20, 
-	                    20, 
-	                    20, 
-	                    0, 
-	                    0, 
-	                    0
-	                ],
+	                data: door_data,
 	                label: "door",
 	                borderColor: "rgba(255,242,37,1)",
 	                pointHoverBackgroundColor: "rgba(255,242,37,1)",
@@ -160,16 +196,7 @@ function plotGraph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: 
-	                [
-	                    10, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0
-	                ],
+	                data: lights_red_data,
 	                label: "lights_red",
 	                borderColor: "rgba(255,0,0,1)",
 	                pointHoverBackgroundColor: "rgba(255,0,0,1)",
@@ -185,16 +212,7 @@ function plotGraph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: 
-	                [
-	                    10, 
-	                    10, 
-	                    10, 
-	                    0, 
-	                    0, 
-	                    0, 
-	                    0
-	                ],
+	                data: lights_green_data,
 	                label: "lights_green",
 	                borderColor: "rgba(42,200,73,1)",
 	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
@@ -210,16 +228,7 @@ function plotGraph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: 
-	                [
-	                    0, 
-	                    0, 
-	                    0, 
-	                    10, 
-	                    10, 
-	                    10, 
-	                    10
-	                ],
+	                data: lights_blue_data,
 	                label: "lights_blue",
 	                borderColor: "rgba(0,105,255,1)",
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
@@ -235,16 +244,7 @@ function plotGraph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: 
-	                [
-	                    0, 
-	                    0, 
-	                    0, 
-	                    30, 
-	                    30, 
-	                    30, 
-	                    30
-	                ],
+	                data: fan_data,
 	                label: "fan",
 	                borderColor: "rgba(163,73,164,1)",
 	                pointHoverBackgroundColor: "rgba(163,73,164,1)",
