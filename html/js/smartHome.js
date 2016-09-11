@@ -49,6 +49,17 @@ function start_slideshow() {
 	update_image();
 	var thread = setInterval(function(){update_image()}, 10 * 1000);
 }
+
+/*
+Function: HTTP_GET
+This function performs an HTTP GET call.
+*/
+function HTTP_GET() {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "cgi-bin/grapher.py?RANGE=seconds&VALUE=10", false );
+    xmlHttp.send(null);
+    alert(xmlHttp.responseText);
+}
 /*********************************************************************
                            HELPERS
 *********************************************************************/
