@@ -28,8 +28,8 @@ function update_state(){
 	document.getElementById("lights_green").innerHTML = state[5];
 	document.getElementById("lights_blue").innerHTML  = state[6];
 	document.getElementById("fan").innerHTML          = state[7];
-	document.getElementById("energy").innerHTML       = state[8];
-	document.getElementById("co2").innerHTML          = state[9];
+	document.getElementById("co2").innerHTML          = state[8];
+	document.getElementById("energy").innerHTML       = state[9];
 }
 
 /*
@@ -67,7 +67,12 @@ This function plots the graph from an SQL querry.
 */
 function plotGraph(){
 	var CSV = HTTP_GET();
-
+	var lines = CSV.split("\n");
+    for (var i = 0; i < lines.length; i++) {
+       var first = lines[i].split(";")[0];
+    }
+    alert(first)
+    
 	var timestamp_data = [
 	            "2016-09-09 17:06:26", 
 	            "2016-09-09 17:06:27", 
@@ -279,8 +284,6 @@ function plotGraph(){
 	        }
 	    }
 	});
-
-
 }
 
 /*********************************************************************
