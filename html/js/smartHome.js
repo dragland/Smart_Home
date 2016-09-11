@@ -69,24 +69,24 @@ function plotGraph(){
 	var CSV = HTTP_GET();
 	var lines = CSV.split("\n");
 
-	var timestamp_data = [];
-	var temp_f_data = [];
-	var rh_data = [];
-	var door_data = [];
-	var lights_red_data = [];
+	var timestamp_data    = [];
+	var temp_f_data       = [];
+	var rh_data           = [];
+	var door_data         = [];
+	var lights_red_data   = [];
 	var lights_green_data = [];
-	var lights_blue_data = [];
-	var fan_data = [];
+	var lights_blue_data  = [];
+	var fan_data          = [];
 
     for (var i = 0; i < lines.length; i++) {
-       timestamp_data.push(lines[i].split(",")[0]);
-       temp_f_data.push(lines[i].split(",")[1]);
-       rh_data.push(lines[i].split(",")[2]);
-       door_data.push(10 * Number(lines[i].split(",")[3]));
-       lights_red_data.push(10 * Number(lines[i].split(",")[4]));
-       lights_green_data.push(10 * Number(lines[i].split(",")[5]));
-       lights_blue_data.push(20 * Number(lines[i].split(",")[6]));
-       fan_data.push(30 * Number(lines[i].split(",")[7]));
+       timestamp_data.push(               lines[i].split(",")[0]);
+       temp_f_data.push(                  lines[i].split(",")[1]);
+       rh_data.push(                      lines[i].split(",")[2]);
+       door_data.push(        40 * Number(lines[i].split(",")[3]));
+       lights_red_data.push(  20 * Number(lines[i].split(",")[4]));
+       lights_green_data.push(20 * Number(lines[i].split(",")[5]));
+       lights_blue_data.push( 20 * Number(lines[i].split(",")[6]));
+       fan_data.push(         30 * Number(lines[i].split(",")[7]));
     }
 
 	var ctx = document.getElementById("grapher");
