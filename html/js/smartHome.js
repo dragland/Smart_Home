@@ -76,8 +76,16 @@ function plotGraph(){
 Function: switch
 This function toggles the relay CGI script.
 */
-function switch(URL) {
+function switch_relay(URL) {
 	document.location = URL;
+}
+
+/*
+Function: switch_lights_red
+This function toggles the red lights.
+*/
+function switch_lights_red() {
+	document.location = "cgi-bin/switch.py?PIN_NUMBER=0";
 }
 
 /*
