@@ -55,11 +55,8 @@ Function: HTTP_GET
 This function performs an HTTP GET call.
 */
 function HTTP_GET() {
-	var RANGE = "seconds";
-	var VALUE = "10";
-
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "cgi-bin/csv.py?RANGE=" + RANGE + "&VALUE=" + VALUE, false );
+	var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", "cgi-bin/csv.py?RANGE=" + document.getElementById("RANGE").value + "&VALUE=" + document.getElementById("VALUE").value, false );
     xmlHttp.send(null);
     return xmlHttp.responseText;
 }
