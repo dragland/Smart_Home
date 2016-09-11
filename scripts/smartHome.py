@@ -127,6 +127,6 @@ def relay_off(PIN_NUMBER):
 def init_archive():
 	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
-	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, door INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER, fan INTEGER)")
+	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f INTEGER, rh INTEGER, door INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER, fan INTEGER)")
 	conn.commit()
 	conn.close()
