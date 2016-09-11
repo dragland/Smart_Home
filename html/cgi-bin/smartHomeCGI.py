@@ -40,7 +40,6 @@ def querryData(DATABASE, RANGE, VALUE):
 def formatData(ROWS):
 	for row in ROWS:
 		print str(row)[3:-1].replace("'","")
-		print("<br>")
 
 #*********************************************************************
 #                          HELPERS
