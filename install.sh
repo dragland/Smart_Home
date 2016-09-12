@@ -40,13 +40,9 @@ sudo chown -R -v pi /var/www
 sudo git clone https://github.com/dragland/Smart_Home.git temp
 sudo mv temp/* /var/www/
 sudo rm -rf temp
-sqlite3 archive.db
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo "TO DO"
+echo "YOU MUST MANUALY SETUP THE FOLLOWING:"
 echo "Setup static IP"
-
-echo "Edit .bashrc"
-echo "hostname -I"
 
 echo "sudo crontab -e"
 echo "@reboot /var/www/run.sh &"

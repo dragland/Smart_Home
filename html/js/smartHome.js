@@ -5,14 +5,54 @@
                            FUNCTIONS
 *********************************************************************/
 /*
+Function: update_image
+This function updates the modal with a random image.
+*/
+function update_image() {
+	var source = "res/posters/" + posters[Math.floor(Math.random() * posters.length) + 0];
+	document.getElementById("source").src = source;
+}
+
+/*
+Function: startSlideshow
+This function startes the slideshow. 
+*/
+function start_slideshow() {
+	update_image();
+	var thread = setInterval(function(){update_image()}, 10 * 1000);
+}
+
+/*********************************************************************
+                           HELPERS
+*********************************************************************/
+/*
+Function: HTTP_GET
+This function performs an HTTP GET call.
+*/
+function HTTP_GET(URL) {
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open("GET", URL, false );
+	xmlHttp.send(null);
+	return xmlHttp.responseText;
+}
+
+/*
+Function: switch
+This function toggles the relay CGI script.
+*/
+function switch_relay(URL) {
+	document.location = URL;
+}
+
+/*********************************************************************
+                            MAIN
+*********************************************************************/
+/*
 Function: update_state
 This function updates the values printed on the interface.
 */
-function update_state(){		
-	var request = new XMLHttpRequest();
-	request.open("GET", "state.txt", false);
-	request.send(null);
-	var data = request.responseText;
+function update_state(){
+	var data = HTTP_GET("state.txt");
 	if (data === ""){
 		var str = "ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR";
 	}
@@ -33,46 +73,6 @@ function update_state(){
 }
 
 /*
-Function: update_image
-This function updates the modal with a random image.
-*/
-function update_image() {
-	var source = "res/posters/" + posters[Math.floor(Math.random() * posters.length) + 0];
-	document.getElementById("source").src = source;
-}
-
-/*
-Function: startSlideshow
-This function startes the slideshow. 
-*/
-function start_slideshow() {
-	update_image();
-	var thread = setInterval(function(){update_image()}, 10 * 1000);
-}
-
-/*
-Function: HTTP_GET
-This function performs an HTTP GET call.
-*/
-function HTTP_GET() {
-	var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", "cgi-bin/csv.py?RANGE=" + document.getElementById("RANGE").value + "&VALUE=" + document.getElementById("VALUE").value, false );
-    xmlHttp.send(null);
-    return xmlHttp.responseText;
-}
-
-/*********************************************************************
-                           HELPERS
-*********************************************************************/
-/*
-Function: switch
-This function toggles the relay CGI script.
-*/
-function switch_relay(URL) {
-	document.location = URL;
-}
-
-/*
 Function: plotGraph
 This function plots the graph from an SQL querry.
 */
@@ -86,7 +86,7 @@ function plotGraph(){
 	var lights_blue_data  = [];
 	var fan_data          = [];
 
-	var lines = HTTP_GET().split("\n");
+	var lines = HTTP_GET("cgi-bin/csv.py?RANGE=" + document.getElementById("RANGE").value + "&VALUE=" + document.getElementById("VALUE").value).split("\n");
     for (var i = 0; i < lines.length; i++) {
        timestamp_data.push(               lines[i].split(",")[0]);
        temp_f_data.push(                  lines[i].split(",")[1]);
@@ -99,7 +99,6 @@ function plotGraph(){
     }
 
 	var ctx = document.getElementById("grapher");
-	ctx.destroy();
 	var myLineChart = new Chart(ctx, {
 	    type: 'line',
 	    data: {
