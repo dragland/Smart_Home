@@ -35,12 +35,12 @@ sudo a2enmod cgi
 sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf 
 ```
 
-ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/
+>ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/
 
-<Directory "/var/www/html/cgi-bin">
+>&lt;Directory "/var/www/html/cgi-bin"&gt;
 
-	AddHandler cgi-script .py
+>	AddHandler cgi-script .py
 
-</Directory>
+>&lt;/Directory&gt;
 
 #Wiring:
