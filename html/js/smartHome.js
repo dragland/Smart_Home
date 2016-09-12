@@ -99,6 +99,7 @@ function plotGraph(){
     }
 
 	var ctx = document.getElementById("grapher");
+	ctx.destroy();
 	var myLineChart = new Chart(ctx, {
 	    type: 'line',
 	    data: {
