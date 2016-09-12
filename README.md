@@ -1,7 +1,7 @@
 # Smart_Home: 
 ###A Home Automation system for the Raspberry Pi writen in Python and Javascript
 
-![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/icons/screen_desktop.png "Smart_Home")
+![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/screen.png "Smart_Home")
 
 #Instalation:
 
@@ -44,3 +44,4 @@ sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf
 >&lt;/Directory&gt;
 
 #Wiring:
+![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/wiring.png "Smart_Home")
