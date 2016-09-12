@@ -73,10 +73,10 @@ function update_state(){
 }
 
 /*
-Function: plotGraph
+Function: plot_graph
 This function plots the graph from an SQL querry.
 */
-function plotGraph(){
+function plot_graph(){
 	var timestamp_data    = [];
 	var temp_f_data       = [];
 	var rh_data           = [];
