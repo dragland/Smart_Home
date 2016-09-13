@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+  </head>
+  <body>
+    <h1>SPEAK</h1>
+  </body>
+  <script type="text/javascript">
+    if (annyang) {
+      var sayThis = function(repeat) {
+        alert(repeat);
+      }
+      var commands = {
+        '*repeat': sayThis
+      };
+      annyang.addCommands(commands);
+      annyang.start();
+    }
+  </script>
+</html>

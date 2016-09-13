@@ -8,11 +8,13 @@
 		<meta http-equiv="Cache-Control" content="no-cache">
 		<meta name="description" content="Davy Ragland">
 		<meta name="author" content="Davy Ragland">
-	    <title>RACHAEL</title>
+	    <title>MOLLY</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+    	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="shortcut icon" href="favicon.ico"/>
 		<script src="js/posters.js"></script>
@@ -28,7 +30,7 @@
 			        	<span class="icon-bar"></span>
 			        	<span class="icon-bar"></span>
 		     		</button>
-		      		<a class="navbar-brand" data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-home"></span> RACHAEL</a>
+		      		<a class="navbar-brand" data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-home"></span> MOLLY</a>
 		    	</div>
 			    <div class="collapse navbar-collapse" id="myNavbar">
 			      	<ul class="nav navbar-nav">
@@ -137,9 +139,19 @@
 					        </div>
 					        <div class="col-sm-2 col-xs-4">
 					            <div class="panel panel-default">
-					                <img src="res/icons/door.png" class="img-thumbnail" width="100%">
+					                <img id="microphone_switch" onclick="responsiveVoice.speak('Hello Davy, How may I be of assistance?');" src="res/icons/microphone.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="door" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+				                    	<div id="microphone" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+				                    		<strong></strong>
+				                    	</div>
+				                    </div>
+					            </div>
+					        </div>
+					        <div class="col-sm-2 col-xs-4">
+					            <div class="panel panel-default">
+					                <img src="res/icons/automate.png" class="img-thumbnail" width="100%">
+									<div class="progress" style="margin-bottom:0px;">
+				                    	<div id="automate" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
 				                    		<strong></strong>
 				                    	</div>
 				                    </div>
@@ -150,6 +162,26 @@
 					                <img id="fan_switch" onclick="switch_relay('cgi-bin/switch.py?PIN_NUMBER=4')" src="res/icons/fan.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
 				                    	<div id="fan" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+				                    		<strong></strong>
+				                    	</div>
+				                    </div>
+					            </div>
+					        </div>
+					        <div class="col-sm-2 col-xs-4">
+					            <div class="panel panel-default">
+					                <img src="res/icons/door.png" class="img-thumbnail" width="100%">
+									<div class="progress" style="margin-bottom:0px;">
+				                    	<div id="door" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+				                    		<strong></strong>
+				                    	</div>
+				                    </div>
+					            </div>
+					        </div>
+					        <div class="col-sm-2 col-xs-4">
+					            <div class="panel panel-default">
+					                <img src="res/icons/drink.png" class="img-thumbnail" width="100%">
+									<div class="progress" style="margin-bottom:0px;">
+				                    	<div id="drink" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
 				                    		<strong></strong>
 				                    	</div>
 				                    </div>
