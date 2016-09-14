@@ -51,7 +51,8 @@ def read_energy():
 #Function: read_memory
 #This function reads the percent memory available on the raspberry pi.
 def read_memory():
-	time.sleep(0.1)
+	output = subprocess.check_output(["df -h | grep /dev/root | cut -d ' ' -f 14-"], shell=True)
+	config.memory = str(output)[:2]
 
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
