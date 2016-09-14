@@ -12,7 +12,6 @@ import datetime
 import subprocess
 import sqlite3
 import Adafruit_DHT
-import notsmb
 import RPi.GPIO
 import config
 
@@ -28,22 +27,6 @@ def read_rh_temp(PIN_NUMBER):
 		config.temp_f = temp * 1.8 + 32.0
 	time.sleep(2)
 
-#Function: read_co2
-#This function reads the datta from a K-30 CO2 sensor.
-def read_co2():
-	READ = 0x22
-	readBytes = [0x00, 0x08, 0x2A]
-	while True:
-		try:
-			resp = notsmb.notSMB(1).i2c(0x68,[0x22,0x00,0x08,0x2A],4)
-			time.sleep(0.1)
-			co2Value = (resp[1]*256) + resp[2]
-			if co2Value < 2000:
-				config.co2Val = co2Value
-				break
-		except:
-			blank = 0;
-
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
 def read_door(PIN_NUMBER):
@@ -58,7 +41,7 @@ def read_door(PIN_NUMBER):
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d,%d,%4.0f" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan, config.co2Val))
+	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
 	state = open("html/state.txt", "w")
 	state.write(data + "\n")
 	state.close()
