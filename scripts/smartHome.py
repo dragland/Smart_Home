@@ -42,7 +42,7 @@ def read_co2():
 				config.co2Val = co2Value
 				break
 		except:
-			blank =0;
+			blank = 0;
 
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
