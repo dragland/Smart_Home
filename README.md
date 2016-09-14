@@ -13,7 +13,7 @@ sudo ./install.sh
 ```
 
 ###You must manualy setup the folowing:
-Set the IP adress to static:
+Set the IP adress to static && Enable I2C:
 
 >Look up tutorial for your version of Raspbian
 
