@@ -61,10 +61,10 @@ function update_state(){
 	}
 	var state = str.split(",");
 	document.getElementById("time").innerHTML         = state[0];
-	document.getElementById("temp").innerHTML         = state[1];
-	document.getElementById("rh").innerHTML           = state[2];
-	document.getElementById("co2").innerHTML          = state[3];
-	document.getElementById("energy").innerHTML       = state[4];
+	document.getElementById("temp").innerHTML         = state[1] + " &deg;";
+	document.getElementById("rh").innerHTML           = state[2] + " %";
+	document.getElementById("co2").innerHTML          = state[3] + " ppm";
+	document.getElementById("energy").innerHTML       = state[4] + " Watts";
 	document.getElementById("door").innerHTML         = state[5];
 	document.getElementById("lights_red").innerHTML   = state[6];
 	document.getElementById("lights_green").innerHTML = state[7];
