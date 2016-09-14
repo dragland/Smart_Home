@@ -5,10 +5,12 @@
 #*********************************************************************
 #                           SETUP
 #*********************************************************************
-temp_f       =  70
-rh           =  50
-door         =   0
-lights_red   =   0
-lights_green =   0
-lights_blue  =   0
-fan          =   0
+temp_f       =   70
+rh           =   50
+co2          =  420
+energy       =  200
+door         =    0
+lights_red   =    0
+lights_green =    0
+lights_blue  =    0
+fan          =    0

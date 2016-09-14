@@ -10,9 +10,7 @@ echo "Apache2"
 echo "Git-core"
 echo "SQLite3"
 echo "Python-rpi.gpio"
-echo "Python-smbus"
 echo "Python-dev"
-echo "I2C-tools"
 sudo apt-get update
 sudo apt-get install apache2 -y
 sudo apt-get install git-core -y
@@ -24,6 +22,7 @@ sudo apt-get install build-essential python-dev -y
 echo "Installing..."
 echo "DHT22 temp & humidity sensor"
 echo "WiringPi CGI library"
+cd /home/pi
 sudo git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 cd Adafruit_Python_DHT
 sudo python setup.py install

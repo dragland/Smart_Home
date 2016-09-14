@@ -63,13 +63,13 @@ function update_state(){
 	document.getElementById("time").innerHTML         = state[0];
 	document.getElementById("temp").innerHTML         = state[1];
 	document.getElementById("rh").innerHTML           = state[2];
-	document.getElementById("door").innerHTML         = state[3];
-	document.getElementById("lights_red").innerHTML   = state[4];
-	document.getElementById("lights_green").innerHTML = state[5];
-	document.getElementById("lights_blue").innerHTML  = state[6];
-	document.getElementById("fan").innerHTML          = state[7];
-	document.getElementById("co2").innerHTML          = state[8];
-	document.getElementById("energy").innerHTML       = state[9];
+	document.getElementById("co2").innerHTML          = state[3];
+	document.getElementById("energy").innerHTML       = state[4];
+	document.getElementById("door").innerHTML         = state[5];
+	document.getElementById("lights_red").innerHTML   = state[6];
+	document.getElementById("lights_green").innerHTML = state[7];
+	document.getElementById("lights_blue").innerHTML  = state[8];
+	document.getElementById("fan").innerHTML          = state[9];
 }
 
 /*
@@ -80,6 +80,8 @@ function plot_graph(){
 	var timestamp_data    = [];
 	var temp_f_data       = [];
 	var rh_data           = [];
+	var co2_data          = [];
+	var energy_data       = [];
 	var door_data         = [];
 	var lights_red_data   = [];
 	var lights_green_data = [];
@@ -91,11 +93,13 @@ function plot_graph(){
        timestamp_data.push(               lines[i].split(",")[0]);
        temp_f_data.push(                  lines[i].split(",")[1]);
        rh_data.push(                      lines[i].split(",")[2]);
-       door_data.push(        40 * Number(lines[i].split(",")[3]));
-       lights_red_data.push(  20 * Number(lines[i].split(",")[4]));
-       lights_green_data.push(20 * Number(lines[i].split(",")[5]));
-       lights_blue_data.push( 20 * Number(lines[i].split(",")[6]));
-       fan_data.push(         30 * Number(lines[i].split(",")[7]));
+       co2_data.push(                     lines[i].split(",")[3]);
+       energy_data.push(                  lines[i].split(",")[4]);
+       door_data.push(        40 * Number(lines[i].split(",")[5]));
+       lights_red_data.push(  20 * Number(lines[i].split(",")[6]));
+       lights_green_data.push(20 * Number(lines[i].split(",")[7]));
+       lights_blue_data.push( 20 * Number(lines[i].split(",")[8]));
+       fan_data.push(         30 * Number(lines[i].split(",")[9]));
     }
 
 	var ctx = document.getElementById("grapher");
@@ -126,6 +130,38 @@ function plot_graph(){
 	                borderColor: "rgba(0,105,255,1)",
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
 	                backgroundColor: "rgba(0,105,255,.1)",
+	                lineTension: 0.1,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 1,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 10,
+	                pointHoverBorderWidth: 3,
+	                pointHoverBorderColor: "rgba(255,255,255,1)",
+	                pointBackgroundColor: "rgba(255,255,255,1)",
+	            },
+	            {
+	                data: co2_data,
+	                label: "CO2",
+	                borderColor: "rgba(42,200,73,1)",
+	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
+	                backgroundColor: "rgba(42,200,73,.1)",
+	                lineTension: 0.1,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 1,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 10,
+	                pointHoverBorderWidth: 3,
+	                pointHoverBorderColor: "rgba(255,255,255,1)",
+	                pointBackgroundColor: "rgba(255,255,255,1)",
+	            },
+	            {
+	                data: energy_data,
+	                label: "energy",
+	                borderColor: "rgba(200,115,42,1)",
+	                pointHoverBackgroundColor: "rgba(200,115,42,1)",
+	                backgroundColor: "rgba(200,115,42,.1)",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,

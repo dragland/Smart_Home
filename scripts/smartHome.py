@@ -38,10 +38,20 @@ def read_door(PIN_NUMBER):
 		config.door = 0
 	time.sleep(0.1)
 
+#Function: read_co2
+#This function reads the data from a K-30 CO2 sensor.
+def read_co2():
+	time.sleep(0.1)
+
+#Function: read_energy
+#This function reads the data from a Kill-A-Watt P3 sensor.
+def read_energy():
+	time.sleep(0.1)
+
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
+	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.co2, config.energy, config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
 	state = open("html/state.txt", "w")
 	state.write(data + "\n")
 	state.close()
@@ -55,7 +65,7 @@ def write_state():
 def write_archive():
 	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
-	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(config.temp_f), "{0:.2f}".format(config.rh), config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
+	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(config.temp_f), "{0:.2f}".format(config.rh), "{0:.2f}".format(config.co2), "{0:.2f}".format(config.energy), config.door, config.lights_red, config.lights_green, config.lights_blue, config.fan))
 	conn.commit()
 	conn.close()
 
@@ -127,6 +137,6 @@ def relay_off(PIN_NUMBER):
 def init_archive():
 	conn = sqlite3.connect("html/archive.db")
 	curs = conn.cursor()
-	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, door INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER, fan INTEGER)")
+	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, co2 NUMERIC, energy NUMERIC, door INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER, fan INTEGER)")
 	conn.commit()
 	conn.close()
