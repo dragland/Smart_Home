@@ -19,6 +19,7 @@ sudo apt-get install git-core -y
 sudo apt-get install sqlite3 -y
 sudo apt-get install python-rpi.gpio -y
 sudo apt-get install python-smbus -y
+sudo apt-get install python-serial -y
 sudo apt-get install build-essential python-dev -y
 sudo apt-get install i2c-tools -y
 
@@ -47,6 +48,7 @@ sudo apt-get update
 sudo apt-get upgrade
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Setting up..."
+sudo modprobe snd_bcm2835
 sudo adduser pi i2c
 sudo chown -R -v pi /var/www
 sudo git clone https://github.com/dragland/Smart_Home.git temp

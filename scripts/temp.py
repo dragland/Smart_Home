@@ -1,18 +1,20 @@
+#Python app to run a K-30 Sensor
+import serial
 import time
-from notsmb import notSMB
-I2CBUS = 1
-CO2_ADDR = 0x68
-READ = 0x22
-readBytes = [0x00, 0x08, 0x2A]
-bus = notSMB(I2CBUS)
+ser = serial.Serial("/dev/ttyAMA0")
+print "Serial Connected!"
+ser.flushInput()
+time.sleep(1)
+
 while True:
- try:
- resp = bus.i2c(CO2_ADDR,[0x22,0x00,0x08,0x2A],4)
- time.sleep(0.1)
- #resp = bus.i2c(CO2_ADDR,[],4)
- co2Val = (resp[1]*256) + resp[2]
- print(resp)
- print(co2Val);
- break
- except:
- blank =0;
+    ser.write("\xFE\x44\x00\x08\x02\x9F\x25")
+    time.sleep(.01)
+    resp = ser.read(7)
+    high = ord(resp[3])
+    low = ord(resp[4])
+    co2 = (high*256) + low
+    print ""
+    print ""
+    print "Co2 = " + str(co2)
+    time.sleep(1)
+
