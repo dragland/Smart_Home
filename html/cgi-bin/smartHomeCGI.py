@@ -10,7 +10,6 @@ import cgi
 import sqlite3
 import datetime
 import subprocess
-import cleverbot
 
 #*********************************************************************
 #                          FUNCTIONS
@@ -41,12 +40,6 @@ def queryData(DATABASE, RANGE, VALUE):
 def formatData(ROWS):
 	for row in ROWS:
 		print str(row)[3:-1].replace("'","")
-
-#Function: queryBot
-#This function queries the cleverbot API for a responce to a string.
-def queryBot(QUERY):
-	cb = cleverbot.Cleverbot()
-	print(cb.ask(QUERY))
 #*********************************************************************
 #                          HELPERS
 #*********************************************************************
