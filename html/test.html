@@ -9,16 +9,17 @@
     <h1 id="microphone" ></h1>
   </body>
   <script type="text/javascript">
+    document.getElementById("microphone").innerHTML = "listening...";
     if (annyang) {
       var queryBot = function(QUERY) {
-        document.getElementById("microphone").innerHTML = "calculating...";
-        var RESPONCE = HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY);
-        document.getElementById("microphone").innerHTML = RESPONCE;
-        document.getElementById("microphone").innerHTML = "listening...";
-        responsiveVoice.speak(RESPONCE);
+        responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
+      }
+      var lights = function(COLOR) {
+        document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
       }
       var commands = {
-        '*repeat': queryBot
+        "lights": lights,
+        "*QUERY": queryBot
       };
       annyang.addCommands(commands);
       annyang.start();
