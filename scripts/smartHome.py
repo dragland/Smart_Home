@@ -27,17 +27,6 @@ def read_rh_temp(PIN_NUMBER):
 		config.temp_f = temp * 1.8 + 32.0
 	time.sleep(2)
 
-#Function: read_door
-#This function reads the data from a magnetic door sensor.
-def read_door(PIN_NUMBER):
-	RPi.GPIO.setmode(RPi.GPIO.BCM)
-	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN, pull_up_down = RPi.GPIO.PUD_UP)
-	if RPi.GPIO.input(PIN_NUMBER):
-		config.door = 1
-	else:
-		config.door = 0
-	time.sleep(0.1)
-
 #Function: read_co2
 #This function reads the data from a K-30 CO2 sensor.
 def read_co2():
@@ -48,17 +37,28 @@ def read_co2():
 def read_energy():
 	time.sleep(0.1)
 
+#Function: read_cpu
+#This function reads the percent memory used by the CPU.
+def read_cpu():
+	output = subprocess.check_output(["grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}'"], shell=True)
+	config.cpu = str(output)[:2]
+
 #Function: read_memory
 #This function reads the percent memory available on the raspberry pi.
 def read_memory():
 	output = subprocess.check_output(["df -h | grep /dev/root | cut -d ' ' -f 14-"], shell=True)
 	config.memory = str(output)[:2]
 
-#Function: read_cpu
-#This function reads the percent memory used by the CPU.
-def read_cpu():
-	output = subprocess.check_output(["grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}'"], shell=True)
-	config.cpu = str(output)[:2]
+#Function: read_door
+#This function reads the data from a magnetic door sensor.
+def read_door(PIN_NUMBER):
+	RPi.GPIO.setmode(RPi.GPIO.BCM)
+	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN, pull_up_down = RPi.GPIO.PUD_UP)
+	if RPi.GPIO.input(PIN_NUMBER):
+		config.door = 1
+	else:
+		config.door = 0
+	time.sleep(0.1)
 
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.

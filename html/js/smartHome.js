@@ -9,8 +9,7 @@ Function: update_image
 This function updates the modal with a random image.
 */
 function update_image() {
-	var source = "res/posters/" + posters[Math.floor(Math.random() * posters.length) + 0];
-	document.getElementById("source").src = source;
+	document.getElementById("source").src = "res/posters/" + posters[Math.floor(Math.random() * posters.length) + 0];
 }
 
 /*
@@ -53,13 +52,8 @@ This function updates the values printed on the interface.
 */
 function update_state(){
 	var data = HTTP_GET("state.txt");
-	if (data === ""){
-		var str = "ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR";
-	}
-	else{
-		var str = data;
-	}
-	var state = str.split(",");
+	if (data === ""){data = "ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR,ERROR";}
+	var state = data.split(",");
 	document.getElementById("time").innerHTML         = state[ 0];
 	document.getElementById("temp").innerHTML         = state[ 1] + " &deg;";
 	document.getElementById("rh").innerHTML           = state[ 2] + " %";
