@@ -69,6 +69,34 @@ function update_state(){
 }
 
 /*
+Function: listen
+This function toggles whether or not Eve will listen and respond to commands.
+*/
+function listen(){
+      if(annyang.isListening()){
+        document.getElementById("microphone").innerHTML = "Off";
+        annyang.pause();
+      }
+      else{
+        document.getElementById("microphone").innerHTML = "Listening...";
+        responsiveVoice.speak('Hello Davy, How may I be of assistance?');
+        var lights = function(COLOR) {
+          responsiveVoice.speak("As you wish.");
+          document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
+        }
+        var queryBot = function(QUERY) {
+          responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
+        }
+        var commands = {
+          "lights :COLOR" : lights,
+          "*QUERY": queryBot
+        };
+        annyang.addCommands(commands);
+        annyang.start({autoRestart: true, continuous: true});
+      }
+    }
+
+/*
 Function: plot_graph
 This function plots the graph from an SQL querry.
 */
