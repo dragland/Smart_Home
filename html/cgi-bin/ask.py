@@ -11,7 +11,5 @@ import smartHomeCGI
 #                            MAIN
 #*********************************************************************
 smartHomeCGI.header("HTML")
-RANGE = smartHomeCGI.get_value("RANGE")
-VALUE = smartHomeCGI.get_value("VALUE")
-rows = smartHomeCGI.queryData("../archive.db", RANGE, VALUE)
-smartHomeCGI.formatData(rows)
+QUERY = smartHomeCGI.get_value("QUERY")
+print QUERY

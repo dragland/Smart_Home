@@ -24,10 +24,10 @@ def header(TYPE):
 		print "Content-Type: text/html"
 	print ""
 
-#Function: querryData
+#Function: queryData
 #This function querries the SQL data base with the appropriate
 #HTTP GET parmeters.
-def querryData(DATABASE, RANGE, VALUE):
+def queryData(DATABASE, RANGE, VALUE):
 	conn = sqlite3.connect(DATABASE)
 	curs = conn.cursor()
 	curs.execute("SELECT * FROM data WHERE timestamp >= datetime('%s','-%i %s')" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), int(VALUE), RANGE))
