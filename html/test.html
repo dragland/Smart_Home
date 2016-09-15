@@ -2,17 +2,19 @@
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script src="js/smartHome.js"></script>
   </head>
   <body>
    <img id="microphone_switch" src="res/icons/microphone.png">
   </body>
   <script type="text/javascript">
     if (annyang) {
-      var sayThis = function(QUERY) {
-        responsiveVoice.speak(QUERY);
+      var queryBot = function(QUERY) {
+        var RESPONCE = HTTP_GET("cgi-bin/csv.py?RANGE=" + QUERY);
+        responsiveVoice.speak(RESPONCE);
       }
       var commands = {
-        '*repeat': sayThis
+        '*repeat': queryBot
       };
       annyang.addCommands(commands);
       annyang.start();
