@@ -7,9 +7,13 @@
   <body>
   <script type="text/javascript">
     function listen(){
-      document.getElementById("microphone").innerHTML = "listening...";
-      responsiveVoice.speak('Hello Davy, How may I be of assistance?');
-      if (annyang) {
+      if(annyang.isListening()){
+        document.getElementById("microphone").innerHTML = "OFF";
+        annyang.pause();
+      }
+      else{
+        document.getElementById("microphone").innerHTML = "listening...";
+        responsiveVoice.speak('Hello Davy, How may I be of assistance?');
         var lights = function(COLOR) {
           responsiveVoice.speak("As you wish.");
           document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
@@ -22,11 +26,11 @@
           "*QUERY": queryBot
         };
         annyang.addCommands(commands);
-        annyang.start();
+        annyang.start({autoRestart: true, continuous: true});
       }
     }
   </script>
     <img id="microphone_switch" onclick="listen()" src="res/icons/microphone.png">
-    <h1 id="microphone" ></h1>
+    <h1 id="microphone" >Off</h1>
   </body
 </html>
