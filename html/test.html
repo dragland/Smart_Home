@@ -5,12 +5,15 @@
     <script src="js/smartHome.js"></script>
   </head>
   <body>
-   <img id="microphone_switch" src="res/icons/microphone.png">
+    <img id="microphone_switch" src="res/icons/microphone.png">
+    <h1 id="microphone" ></h1>
   </body>
   <script type="text/javascript">
     if (annyang) {
       var queryBot = function(QUERY) {
+        document.getElementById("microphone").innerHTML = "calculating...";
         var RESPONCE = HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY);
+        document.getElementById("microphone").innerHTML = RESPONCE;
         responsiveVoice.speak(RESPONCE);
       }
       var commands = {
