@@ -12,4 +12,4 @@ import smartHomeCGI
 #*********************************************************************
 smartHomeCGI.header("HTML")
 QUERY = smartHomeCGI.get_value("QUERY")
-print QUERY
+querybot(QUERY)
