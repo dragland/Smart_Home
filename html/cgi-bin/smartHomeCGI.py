@@ -46,7 +46,7 @@ def formatData(ROWS):
 #This function queries the cleverbot API for a responce to a string.
 def queryBot(QUERY):
 	cb = cleverbot.Cleverbot()
-	print cb.ask(QUERY)
+	print(cb.ask(QUERY))
 #*********************************************************************
 #                          HELPERS
 #*********************************************************************
