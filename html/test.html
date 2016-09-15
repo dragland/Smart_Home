@@ -4,18 +4,18 @@
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
   </head>
   <body>
-    <h1>SPEAK</h1>
+   <img id="microphone_switch" src="res/icons/microphone.png">
   </body>
   <script type="text/javascript">
     if (annyang) {
-    var sayThis = function(repeat) {
-      alert(repeat);
-    }
-    var commands = {
-      '*repeat': sayThis
-    };
-    annyang.addCommands(commands);
-    annyang.start();
+      var sayThis = function(QUERY) {
+        responsiveVoice.speak(QUERY);
+      }
+      var commands = {
+        '*repeat': sayThis
+      };
+      annyang.addCommands(commands);
+      annyang.start();
     }
   </script>
 </html>
