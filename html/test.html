@@ -10,7 +10,7 @@
   <script type="text/javascript">
     if (annyang) {
       var queryBot = function(QUERY) {
-        var RESPONCE = HTTP_GET("cgi-bin/csv.py?RANGE=" + QUERY);
+        var RESPONCE = HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY);
         responsiveVoice.speak(RESPONCE);
       }
       var commands = {
