@@ -65,13 +65,13 @@ function update_state(){
 	document.getElementById("rh").innerHTML           = state[ 2] + " %";
 	document.getElementById("co2").innerHTML          = state[ 3] + " ppm";
 	document.getElementById("energy").innerHTML       = state[ 4] + " W";
-	document.getElementById("memory").innerHTML       = state[ 5] + " %";
-	document.getElementById("automate").innerHTML     = state[ 6];
+	document.getElementById("cpu").innerHTML          = state[ 5] + " %";
+	document.getElementById("memory").innerHTML       = state[ 6] + " %";
 	document.getElementById("door").innerHTML         = state[ 7];
-	document.getElementById("lights_red").innerHTML   = state[ 8];
-	document.getElementById("lights_green").innerHTML = state[ 9];
-	document.getElementById("lights_blue").innerHTML  = state[10];
-	document.getElementById("fan").innerHTML          = state[11];
+	document.getElementById("fan").innerHTML          = state[ 8];
+	document.getElementById("lights_red").innerHTML   = state[ 9];
+	document.getElementById("lights_green").innerHTML = state[10];
+	document.getElementById("lights_blue").innerHTML  = state[11];
 }
 
 /*
@@ -84,13 +84,13 @@ function plot_graph(){
 	var rh_data           = [];
 	var co2_data          = [];
 	var energy_data       = [];
+	var cpu_data          = [];
 	var memory_data       = [];
-	var automate_data     = [];
 	var door_data         = [];
+	var fan_data          = [];
 	var lights_red_data   = [];
 	var lights_green_data = [];
 	var lights_blue_data  = [];
-	var fan_data          = [];
 
 	var lines = HTTP_GET("cgi-bin/csv.py?RANGE=" + document.getElementById("RANGE").value + "&VALUE=" + document.getElementById("VALUE").value).split("\n");
     for (var i = 0; i < lines.length; i++) {
@@ -99,13 +99,13 @@ function plot_graph(){
        rh_data.push(                      lines[i].split(",")[ 2]);
        co2_data.push(                     lines[i].split(",")[ 3]);
        energy_data.push(                  lines[i].split(",")[ 4]);
-       memory_data.push(                  lines[i].split(",")[ 5]);
-       automate_data.push(                lines[i].split(",")[ 6]);
+       cpu_data.push(                     lines[i].split(",")[ 5]);
+       memory_data.push(                  lines[i].split(",")[ 6]);
        door_data.push(        40 * Number(lines[i].split(",")[ 7]));
-       lights_red_data.push(  20 * Number(lines[i].split(",")[ 8]));
-       lights_green_data.push(20 * Number(lines[i].split(",")[ 9]));
-       lights_blue_data.push( 20 * Number(lines[i].split(",")[10]));
-       fan_data.push(         30 * Number(lines[i].split(",")[11]));
+       fan_data.push(         30 * Number(lines[i].split(",")[ 8]));
+       lights_red_data.push(  20 * Number(lines[i].split(",")[ 9]));
+       lights_green_data.push(20 * Number(lines[i].split(",")[10]));
+       lights_blue_data.push( 20 * Number(lines[i].split(",")[11]));
     }
 
 	var ctx = document.getElementById("grapher");
@@ -179,6 +179,22 @@ function plot_graph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
+	                data: cpu_data,
+	                label: "cpu",
+	                borderColor: "rgba(42,200,73,1)",
+	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
+	                backgroundColor: "rgba(42,200,73,.1)",
+	                lineTension: 0.1,
+	                borderWidth: 3,
+	                pointBorderWidth: 1,
+	                pointRadius: 1,
+	                pointHoverRadius: 6,
+	                pointHitRadius: 10,
+	                pointHoverBorderWidth: 3,
+	                pointHoverBorderColor: "rgba(255,255,255,1)",
+	                pointBackgroundColor: "rgba(255,255,255,1)",
+	            },
+	            {
 	                data: memory_data,
 	                label: "memory",
 	                borderColor: "rgba(17,236,223,1)",
@@ -195,11 +211,11 @@ function plot_graph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: automate_data,
-	                label: "automate",
-	                borderColor: "rgba(42,200,73,1)",
-	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
-	                backgroundColor: "rgba(42,200,73,.1)",
+	                data: door_data,
+	                label: "door",
+	                borderColor: "rgba(255,242,37,1)",
+	                pointHoverBackgroundColor: "rgba(255,242,37,1)",
+	                backgroundColor: "rgba(255,242,37,.1)",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -211,11 +227,11 @@ function plot_graph(){
 	                pointBackgroundColor: "rgba(255,255,255,1)",
 	            },
 	            {
-	                data: door_data,
-	                label: "door",
-	                borderColor: "rgba(255,242,37,1)",
-	                pointHoverBackgroundColor: "rgba(255,242,37,1)",
-	                backgroundColor: "rgba(255,242,37,.1)",
+	                data: fan_data,
+	                label: "fan",
+	                borderColor: "rgba(163,73,164,1)",
+	                pointHoverBackgroundColor: "rgba(163,73,164,1)",
+	                backgroundColor: "rgba(163,73,164,.1)",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -264,22 +280,6 @@ function plot_graph(){
 	                borderColor: "rgba(0,105,255,1)",
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
 	                backgroundColor: "rgba(0,105,255,.1)",
-	                lineTension: 0.1,
-	                borderWidth: 3,
-	                pointBorderWidth: 1,
-	                pointRadius: 1,
-	                pointHoverRadius: 6,
-	                pointHitRadius: 10,
-	                pointHoverBorderWidth: 3,
-	                pointHoverBorderColor: "rgba(255,255,255,1)",
-	                pointBackgroundColor: "rgba(255,255,255,1)",
-	            },
-	            {
-	                data: fan_data,
-	                label: "fan",
-	                borderColor: "rgba(163,73,164,1)",
-	                pointHoverBackgroundColor: "rgba(163,73,164,1)",
-	                backgroundColor: "rgba(163,73,164,.1)",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
