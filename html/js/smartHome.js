@@ -120,6 +120,7 @@ function plot_graph(){
 	                borderColor: "rgba(255,0,0,1)",
 	                pointHoverBackgroundColor: "rgba(255,0,0,1)",
 	                backgroundColor: "rgba(255,0,0,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -136,6 +137,7 @@ function plot_graph(){
 	                borderColor: "rgba(0,105,255,1)",
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
 	                backgroundColor: "rgba(0,105,255,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -152,6 +154,7 @@ function plot_graph(){
 	                borderColor: "rgba(42,200,73,1)",
 	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
 	                backgroundColor: "rgba(42,200,73,.1)",
+	                yAxesGroup: "2",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -168,6 +171,7 @@ function plot_graph(){
 	                borderColor: "rgba(200,115,42,1)",
 	                pointHoverBackgroundColor: "rgba(200,115,42,1)",
 	                backgroundColor: "rgba(200,115,42,.1)",
+	                yAxesGroup: "2",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -184,6 +188,7 @@ function plot_graph(){
 	                borderColor: "rgba(42,200,73,1)",
 	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
 	                backgroundColor: "rgba(42,200,73,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -200,6 +205,7 @@ function plot_graph(){
 	                borderColor: "rgba(17,236,223,1)",
 	                pointHoverBackgroundColor: "rgba(17,236,223,1)",
 	                backgroundColor: "rgba(17,236,223,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -216,6 +222,7 @@ function plot_graph(){
 	                borderColor: "rgba(255,242,37,1)",
 	                pointHoverBackgroundColor: "rgba(255,242,37,1)",
 	                backgroundColor: "rgba(255,242,37,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -232,6 +239,7 @@ function plot_graph(){
 	                borderColor: "rgba(163,73,164,1)",
 	                pointHoverBackgroundColor: "rgba(163,73,164,1)",
 	                backgroundColor: "rgba(163,73,164,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -248,6 +256,7 @@ function plot_graph(){
 	                borderColor: "rgba(255,0,0,1)",
 	                pointHoverBackgroundColor: "rgba(255,0,0,1)",
 	                backgroundColor: "rgba(255,0,0,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -264,6 +273,7 @@ function plot_graph(){
 	                borderColor: "rgba(42,200,73,1)",
 	                pointHoverBackgroundColor: "rgba(42,200,73,1)",
 	                backgroundColor: "rgba(42,200,73,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -280,6 +290,7 @@ function plot_graph(){
 	                borderColor: "rgba(0,105,255,1)",
 	                pointHoverBackgroundColor: "rgba(0,105,255,1)",
 	                backgroundColor: "rgba(0,105,255,.1)",
+	                yAxesGroup: "1",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
@@ -304,6 +315,24 @@ function plot_graph(){
 	                    beginAtZero: true
 	                }
 	            }],
+
+				yAxes: [{
+					    name: "1",
+					    scalePositionLeft: true,
+					    ticks: {
+		                    max: 100,
+		                    beginAtZero: true
+		                }
+					}, 
+					{
+					    name: "2",
+					    scalePositionLeft: false,
+					    tics: {
+					        max: 2000,
+		                    beginAtZero: true
+		                }
+				 	}
+				]
 	            xAxes: [{
 	                display: false
 	            }]
