@@ -88,7 +88,7 @@ function listen(){
           responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
         }
         var commands = {
-          "lights :COLOR" : lights,
+          "(eve) lights :COLOR" : lights,
           "*QUERY": queryBot
         };
         annyang.addCommands(commands);
