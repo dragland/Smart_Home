@@ -22,6 +22,7 @@ sudo apt-get install build-essential python-dev -y
 echo "Installing..."
 echo "DHT22 temp & humidity sensor"
 echo "WiringPi CGI library"
+echo "Cleverbot API"
 cd /home/pi
 sudo git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 cd Adafruit_Python_DHT
@@ -31,6 +32,7 @@ sudo git clone git://git.drogon.net/wiringPi
 cd wiringPi
 sudo ./build
 cd /home/pi
+sudo pip install cleverbot
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Updating..."
 sudo apt-get update

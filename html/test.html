@@ -1,7 +1,6 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
-    <script src="https://cdn.cleverbot.io/build/1.0/cleverbot.io.min.js"></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
   </head>
   <body>
@@ -9,20 +8,14 @@
   </body>
   <script type="text/javascript">
     if (annyang) {
-      var bot = new cleverbot("gxQz6BiOuLZw4HmD", "9xzUOXUoC4pvEXD3cHIt46hYNvBfnDNe");
-      bot.create(function (err, session) {
-        bot.ask("Just a small town girl", function (err, response) {
-          alert(response);
-        });
-      });
-      // var sayThis = function(repeat) {
-      //   alert(repeat);
-      // }
-      // var commands = {
-      //   '*repeat': sayThis
-      // };
-      // annyang.addCommands(commands);
-      // annyang.start();
+    var sayThis = function(repeat) {
+      alert(repeat);
+    }
+    var commands = {
+      '*repeat': sayThis
+    };
+    annyang.addCommands(commands);
+    annyang.start();
     }
   </script>
 </html>
