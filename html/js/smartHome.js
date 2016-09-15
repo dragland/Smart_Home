@@ -80,6 +80,12 @@ function listen(){
       else{
         document.getElementById("microphone").innerHTML = "Listening...";
         responsiveVoice.speak('Hello Davy, How may I be of assistance?');
+
+        var fan = function() {
+          responsiveVoice.speak("As you wish.");
+          document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
+        }
+
         var lights = function(COLOR) {
           responsiveVoice.speak("As you wish.");
           document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
@@ -88,6 +94,7 @@ function listen(){
           responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
         }
         var commands = {
+          "(eve) fan" : fan,
           "(eve) lights :COLOR" : lights,
           "*QUERY": queryBot
         };
