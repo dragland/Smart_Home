@@ -11,11 +11,15 @@
   <script type="text/javascript">
     document.getElementById("microphone").innerHTML = "listening...";
     if (annyang) {
+      var lights = function(COLOR) {
+        document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
+      }
       var queryBot = function(QUERY) {
         responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
       }
       var commands = {
-        '*repeat': queryBot
+        "lights :color" : lights,
+        "*query": queryBot
       };
       annyang.addCommands(commands);
       annyang.start();
