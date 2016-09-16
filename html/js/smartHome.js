@@ -81,6 +81,10 @@ function listen(){
 		document.getElementById("microphone").innerHTML = "Listening...";
 		responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
 
+		var state = function(SENSOR) {
+		  responsiveVoice.speak("It is currently " + document.getElementById(SENSOR).innerHTML);
+		}
+
 		var information = function() {
 		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
 		}
@@ -99,6 +103,7 @@ function listen(){
 		  responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
 		}
 		var commands = {
+			"(eve) (what is) (the) :SENSOR" : state,
 			"(eve) (who) (what) are you" : information,
 			"(eve) what is your (function) (purpose)" : information,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
