@@ -73,11 +73,11 @@ Function: listen
 This function toggles whether or not Eve will listen and respond to commands.
 */
 function listen(){
-      if(annyang.isListening()){
+	if(annyang.isListening()){
         document.getElementById("microphone").innerHTML = "Off";
-        annyang.pause()
-;      }
-      else{
+        annyang.pause();      
+    }
+    else{
         document.getElementById("microphone").innerHTML = "Listening...";
         responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
 
@@ -101,8 +101,8 @@ function listen(){
         };
         annyang.addCommands(commands);
         annyang.start({autoRestart: true, continuous: true});
-      }
     }
+}
 
 /*
 Function: plot_graph
