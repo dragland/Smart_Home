@@ -81,6 +81,10 @@ function listen(){
 		document.getElementById("microphone").innerHTML = "Listening...";
 		responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
 
+		var identity = function() {
+		  responsiveVoice.speak(identity[Math.floor(Math.random() * identity.length) + 0]);
+		}
+
 		var fan = function() {
 		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
 		  document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
@@ -95,9 +99,10 @@ function listen(){
 		  responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
 		}
 		var commands = {
-		  "(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
-		  "(eve) lights :COLOR" : lights,
-		  "*QUERY": queryBot
+			"(eve) (who) (what) (are you) (is your) (function) (purpose)" : identity,
+			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
+			"(eve) lights :COLOR" : lights,
+			"*QUERY": queryBot
 		};
 		annyang.addCommands(commands);
 		annyang.start({autoRestart: true, continuous: true});
