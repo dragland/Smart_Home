@@ -89,6 +89,14 @@ function listen(){
 		  responsiveVoice.speak("It is currently " + document.getElementById("rh").innerHTML);
 		}
 
+		var co2 = function() {
+		  responsiveVoice.speak("It is currently " + document.getElementById("co2").innerHTML);
+		}
+
+		var energy = function() {
+		  responsiveVoice.speak("We are currently using " + document.getElementById("energy").innerHTML);
+		}
+
 		var information = function() {
 		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
 		}
@@ -109,6 +117,8 @@ function listen(){
 		var commands = {
 			"(eve) (what) (how) (hot) (cold) (is) (it) (the) (current) (temperature)" : temp,
 			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity)" : rh,
+			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration)" : co2,
+			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage)" : energy,
 			"(eve) (who) (what) are you" : information,
 			"(eve) what is your (function) (purpose)" : information,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
