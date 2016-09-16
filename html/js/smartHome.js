@@ -99,7 +99,8 @@ function listen(){
 		  responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
 		}
 		var commands = {
-			"(eve) (who) (what) (are you) (is your) (function) (purpose)" : identity,
+			"(eve) (who) (what) are you" : identity,
+			"(eve) what is your (function) (purpose)" : identity,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
 			"(eve) lights :COLOR" : lights,
 			"*QUERY": queryBot
