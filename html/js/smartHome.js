@@ -74,34 +74,34 @@ This function toggles whether or not Eve will listen and respond to commands.
 */
 function listen(){
 	if(annyang.isListening()){
-        document.getElementById("microphone").innerHTML = "Off";
-        annyang.pause();      
-    }
-    else{
-        document.getElementById("microphone").innerHTML = "Listening...";
-        responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
+		document.getElementById("microphone").innerHTML = "Off";
+		annyang.pause();      
+	}
+	else{
+		document.getElementById("microphone").innerHTML = "Listening...";
+		responsiveVoice.speak('Hello Davy, How may I be of assistance?');
 
-        var fan = function() {
-          responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
-          document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
-        }
+		var fan = function() {
+		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
+		  document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
+		}
 
-        var lights = function(COLOR) {
-          responsiveVoice.speak("As you wish.");
-          document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
-        }
-        
-        var queryBot = function(QUERY) {
-          responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
-        }
-        var commands = {
-          "(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
-          "(eve) lights :COLOR" : lights,
-          "*QUERY": queryBot
-        };
-        annyang.addCommands(commands);
-        annyang.start({autoRestart: true, continuous: true});
-    }
+		var lights = function(COLOR) {
+		  responsiveVoice.speak("As you wish.");
+		  document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
+		}
+
+		var queryBot = function(QUERY) {
+		  responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
+		}
+		var commands = {
+		  "(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
+		  "(eve) lights :COLOR" : lights,
+		  "*QUERY": queryBot
+		};
+		annyang.addCommands(commands);
+		annyang.start({autoRestart: true, continuous: true});
+	}
 }
 
 /*
