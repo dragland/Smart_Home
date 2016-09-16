@@ -82,7 +82,7 @@ function listen(){
 		responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
 
 		var information = function() {
-		  responsiveVoice.speak(information[Math.floor(Math.random() * information.length) + 0]);
+		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
 		}
 
 		var fan = function() {
