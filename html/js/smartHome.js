@@ -367,7 +367,11 @@ function listen(){
 
 		var lights = function(COLOR) {
 		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
-		  document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
+		  if(COLOR == "red"){document.location = "cgi-bin/switch.py?PIN_NUMBER=0";}
+		  if(COLOR == "green"){document.location = "cgi-bin/switch.py?PIN_NUMBER=2";}
+		  if(COLOR == "blue"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
+		  if(COLOR == "on"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
+		  if(COLOR == "off"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
 		}
 
 		var plot = function(VALUE, RANGE) {
@@ -388,7 +392,7 @@ function listen(){
 			"(eve) (who) (what) are you" : information,
 			"(eve) what is your (function) (purpose)" : information,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
-			"(eve) lights :COLOR" : lights,
+			"(eve) (can you) (could you) (please) (turn) (set) (make) (switch) (the) lights : COLOR (please)" : lights,
 			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) :VALUE :RANGE (ago)" : plot,
 			"(eve) *QUERY": queryBot
 		};
