@@ -79,7 +79,7 @@ function listen(){
 	}
 	else{
 		document.getElementById("microphone").innerHTML = "Listening...";
-		responsiveVoice.speak('Hello Davy, How may I be of assistance?');
+		responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
 
 		var fan = function() {
 		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
