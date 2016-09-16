@@ -85,6 +85,10 @@ function listen(){
 		  responsiveVoice.speak("It is currently " + document.getElementById("temp").innerHTML);
 		}
 
+		var rh = function() {
+		  responsiveVoice.speak("It is currently " + document.getElementById("rh").innerHTML);
+		}
+
 		var information = function() {
 		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
 		}
@@ -104,6 +108,7 @@ function listen(){
 		}
 		var commands = {
 			"(eve) (what) (how) (hot) (cold) (is) (it) (the) (current) (temperature)" : temp,
+			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity)" : rh,
 			"(eve) (who) (what) are you" : information,
 			"(eve) what is your (function) (purpose)" : information,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
