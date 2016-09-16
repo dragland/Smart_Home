@@ -69,68 +69,6 @@ function update_state(){
 }
 
 /*
-Function: listen
-This function toggles whether or not Eve will listen and respond to commands.
-*/
-function listen(){
-	if(annyang.isListening()){
-		document.getElementById("microphone").innerHTML = "Off";
-		annyang.pause();      
-	}
-	else{
-		document.getElementById("microphone").innerHTML = "Listening...";
-		responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
-
-		var temp = function() {
-		  responsiveVoice.speak("It is currently " + document.getElementById("temp").innerHTML);
-		}
-
-		var rh = function() {
-		  responsiveVoice.speak("It is currently " + document.getElementById("rh").innerHTML);
-		}
-
-		var co2 = function() {
-		  responsiveVoice.speak("It is currently " + document.getElementById("co2").innerHTML);
-		}
-
-		var energy = function() {
-		  responsiveVoice.speak("We are currently using " + document.getElementById("energy").innerHTML);
-		}
-
-		var information = function() {
-		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
-		}
-
-		var fan = function() {
-		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
-		  document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
-		}
-
-		var lights = function(COLOR) {
-		  responsiveVoice.speak("As you wish.");
-		  document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
-		}
-
-		var queryBot = function(QUERY) {
-		  responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
-		}
-		var commands = {
-			"(eve) (what) (how) (hot) (cold) (is) (it) (the) (current) (temperature)" : temp,
-			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity)" : rh,
-			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration)" : co2,
-			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage)" : energy,
-			"(eve) (who) (what) are you" : information,
-			"(eve) what is your (function) (purpose)" : information,
-			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
-			"(eve) lights :COLOR" : lights,
-			"*QUERY": queryBot
-		};
-		annyang.addCommands(commands);
-		annyang.start({autoRestart: true, continuous: true});
-	}
-}
-
-/*
 Function: plot_graph
 This function plots the graph from an SQL querry.
 */
@@ -387,4 +325,74 @@ function plot_graph(){
 	        }
 	    }
 	});
+}
+
+/*
+Function: listen
+This function toggles whether or not Eve will listen and respond to commands.
+*/
+function listen(){
+	if(annyang.isListening()){
+		document.getElementById("microphone").innerHTML = "Off";
+		annyang.pause();      
+	}
+	else{
+		document.getElementById("microphone").innerHTML = "Listening...";
+		responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
+
+		var temp = function() {
+		  responsiveVoice.speak("It is currently " + document.getElementById("temp").innerHTML);
+		}
+
+		var rh = function() {
+		  responsiveVoice.speak("It is currently " + document.getElementById("rh").innerHTML);
+		}
+
+		var co2 = function() {
+		  responsiveVoice.speak("It is currently " + document.getElementById("co2").innerHTML);
+		}
+
+		var energy = function() {
+		  responsiveVoice.speak("We are currently using " + document.getElementById("energy").innerHTML);
+		}
+
+		var information = function() {
+		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
+		}
+
+		var fan = function() {
+		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
+		  document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
+		}
+
+		var lights = function(COLOR) {
+		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
+		  document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
+		}
+
+		var plot = function(VALUE, RANGE) {
+		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
+		  document.getElementById("VALUE").value = VALUE;
+		  document.getElementById("RANGE").value = RANGE;
+		  plot_graph();
+		}
+
+		var queryBot = function(QUERY) {
+		  responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
+		}
+		var commands = {
+			"(eve) (what) (how) (hot) (cold) (is) (it) (the) (current) (temperature)" : temp,
+			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity)" : rh,
+			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration)" : co2,
+			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage) (consumption)" : energy,
+			"(eve) (who) (what) are you" : information,
+			"(eve) what is your (function) (purpose)" : information,
+			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
+			"(eve) lights :COLOR" : lights,
+			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) :VALUE :RANGE (ago)" : plot,
+			"(eve) *QUERY": queryBot
+		};
+		annyang.addCommands(commands);
+		annyang.start({autoRestart: true, continuous: true});
+	}
 }
