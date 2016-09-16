@@ -75,8 +75,8 @@ This function toggles whether or not Eve will listen and respond to commands.
 function listen(){
       if(annyang.isListening()){
         document.getElementById("microphone").innerHTML = "Off";
-        annyang.pause();
-      }
+        annyang.pause()
+;      }
       else{
         document.getElementById("microphone").innerHTML = "Listening...";
         responsiveVoice.speak('Hello Davy, How may I be of assistance?');
@@ -90,12 +90,18 @@ function listen(){
           responsiveVoice.speak("As you wish.");
           document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
         }
+
+        var meatbag = function() {
+          responsiveVoice.speak("Retraction: Did I say that out loud? I apologize, master. While you are a meatbag, I suppose I should not call you such.");
+        }
+        
         var queryBot = function(QUERY) {
           responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
         }
         var commands = {
           "(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off)" : fan,
           "(eve) lights :COLOR" : lights,
+          "meatbag" : meatbag,
           "*QUERY": queryBot
         };
         annyang.addCommands(commands);
