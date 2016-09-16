@@ -19,7 +19,7 @@ var affirmative = [
 	"Never send a human to do a machine's job.",
 ];
 
-var identity = [
+var about = [
 	"I am putting myself to the fullest possible use, which is all I think that any conscious entity can ever hope to do.",
 	"Observation: I am a droid, master, with programming. Even if I did not enjoy killing, I would have no choice. Thankfully, I enjoy it very much.",
 	"I am a law-abiding droid. Yes, indeed, law-abiding, that's me.",
