@@ -367,18 +367,9 @@ function listen(){
 
 		var lights = function(COLOR) {
 			responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);	  
-			var red   = document.getElementById("lights_red").innerHTML;
-			var green = document.getElementById("lights_green").innerHTML;
-			var blue  = document.getElementById("lights_blue").innerHTML;
-			if((COLOR == "on" && red == "0") || (Color == "off" && red == "1")){
-				document.location = "cgi-bin/switch.py?PIN_NUMBER=0";
-			}
-			if((COLOR == "on" && green == "0") || (Color == "off" && green == "1")){
-				document.location = "cgi-bin/switch.py?PIN_NUMBER=2";
-			}
-			if((COLOR == "on" && blue == "0") || (Color == "off" && blue == "1")){
-				document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
-			}
+			if(COLOR == "red"){document.location = "cgi-bin/switch.py?PIN_NUMBER=0";}
+			if(COLOR == "green"){document.location = "cgi-bin/switch.py?PIN_NUMBER=2";}
+			if(COLOR == "blue" || COLOR == "on" || COLOR == "off"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
 		}
 
 		var plot = function(VALUE, RANGE) {
@@ -394,10 +385,10 @@ function listen(){
 		var commands = {
 			"(eve) (who) (what) are you" : information,
 			"(eve) what is your (function) (purpose)" : information,
-			"(eve) (what) (how) (hot) (cold) (is) (it) (the) (current) (temperature)" : temp,
-			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity)" : rh,
-			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration)" : co2,
-			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage) (consumption)" : energy,
+			"(eve) (what) (how) (hot) (cold) (is) (it) (the) (current) (temperature) (right now)" : temp,
+			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity) (right now)" : rh,
+			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration) (right now)" : co2,
+			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage) (consumption) (right now)" : energy,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
 			"(eve) (can you) (could you) (please) (turn) (set) (make) (switch) (the) lights :COLOR (please)" : lights,
 			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) :VALUE :RANGE (ago)" : plot,
