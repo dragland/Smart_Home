@@ -341,37 +341,44 @@ function listen(){
 		responsiveVoice.speak(greeting[Math.floor(Math.random() * greeting.length) + 0]);
 
 		var temp = function() {
-		  responsiveVoice.speak("It is currently " + document.getElementById("temp").innerHTML);
+		  	responsiveVoice.speak("It is currently " + document.getElementById("temp").innerHTML);
 		}
 
 		var rh = function() {
-		  responsiveVoice.speak("It is currently " + document.getElementById("rh").innerHTML);
+		  	responsiveVoice.speak("It is currently " + document.getElementById("rh").innerHTML);
 		}
 
 		var co2 = function() {
-		  responsiveVoice.speak("It is currently " + document.getElementById("co2").innerHTML);
+		  	responsiveVoice.speak("It is currently " + document.getElementById("co2").innerHTML);
 		}
 
 		var energy = function() {
-		  responsiveVoice.speak("We are currently using " + document.getElementById("energy").innerHTML);
+		  	responsiveVoice.speak("We are currently using " + document.getElementById("energy").innerHTML);
 		}
 
 		var information = function() {
-		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
+		  	responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
 		}
 
 		var fan = function() {
-		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
-		  document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
+		  	responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
+		  	document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
 		}
 
 		var lights = function(COLOR) {
-		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
-		  if(COLOR == "red"){document.location = "cgi-bin/switch.py?PIN_NUMBER=0";}
-		  if(COLOR == "green"){document.location = "cgi-bin/switch.py?PIN_NUMBER=2";}
-		  if(COLOR == "blue"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
-		  if(COLOR == "on"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
-		  if(COLOR == "off"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
+			responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);	  
+			var red   = document.getElementById("lights_red").innerHTML;
+			var green = document.getElementById("lights_green").innerHTML;
+			var blue  = document.getElementById("lights_blue").innerHTML;
+			if((COLOR == "on" && red == "0") || (Color == "off" && red == "1")){
+				document.location = "cgi-bin/switch.py?PIN_NUMBER=0";
+			}
+			if((COLOR == "on" && green == "0") || (Color == "off" && green == "1")){
+				document.location = "cgi-bin/switch.py?PIN_NUMBER=2";
+			}
+			if((COLOR == "on" && blue == "0") || (Color == "off" && blue == "1")){
+				document.location = "cgi-bin/switch.py?PIN_NUMBER=3";
+			}
 		}
 
 		var plot = function(VALUE, RANGE) {
@@ -385,14 +392,14 @@ function listen(){
 		  responsiveVoice.speak(HTTP_GET("cgi-bin/ask.py?QUERY=" + QUERY));
 		}
 		var commands = {
+			"(eve) (who) (what) are you" : information,
+			"(eve) what is your (function) (purpose)" : information,
 			"(eve) (what) (how) (hot) (cold) (is) (it) (the) (current) (temperature)" : temp,
 			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity)" : rh,
 			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration)" : co2,
 			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage) (consumption)" : energy,
-			"(eve) (who) (what) are you" : information,
-			"(eve) what is your (function) (purpose)" : information,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
-			"(eve) (can you) (could you) (please) (turn) (set) (make) (switch) (the) lights : COLOR (please)" : lights,
+			"(eve) (can you) (could you) (please) (turn) (set) (make) (switch) (the) lights :COLOR (please)" : lights,
 			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) :VALUE :RANGE (ago)" : plot,
 			"(eve) *QUERY": queryBot
 		};
