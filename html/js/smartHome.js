@@ -390,7 +390,7 @@ function listen(){
 			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration) (right now)" : co2,
 			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage) (consumption) (right now)" : energy,
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
-			"(eve) (can you) (could you) (please) (turn) (set) (make) (switch) (the) lights :COLOR (please)" : lights,
+			"(eve) (can you) (could you) (please) (turn) (on) (off) (set) (make) (switch) (the) (lights) :COLOR (lights) (please)" : lights,
 			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) :VALUE :RANGE (ago)" : plot,
 			"(eve) *QUERY": queryBot
 		};
