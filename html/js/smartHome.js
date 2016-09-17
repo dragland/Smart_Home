@@ -392,7 +392,7 @@ function listen(){
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
 			"(eve) (can you) (could you) (please) (turn) (on) (off) (set) (make) (switch) (the) lights :COLOR (please)" : lights,
 			"(eve) (can you) (could you) (please) (turn) (on) (off) (set) (make) (switch) (the) :COLOR lights (on) (off) (please)" : lights,
-			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) :VALUE :RANGE (ago)" : plot,
+			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) (last) :VALUE :RANGE (ago)" : plot,
 			"(eve) *QUERY": queryBot
 		};
 		annyang.addCommands(commands);
