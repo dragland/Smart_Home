@@ -5,13 +5,13 @@
 #*********************************************************************
 #                           SETUP
 #*********************************************************************
-from xbee import XBee
+from xbee import xbee
 import serial
 
 ser = serial.Serial("/dev/ttyUSB0", 9600)
-ser.open()
+ser.isOpen()
 while True:
-    packet = xbee.find_packet(ser)
-    if packet:
-        xb = xbee(packet)
-        print xb
+	packet = xbee.find_packet(ser)
+	if packet:
+		xb = xbee(packet)
+		print xb
