@@ -40,7 +40,7 @@ sudo vi /boot/config.txt
 >dtparam=i2c_arm=on
 
 ```bash
-sudo nano /etc/modules
+sudo vi /etc/modules
 ```
 
 >i2c-dev
