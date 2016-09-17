@@ -13,7 +13,11 @@ sudo ./install.sh
 ```
 
 ###You must manualy setup the folowing:
-Set the IP adress to static:
+Set the IP adress to static & enabling I2C:
+
+```bash
+sudo raspi-config
+```
 
 >Look up tutorial for your version of Raspbian
 
@@ -25,13 +29,29 @@ sudo crontab -e
 
 >@reboot /var/www/run.sh &
 
+Enabeling I2C:
+
+```bash
+sudo vi /boot/config.txt
+```
+
+>dtparam=i2c1=on
+
+>dtparam=i2c_arm=on
+
+```bash
+sudo nano /etc/modules
+```
+
+>i2c-dev
+
 Enabeling CGI scripts:
 
- ```bash
+```bash
 sudo a2enmod cgi
- ```
+```
 
- ```bash
+```bash
 sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf 
 ```
 

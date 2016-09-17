@@ -14,6 +14,7 @@ import subprocess
 import sqlite3
 import Adafruit_DHT
 import RPi.GPIO
+import notsmb
 import xbee
 import config
 
@@ -32,7 +33,18 @@ def read_rh_temp(PIN_NUMBER):
 #Function: read_co2
 #This function reads the data from a K-30 CO2 sensor.
 def read_co2():
-	time.sleep(0.1)
+	READ = 0x22
+	readBytes = [0x00, 0x08, 0x2A]
+	while True:
+		try:
+			resp = notsmb.notSMB(1).i2c(0x68,[0x22,0x00,0x08,0x2A],4)
+			time.sleep(0.1)
+			co2Value = (resp[1]*256) + resp[2]
+			if co2Value < 2000:
+				config.co2 = co2Value
+				break
+		except:
+			blank =0;
 
 #Function: read_energy
 #This function reads the data from a Kill-A-Watt P3 sensor.
@@ -59,7 +71,7 @@ def read_energy():
 			avga = (max_a + min_a) / 2
 			watt = abs(120 * avga)
 			if watt < 1200:
-				energy = watt
+				config.energy = watt
 			time.sleep(0.1)
 			break
 
