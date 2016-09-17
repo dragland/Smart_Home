@@ -40,9 +40,9 @@ def read_energy():
 	ser = serial.Serial("/dev/ttyUSB0", 9600)
 	ser.isOpen()
 	while True:
-		packet = xbee.find_packet(ser)
+		packet = xbee.xbee.find_packet(ser)
 		if packet:
-			xb = xbee(packet)
+			xb = xbee.xbee(packet)
 			ampdata = [-1] * (len(xb.analog_samples ) -1)
 			for i in range(len(ampdata)):
 				ampdata[i] = xb.analog_samples[i+1][4]
