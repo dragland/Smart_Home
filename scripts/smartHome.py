@@ -49,6 +49,7 @@ def read_co2():
 #Function: read_energy
 #This function reads the data from a Kill-A-Watt P3 sensor.
 def read_energy():
+	time.sleep(0.1)
 	# ser = serial.Serial("/dev/ttyUSB0", 9600)
 	# ser.isOpen()
 	# while True:
