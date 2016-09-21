@@ -49,31 +49,31 @@ def read_co2():
 #Function: read_energy
 #This function reads the data from a Kill-A-Watt P3 sensor.
 def read_energy():
-	ser = serial.Serial("/dev/ttyUSB0", 9600)
-	ser.isOpen()
-	while True:
-		packet = xbee.xbee.find_packet(ser)
-		if packet:
-			xb = xbee.xbee(packet)
-			ampdata = [-1] * (len(xb.analog_samples ) -1)
-			for i in range(len(ampdata)):
-				ampdata[i] = xb.analog_samples[i+1][4]
-			for i in range(len(ampdata)):
-				ampdata[i] -= 950
-				ampdata[i] = ampdata[i] / 15.5
-			min_a = 1024
-			max_a = 0
-			for i in range(len(ampdata)):
-				if (min_a > ampdata[i]):
-					min_a = ampdata[i]
-				if (max_a < ampdata[i]):
-					max_a = ampdata[i]
-			avga = (max_a + min_a) / 2
-			watt = abs(120 * avga)
-			if watt < 1200:
-				config.energy = watt
-			time.sleep(0.1)
-			break
+	# ser = serial.Serial("/dev/ttyUSB0", 9600)
+	# ser.isOpen()
+	# while True:
+	# 	packet = xbee.xbee.find_packet(ser)
+	# 	if packet:
+	# 		xb = xbee.xbee(packet)
+	# 		ampdata = [-1] * (len(xb.analog_samples ) -1)
+	# 		for i in range(len(ampdata)):
+	# 			ampdata[i] = xb.analog_samples[i+1][4]
+	# 		for i in range(len(ampdata)):
+	# 			ampdata[i] -= 950
+	# 			ampdata[i] = ampdata[i] / 15.5
+	# 		min_a = 1024
+	# 		max_a = 0
+	# 		for i in range(len(ampdata)):
+	# 			if (min_a > ampdata[i]):
+	# 				min_a = ampdata[i]
+	# 			if (max_a < ampdata[i]):
+	# 				max_a = ampdata[i]
+	# 		avga = (max_a + min_a) / 2
+	# 		watt = abs(120 * avga)
+	# 		if watt < 1200:
+	# 			config.energy = watt
+	# 		time.sleep(0.1)
+	# 		break
 
 #Function: read_cpu
 #This function reads the percent memory used by the CPU.
