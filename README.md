@@ -30,6 +30,8 @@ sudo crontab -e
 
 >@reboot /var/www/run.sh &
 
+>0 12 * * * /sbin/shutdown -r now
+
 Enabeling I2C:
 
 ```bash

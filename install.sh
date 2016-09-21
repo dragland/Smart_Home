@@ -28,6 +28,7 @@ echo "DHT22 temp & humidity sensor"
 echo "WiringPi CGI library"
 echo "K-30 CO2 sensor library"
 echo "Cleverbot API"
+echo "Xbee API"
 cd /home/pi
 sudo git clone https://github.com/adafruit/Adafruit_Python_DHT.git
 cd Adafruit_Python_DHT
@@ -44,6 +45,7 @@ unzip notsmb_1_0.zip
 sudo python setup.py install
 cd /home/pi
 sudo pip install cleverbot
+sudo pip install xbee
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Updating..."
 sudo apt-get update
