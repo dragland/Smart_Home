@@ -50,7 +50,7 @@ def read_co2():
 #This function reads the data from a Kill-A-Watt P3 sensor.
 def read_energy():
 	ser = serial.Serial("/dev/ttyUSB0", 9600)
-	ser.open()
+	ser.isOpen()
 	while True:
 		packet = xbee.xbee.find_packet(ser)
 		if packet:
