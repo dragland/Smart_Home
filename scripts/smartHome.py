@@ -53,39 +53,39 @@ def read_energy():
 	while True:
 		packet = xbee.xbee.find_packet(ser)
 		if packet:
-	        xb = xbee.xbee(packet)
-	        voltagedata = [-1] * (len(xb.analog_samples) - 1)
-	        ampdata = [-1] * (len(xb.analog_samples ) -1)
-	        for i in range(len(voltagedata)):
-	            voltagedata[i] = xb.analog_samples[i+1][0]
-	            ampdata[i] = xb.analog_samples[i+1][4] 
-	        min_v = 1024
-	        max_v = 0
-	        for i in range(len(voltagedata)):
-	            if (min_v > voltagedata[i]):
-	                min_v = voltagedata[i]
-	            if (max_v < voltagedata[i]):
-	                max_v = voltagedata[i]
-	        avgv = (max_v + min_v) / 2
-	        vpp =  max_v - min_v
-	        for i in range(len(voltagedata)):
-	            voltagedata[i] -= avgv
-	            voltagedata[i] = (voltagedata[i] * 340) / vpp
-	        for i in range(len(ampdata)):
-	            ampdata[i] -= 470
-	            ampdata[i] /= 15.5 
-		    wattdata = [0] * len(voltagedata)
-		    for i in range(len(wattdata)):
-		        wattdata[i] = voltagedata[i] * ampdata[i]
-		    avgamp = 0
-		    for i in range(17):
-		        avgamp += abs(ampdata[i])
-		    avgamp /= 17.0
-		    avgwatt = 0
-		    for i in range(17):         
-		        avgwatt += abs(wattdata[i])
-		    avgwatt /= 17.0
-		    config.energy = avgwatt
+			xb = xbee.xbee(packet)
+			voltagedata = [-1] * (len(xb.analog_samples) - 1)
+			ampdata = [-1] * (len(xb.analog_samples ) -1)
+			for i in range(len(voltagedata)):
+			    voltagedata[i] = xb.analog_samples[i+1][0]
+			    ampdata[i] = xb.analog_samples[i+1][4] 
+			min_v = 1024
+			max_v = 0
+			for i in range(len(voltagedata)):
+			    if (min_v > voltagedata[i]):
+			        min_v = voltagedata[i]
+			    if (max_v < voltagedata[i]):
+			        max_v = voltagedata[i]
+			avgv = (max_v + min_v) / 2
+			vpp =  max_v - min_v
+			for i in range(len(voltagedata)):
+			    voltagedata[i] -= avgv
+			    voltagedata[i] = (voltagedata[i] * 340) / vpp
+			for i in range(len(ampdata)):
+			    ampdata[i] -= 470
+			    ampdata[i] /= 15.5 
+			wattdata = [0] * len(voltagedata)
+			for i in range(len(wattdata)):
+			    wattdata[i] = voltagedata[i] * ampdata[i]
+			avgamp = 0
+			for i in range(17):
+			    avgamp += abs(ampdata[i])
+			avgamp /= 17.0
+			avgwatt = 0
+			for i in range(17):         
+			    avgwatt += abs(wattdata[i])
+			avgwatt /= 17.0
+			config.energy = avgwatt
 		    
 #Function: read_cpu
 #This function reads the percent memory used by the CPU.
