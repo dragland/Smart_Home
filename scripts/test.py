@@ -1,15 +1,11 @@
 #!/usr/bin/env python
 
 import serial
-from xbee import XBee
+from xbee import xbee
 
 ser = serial.Serial('/dev/ttyUSB0', 9600)
-xbee = XBee(ser)
-
 while True:
-    try:
-        print xbee.wait_read_frame()
-    except KeyboardInterrupt:
-        break
-
-serial_port.close()
+    packet = xbee.find_packet(ser)
+    if packet:
+        xb = xbee(packet)
+        print xb
