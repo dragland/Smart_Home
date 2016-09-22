@@ -51,8 +51,8 @@ def read_co2():
 def read_energy():
 	ser = serial.Serial('/dev/ttyUSB0', 9600)
 	while True:
-	    packet = xbee.xbee.find_packet(ser)
-	    if packet:
+		packet = xbee.xbee.find_packet(ser)
+		if packet:
 	        xb = xbee.xbee(packet)
 	        voltagedata = [-1] * (len(xb.analog_samples) - 1)
 	        ampdata = [-1] * (len(xb.analog_samples ) -1)
@@ -85,8 +85,8 @@ def read_energy():
 		    for i in range(17):         
 		        avgwatt += abs(wattdata[i])
 		    avgwatt /= 17.0
-			config.energy = avgwatt
-
+		    config.energy = avgwatt
+		    
 #Function: read_cpu
 #This function reads the percent memory used by the CPU.
 def read_cpu():
