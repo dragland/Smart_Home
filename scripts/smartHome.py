@@ -51,8 +51,8 @@ def read_co2():
 def read_energy():
 	xb = xbee.XBee(serial.Serial("/dev/ttyUSB0", 9600))
 	while True:
-	    packet = xb.wait_read_frame()
-	    voltagedata = [-1] * (len(packet["samples"]) - 1)
+		packet = xb.wait_read_frame()
+		voltagedata = [-1] * (len(packet["samples"]) - 1)
 		ampdata = [-1] * (len(packet["samples"]) - 1)
 		for i in range(len(voltagedata)):
 			voltagedata[i] = packet["samples"][i + 1]["adc-0"]
@@ -60,28 +60,28 @@ def read_energy():
 		min_v = 1024
 		max_v = 0
 		for i in range(len(voltagedata)):
-		    if (min_v > voltagedata[i]):
-		        min_v = voltagedata[i]
-		    if (max_v < voltagedata[i]):
-		        max_v = voltagedata[i]
+			if (min_v > voltagedata[i]):
+					min_v = voltagedata[i]
+			if (max_v < voltagedata[i]):
+				max_v = voltagedata[i]
 		avgv = (max_v + min_v) / 2
 		vpp =  max_v - min_v
 		for i in range(len(voltagedata)):
-		    voltagedata[i] -= avgv
-		    voltagedata[i] = (voltagedata[i] * 340) / vpp
+			voltagedata[i] -= avgv
+			voltagedata[i] = (voltagedata[i] * 340) / vpp
 		for i in range(len(ampdata)):
-		    ampdata[i] -= 470
-		    ampdata[i] /= 15.5 
+			ampdata[i] -= 470
+			ampdata[i] /= 15.5 
 		wattdata = [0] * len(voltagedata)
 		for i in range(len(wattdata)):
-		    wattdata[i] = voltagedata[i] * ampdata[i]
+			wattdata[i] = voltagedata[i] * ampdata[i]
 		avgamp = 0
 		for i in range(17):
-		    avgamp += abs(ampdata[i])
+			avgamp += abs(ampdata[i])
 		avgamp /= 17.0
 		avgwatt = 0
 		for i in range(17):         
-		    avgwatt += abs(wattdata[i])
+			avgwatt += abs(wattdata[i])
 		avgwatt /= 17.0
 		config.energy = avgwatt
 		    
