@@ -61,7 +61,7 @@ def read_energy():
 		max_v = 0
 		for i in range(len(voltagedata)):
 			if (min_v > voltagedata[i]):
-					min_v = voltagedata[i]
+				min_v = voltagedata[i]
 			if (max_v < voltagedata[i]):
 				max_v = voltagedata[i]
 		avgv = (max_v + min_v) / 2
