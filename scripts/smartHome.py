@@ -192,6 +192,15 @@ def relay_on(PIN_NUMBER):
 def relay_off(PIN_NUMBER):
 	os.system("gpio write %i 1" % (PIN_NUMBER))
 
+#Function: init_lights
+#This function initializes the lights to the default configuration.
+def init_lights():
+	os.system("gpio mode 0 out")
+	os.system("gpio mode 2 out")
+	os.system("gpio mode 3 out")
+	os.system("gpio mode 4 out")
+	relay_on(3)
+
 #Function: init_archive
 #This function initializes the SQL database.
 def init_archive():

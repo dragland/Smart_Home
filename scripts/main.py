@@ -14,6 +14,7 @@ import smartHome
 #*********************************************************************
 print("Executing program:")
 smartHome.init_archive()
+smartHome.init_lights()
 t1  = threading.Thread(target = smartHome.read_rh_temp, args = (4,))
 t2  = threading.Thread(target = smartHome.read_co2)
 t3  = threading.Thread(target = smartHome.read_energy)
