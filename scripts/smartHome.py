@@ -199,6 +199,9 @@ def init_lights():
 	os.system("gpio mode 2 out")
 	os.system("gpio mode 3 out")
 	os.system("gpio mode 4 out")
+	relay_off(0)
+	relay_off(2)
+	relay_off(4)
 	relay_on(3)
 
 #Function: init_archive
