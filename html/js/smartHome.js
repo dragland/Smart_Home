@@ -165,7 +165,7 @@ function plot_graph(){
 	                borderColor: "rgba(200,115,42,1)",
 	                pointHoverBackgroundColor: "rgba(200,115,42,1)",
 	                backgroundColor: "rgba(200,115,42,.1)",
-	                yAxisID: "A",
+	                yAxisID: "B",
 	                lineTension: 0.1,
 	                borderWidth: 3,
 	                pointBorderWidth: 1,
