@@ -35,7 +35,6 @@ t7.start()
 t8.start()
 t9.start()
 t10.start()
-smartHome.relay_on(3)
 while True:	
 	if t1.is_alive()is False:
 		del t1
