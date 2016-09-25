@@ -14,7 +14,6 @@ import smartHome
 #*********************************************************************
 print("Executing program:")
 smartHome.init_archive()
-smartHome.init_lights()
 t1  = threading.Thread(target = smartHome.read_rh_temp, args = (4,))
 t2  = threading.Thread(target = smartHome.read_co2)
 t3  = threading.Thread(target = smartHome.read_energy)
@@ -35,6 +34,7 @@ t7.start()
 t8.start()
 t9.start()
 t10.start()
+smartHome.init_lights()
 while True:	
 	if t1.is_alive()is False:
 		del t1
