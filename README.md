@@ -4,6 +4,8 @@
 
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/screen.png "Smart_Home")
 
+![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/system.jpg "Electronics")
+
 #Instalation:
 
 ```bash
