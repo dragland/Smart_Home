@@ -6,6 +6,8 @@
 
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/system.jpg "Electronics")
 
+![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/hologram.png "Hologram")
+
 #Instalation:
 
 ```bash
