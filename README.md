@@ -1,5 +1,5 @@
 # Smart_Home: 
-###A Home Automation system for the Raspberry Pi writen in Python and Javascript
+###A Home Automation system for the Raspberry Pi written in Python and JavaScript
 [click here for a demo](https://htmlpreview.github.io/?https://github.com/dragland/Smart_Home/blob/master/html/index.html)
 
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/screen.png "Smart_Home")
