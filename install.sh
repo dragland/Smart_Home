@@ -54,9 +54,10 @@ sudo apt-get upgrade -y
 echo "Setting up..."
 sudo adduser pi i2c
 sudo chown -R -v pi /var/www
+sudo rm -rf /var/www/html/*
 sudo git clone https://github.com/dragland/Smart_Home.git temp
 sudo mv temp/* /var/www/
-sudo mv temp/,git /var/www/
+sudo mv temp/.git /var/www/
 sudo rm -rf temp
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 echo "done! Restarting now..."
