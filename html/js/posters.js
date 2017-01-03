@@ -2,6 +2,7 @@ var posters =
 [
 "0vNBeXZ.png",
 "17-dorian_gray_1318896471.jpg",
+"1m5z1brr5z6y.jpg",
 "2001_colortest14_72.jpg",
 "22Planet-Terror_1318898957.jpg",
 "243ViFD.jpg",
@@ -63,6 +64,7 @@ var posters =
 "j4nu1c6sus1y.jpg",
 "jrPekYr.jpg",
 "jSOY6bm.jpg",
+"k1ymewv7o57y.png",
 "kF80oNM.jpg",
 "KjG7f.jpg",
 "kKS7neK.jpg",
