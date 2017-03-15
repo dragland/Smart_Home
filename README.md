@@ -1,5 +1,5 @@
-# Smart_Home: 
-###A Home Automation system for the Raspberry Pi written in Python and JavaScript
+# Smart_Home:
+### A Home Automation system for the Raspberry Pi written in Python and JavaScript
 [click here for a demo](https://htmlpreview.github.io/?https://github.com/dragland/Smart_Home/blob/master/html/index.html)
 
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/screen.png "Smart_Home")
@@ -17,7 +17,7 @@ sudo chmod 755 install.sh
 sudo ./install.sh
 ```
 
-###You must manualy setup the folowing:
+### You must manualy setup the folowing:
 Set the IP adress to static & enabling I2C:
 
 ```bash
@@ -59,7 +59,7 @@ sudo a2enmod cgi
 ```
 
 ```bash
-sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf 
+sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf
 ```
 
 >ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/
@@ -70,5 +70,5 @@ sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf
 
 >&lt;/Directory&gt;
 
-#Wiring:
+# Wiring:
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/wiring.png "Smart_Home")
