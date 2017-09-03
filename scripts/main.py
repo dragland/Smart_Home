@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 #Davy Ragland | dragland@stanford.edu
-#Home Automation System version 2.0 | 2016
+#Home Automation System version 3.0 | 2017
 
 #*********************************************************************
 #                           SETUP
 #*********************************************************************
-import time 
+import time
 import threading
 import smartHome
 
@@ -35,7 +35,7 @@ t8.start()
 t9.start()
 t10.start()
 smartHome.init_lights()
-while True:	
+while True:
 	if t1.is_alive()is False:
 		del t1
 		t1  = threading.Thread(target = smartHome.read_rh_temp, args = (4,))
