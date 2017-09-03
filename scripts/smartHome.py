@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 #Davy Ragland | dragland@stanford.edu
-#Home Automation System version 2.0 | 2016
+#Home Automation System version 3.0 | 2017
 
-#*********************************************************************
-#                           SETUP
-#*********************************************************************
+#************************************SETUP**************************************
 import os
 import sys
 import time
@@ -18,9 +16,7 @@ import notsmb
 import xbee
 import config
 
-#*********************************************************************
-#                          FUNCTIONS
-#*********************************************************************
+#**********************************FUNCTIONS************************************
 #Function: read_rh_temp
 #This function reads the data from a DHT22 AM2302 humidity and temperature sensor.
 def read_rh_temp(PIN_NUMBER):
@@ -56,7 +52,7 @@ def read_energy():
 		ampdata = [-1] * (len(packet["samples"]) - 1)
 		for i in range(len(voltagedata)):
 			voltagedata[i] = packet["samples"][i + 1]["adc-0"]
-			ampdata[i] = packet["samples"][i + 1]["adc-0"] 
+			ampdata[i] = packet["samples"][i + 1]["adc-0"]
 		min_v = 1024
 		max_v = 0
 		for i in range(len(voltagedata)):
@@ -71,7 +67,7 @@ def read_energy():
 			voltagedata[i] = (voltagedata[i] * 340) / vpp
 		for i in range(len(ampdata)):
 			ampdata[i] -= 470
-			ampdata[i] /= 15.5 
+			ampdata[i] /= 15.5
 		wattdata = [0] * len(voltagedata)
 		for i in range(len(wattdata)):
 			wattdata[i] = voltagedata[i] * ampdata[i]
@@ -80,11 +76,11 @@ def read_energy():
 			avgamp += abs(ampdata[i])
 		avgamp /= 17.0
 		avgwatt = 0
-		for i in range(17):         
+		for i in range(17):
 			avgwatt += abs(wattdata[i])
 		avgwatt /= 17.0
 		config.energy = avgwatt
-		    
+
 #Function: read_cpu
 #This function reads the percent memory used by the CPU.
 def read_cpu():
@@ -137,9 +133,7 @@ def automate(PIN_NUMBER):
 	if config.temp_f < 40:
 		relay_off(int(PIN_NUMBER))
 
-#*********************************************************************
-#                          HELPERS
-#*********************************************************************
+#***********************************HELPERS*************************************
 #Function: read_lights_red
 #This function reads the data from a relay.
 def read_lights_red(PIN_NUMBER):

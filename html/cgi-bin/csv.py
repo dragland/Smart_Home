@@ -1,15 +1,11 @@
 #!/usr/bin/env python
 #Davy Ragland | dragland@stanford.edu
-#Home Automation System version 2.0 | 2016
+#Home Automation System version 3.0 | 2017
 
-#*********************************************************************
-#                           SETUP
-#*********************************************************************
+#************************************SETUP**************************************
 import smartHomeCGI
 
-#*********************************************************************
-#                            MAIN
-#*********************************************************************
+#*************************************MAIN**************************************
 smartHomeCGI.header("HTML")
 RANGE = smartHomeCGI.get_value("RANGE")
 VALUE = smartHomeCGI.get_value("VALUE")

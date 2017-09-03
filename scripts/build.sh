@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #Davy Ragland | dragland@stanford.edu
-#Home Automation System version 2.0 | 2016
+#Home Automation System version 3.0 | 2017
 
 echo "var posters =" > ../html/js/posters.js
 echo "[" >> ../html/js/posters.js
