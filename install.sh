@@ -41,6 +41,7 @@ sudo git clone https://github.com/dragland/Smart_Home.git temp
 sudo mv temp/* /var/www/
 sudo mv temp/.git /var/www/
 sudo rm -rf temp
+echo "enable_uart=1" | sudo tee -a /boot/config.txt
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "done! Restarting now..."
 sudo shutdown -r now

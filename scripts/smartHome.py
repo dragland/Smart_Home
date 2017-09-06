@@ -27,18 +27,20 @@ def read_rh_temp(PIN_NUMBER):
 	time.sleep(2)
 
 #Function: read_co2
-#This function reads the data from a K-30 CO2 sensor.
+#This function reads the data from a AN168-S8 CO2 sensor.
 def read_co2():
-	READ = 0x22
-	readBytes = [0x00, 0x08, 0x2A]
 	while True:
+		ser = serial.Serial("/dev/ttyS0",baudrate =9600,timeout = .5)
+		ser.flushInput()
+		ser.write("\xFE\x44\x00\x08\x02\x9F\x25")
+		time.sleep(0.1)
 		try:
-			resp = notsmb.notSMB(1).i2c(0x68,[0x22,0x00,0x08,0x2A],4)
-			time.sleep(0.1)
-			co2Value = (resp[1]*256) + resp[2]
-			if co2Value < 2000:
-				config.co2 = co2Value
-				break
+			resp = ser.read(7)
+			high = ord(resp[3])
+			low = ord(resp[4])
+			co2Value = (high*256) + low
+			config.co2 = co2Value
+			break
 		except:
 			blank =0;
 
