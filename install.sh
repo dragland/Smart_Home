@@ -27,6 +27,7 @@ cd /home/pi
 sudo git clone git://git.drogon.net/wiringPi
 cd wiringPi
 sudo ./build
+cd /home/pi
 sudo pip install cleverbot
 sudo pip install xbee
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

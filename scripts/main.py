@@ -7,6 +7,9 @@ import time
 import threading
 import smartHome
 
+#DOOR SENSOR IS PIN 23
+#RELAY IS PIN 24 (5 for WiringPi)
+
 #*************************************MAIN**************************************
 print("Executing program:")
 smartHome.init_archive()
@@ -15,7 +18,7 @@ t2  = threading.Thread(target = smartHome.read_co2)
 t3  = threading.Thread(target = smartHome.read_energy)
 t4  = threading.Thread(target = smartHome.read_cpu)
 t5  = threading.Thread(target = smartHome.read_memory)
-t6  = threading.Thread(target = smartHome.read_door, args = (18,))
+t6  = threading.Thread(target = smartHome.read_door, args = (23,))
 t7  = threading.Thread(target = smartHome.read_fan, args = (4,))
 t8  = threading.Thread(target = smartHome.read_lights_red, args = (0,))
 t9  = threading.Thread(target = smartHome.read_lights_green, args = (2,))
@@ -54,7 +57,7 @@ while True:
 		t5.start()
 	if t6.is_alive()is False:
 		del t6
-		t6  = threading.Thread(target = smartHome.read_door, args = (18,))
+		t6  = threading.Thread(target = smartHome.read_door, args = (23,))
 		t6.start()
 	if t7.is_alive()is False:
 		del t7
