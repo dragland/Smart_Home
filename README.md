@@ -8,6 +8,8 @@
 
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/hologram.png "Hologram")
 
+![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/PCB.png "Circuit Board")
+
 #Instalation:
 
 ```bash
@@ -17,8 +19,8 @@ sudo chmod 755 install.sh
 sudo ./install.sh
 ```
 
-### You must manualy setup the folowing:
-Set the IP adress to static & enabling I2C:
+### You must manually setup the following:
+Set the IP address to static & enabling I2C:
 
 ```bash
 sudo raspi-config
@@ -36,7 +38,7 @@ sudo crontab -e
 
 >0 12 * * * /sbin/shutdown -r now
 
-Enabeling I2C:
+Enabling I2C:
 
 ```bash
 sudo vi /boot/config.txt
@@ -52,7 +54,7 @@ sudo vi /etc/modules
 
 >i2c-dev
 
-Enabeling CGI scripts:
+Enabling CGI scripts:
 
 ```bash
 sudo a2enmod cgi
@@ -70,5 +72,5 @@ sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf
 
 >&lt;/Directory&gt;
 
-# Wiring:
-![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/wiring.png "Smart_Home")
+# Schematics:
+![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/schematics.png "Schematics")
