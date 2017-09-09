@@ -79,6 +79,7 @@ sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf
 | Designator           | Part ID              |quantity |
 | :---                 | :---                 | ---:    |
 |                      | RPI3 MODEL B         | 1       |
+|                      | P3 P4400             | 1       |
 |                      | Tweet-a-Watt         | 1       |
 |                      |                      |         |
 | C1                   | 478-1400-1-ND        | 1       |
