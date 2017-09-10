@@ -1,20 +1,21 @@
 <!--Davy Ragland | dragland@stanford.edu-->
 <!--Home Automation System version 3.0 | 2017-->
+
 <!DOCTYPE HTML>
 <html lang="en">
 	<head>
-  		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Cache-Control" content="no-cache">
 		<meta name="description" content="Davy Ragland">
 		<meta name="author" content="Davy Ragland">
-	    <title>EVE</title>
+	  <title>EVE</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.bundle.min.js"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
-    	<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.5.0/annyang.min.js"></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 		<link rel="shortcut icon" href="favicon.ico"/>
 		<script src="js/posters.js"></script>
@@ -24,28 +25,28 @@
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50"  onload="plot_graph()">
 		<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
-		  	<div class="container-fluid">
-		    	<div class="navbar-header">
-		      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-			        	<span class="icon-bar"></span>
-			        	<span class="icon-bar"></span>
-			        	<span class="icon-bar"></span>
-		     		</button>
-		      		<a class="navbar-brand" data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-home"></span> EVE</a>
-		    	</div>
-			    <div class="collapse navbar-collapse" id="myNavbar">
-			      	<ul class="nav navbar-nav">
-				        <li><a href="#widgets"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
-				        <li><a href="#controls"><span class="glyphicon glyphicon-transfer"></span> Control System</a></li>
-				        <li><a href="#data"><span class="glyphicon glyphicon-stats"></span> Data Telemetry</a></li>
-				        <li><a data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-film"></span> Gallery</a></li>
-			      	</ul>
+	  	<div class="container-fluid">
+	    	<div class="navbar-header">
+      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+	     		</button>
+	      	<a class="navbar-brand" data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-home"></span> EVE</a>
+	    	</div>
+		    <div class="collapse navbar-collapse" id="myNavbar">
+	      	<ul class="nav navbar-nav">
+		        <li><a href="#widgets"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+		        <li><a href="#controls"><span class="glyphicon glyphicon-transfer"></span> Control System</a></li>
+		        <li><a href="#data"><span class="glyphicon glyphicon-stats"></span> Data Telemetry</a></li>
+		        <li><a data-toggle="modal" data-target="#gallery" onclick="start_slideshow()"><span class="glyphicon glyphicon-film"></span> Gallery</a></li>
+	      	</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="archive.db"><span class="glyphicon glyphicon-floppy-save"></span> Download</a></li>
-					    <li><a href="."><span class="glyphicon glyphicon-refresh"></span> Reload</a></li>
-					    <li><a href="https://github.com/dragland" target="_blank"><span class="glyphicon glyphicon-user"></span> Davy Ragland</a></li>
+					  <li><a href="."><span class="glyphicon glyphicon-refresh"></span> Reload</a></li>
+					  <li><a href="https://github.com/dragland" target="_blank"><span class="glyphicon glyphicon-user"></span> Davy Ragland</a></li>
 					</ul>
-		    	</div>
+	    	</div>
 			</div>
 		</nav>
 
@@ -53,7 +54,7 @@
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-					  	<button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
 						<img id="source" class="img-thumbnail" onclick="update_image()" width="100%">
 					</div>
 				</div>
@@ -65,169 +66,159 @@
 			<div id="widgets" class="panel panel-default">
 				<div class="panel-body">
 					<div class="container">
-  						<h4><span class="glyphicon glyphicon-dashboard"></span> Dashboard</h4>
-					    <div class="row">
-					        <div class="col-md-3">
-					            <div class="panel panel-default">
-					                <div class="panel-heading">
-														<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d475.51635549580527!2d-122.16545890680712!3d37.42554113141273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbad714c2ddf1%3A0x68c731cfb7725bdb!2sCrothers+Memorial!5e1!3m2!1sen!2sus!4v1504413199530" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
-					                </div>
-					            </div>
-					        </div>
-					        <div class="col-md-4">
-					            <div class="panel panel-default">
-					                <div class="panel-heading">
-														<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=200&amp;wkst=1&amp;hl=en&amp;bgcolor=%23FFFFFF&amp;src=ragland.davy%40gmail.com&amp;color=%23182C57&amp;src=commonoriginsdance%40gmail.com&amp;color=%23B1365F&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%2329527A&amp;src=davy%40breakoutmentors.com&amp;color=%23333333&amp;src=77qibperc4qsvlf446ebkub64c%40group.calendar.google.com&amp;color=%23125A12&amp;src=en.usa%23holiday%40group.v.calendar.google.com&amp;color=%236B3304&amp;src=8rsvttfkoo9hvo5hudq6v0i1e0%40group.calendar.google.com&amp;color=%238C500B&amp;src=5or10qu0uhtfqcdqb3knrpn3r8%40group.calendar.google.com&amp;color=%23711616&amp;src=stanford.edu_ncqicl363gmv2q5skcnjop26go%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="100%" height="200" frameborder="0" scrolling="no"></iframe>
-					                </div>
-					            </div>
-					        </div>
-					        <div class="col-md-5">
-					            <div class="panel panel-default">
-				                	<div class="panel-heading">
+						<h4><span class="glyphicon glyphicon-dashboard"></span> Dashboard</h4>
+				    <div class="row">
+			        <div class="col-md-3">
+		            <div class="panel panel-default">
+	                <div class="panel-heading">
+										<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d475.51635549580527!2d-122.16545890680712!3d37.42554113141273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbad714c2ddf1%3A0x68c731cfb7725bdb!2sCrothers+Memorial!5e1!3m2!1sen!2sus!4v1504413199530" width="100%" height="200" frameborder="0" style="border:0" allowfullscreen></iframe>
+	                </div>
+		            </div>
+			        </div>
+			        <div class="col-md-4">
+		            <div class="panel panel-default">
+	                <div class="panel-heading">
+										<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=200&amp;wkst=1&amp;hl=en&amp;bgcolor=%23FFFFFF&amp;src=ragland.davy%40gmail.com&amp;color=%23182C57&amp;src=commonoriginsdance%40gmail.com&amp;color=%23B1365F&amp;src=%23contacts%40group.v.calendar.google.com&amp;color=%2329527A&amp;src=davy%40breakoutmentors.com&amp;color=%23333333&amp;src=77qibperc4qsvlf446ebkub64c%40group.calendar.google.com&amp;color=%23125A12&amp;src=en.usa%23holiday%40group.v.calendar.google.com&amp;color=%236B3304&amp;src=8rsvttfkoo9hvo5hudq6v0i1e0%40group.calendar.google.com&amp;color=%238C500B&amp;src=5or10qu0uhtfqcdqb3knrpn3r8%40group.calendar.google.com&amp;color=%23711616&amp;src=stanford.edu_ncqicl363gmv2q5skcnjop26go%40group.calendar.google.com&amp;color=%2323164E&amp;ctz=America%2FLos_Angeles" style="border-width:0" width="100%" height="200" frameborder="0" scrolling="no"></iframe>
+	                </div>
+		            </div>
+			        </div>
+			        <div class="col-md-5">
+		            <div class="panel panel-default">
+                	<div class="panel-heading">
 										<iframe src="http://forecast.io/embed/#lat=37.4276&lon=-122.1698&name=Silicon Valley" width="100%" height="200" frameborder="0"> </iframe>
-				                  	</div>
-					            </div>
-					        </div>
-					    </div>
+                  </div>
+		            </div>
+			        </div>
+				    </div>
 					</div>
 				</div>
 			</div>
 			<div id="controls" class="panel panel-default">
 				<div class="panel-body">
 					<div class="container">
-  						<h4><span class="glyphicon glyphicon-transfer"></span> Control System</h4>
-					    <div class="row">
-					        <div class="col-md-4">
-					            <div class="panel panel-default">
-					 				<iframe src="https://beta.modelo.io/embedded/kkszpG_Chj?viewport=false&autoplay=true" width="100%" height="363" frameborder="0"></iframe>
+  					<h4><span class="glyphicon glyphicon-transfer"></span> Control System</h4>
+				    <div class="row">
+				      <div class="col-md-4">
+				        <div class="panel panel-default">
+			 						<iframe src="https://beta.modelo.io/embedded/kkszpG_Chj?viewport=false&autoplay=true" width="100%" height="363" frameborder="0"></iframe>
 									<div id="view" class="progress" style="margin-bottom:0px;">
-				                    	<div id="time" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img src="res/icons/temp.png" class="img-thumbnail" width="100%">
+                  	<div id="time" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/temp.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="temp" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img src="res/icons/co2.png" class="img-thumbnail" width="100%">
+                  	<div id="temp" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/co2.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="co2" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img src="res/icons/rh.png" class="img-thumbnail" width="100%">
+                  	<div id="co2" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/rh.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="rh" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img src="res/icons/energy.png" class="img-thumbnail" width="100%">
+                  	<div id="rh" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/energy.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="energy" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img src="res/icons/cpu.png" class="img-thumbnail" width="100%">
+                  	<div id="energy" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/cpu.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="cpu" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img src="res/icons/memory.png" class="img-thumbnail" width="100%">
+                  	<div id="cpu" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/memory.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="memory" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img id="microphone_switch" onclick="listen()" src="res/icons/microphone.png" class="img-thumbnail" width="100%">
+                  	<div id="memory" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/wifi.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="microphone" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong>Off</strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img src="res/icons/door.png" class="img-thumbnail" width="100%">
+                  	<div id="wifi" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img src="res/icons/door.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="door" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-					        <div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-					                <img id="fan_switch" onclick="switch_relay('cgi-bin/switch.py?PIN_NUMBER=4')" src="res/icons/fan.png" class="img-thumbnail" width="100%">
+                  	<div id="door" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+			          <div class="panel panel-default">
+			            <img id="fan_switch" onclick="switch_relay('cgi-bin/switch.py?PIN_NUMBER=4')" src="res/icons/fan.png" class="img-thumbnail" width="100%">
 									<div class="progress" style="margin-bottom:0px;">
-				                    	<div id="fan" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
+                  	<div id="fan" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong></strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
 							<div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-				                	<img id="lights_red_switch" onclick="switch_relay('cgi-bin/switch.py?PIN_NUMBER=0')" src="res/icons/lights_red.png" class="img-thumbnail" width="100%">
-				                    <div class="progress" style="margin-bottom:0px;">
-				                    	<div id="lights_red" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-							<div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-				                	<img id="lights_green_switch" onclick="switch_relay('cgi-bin/switch.py?PIN_NUMBER=2')" src="res/icons/lights_green.png" class="img-thumbnail" width="100%">
-				                    <div class="progress" style="margin-bottom:0px;">
-				                    	<div id="lights_green" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
-							<div class="col-sm-2 col-xs-4">
-					            <div class="panel panel-default">
-				                	<img id="lights_blue_switch" onclick="switch_relay('cgi-bin/switch.py?PIN_NUMBER=3')" src="res/icons/lights_blue.png" class="img-thumbnail" width="100%">
-				                    <div class="progress" style="margin-bottom:0px;">
-				                    	<div id="lights_blue" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-				                    		<strong></strong>
-				                    	</div>
-				                    </div>
-					            </div>
-					        </div>
+		            <div class="panel panel-default">
+                	<img id="leds_switch" onclick="alert('Hello World!')" src="res/icons/leds.png" class="img-thumbnail" width="100%">
+                  <div class="progress" style="margin-bottom:0px;">
+                  	<div id="leds" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong>RGB</strong>
+                  	</div>
+                  </div>
+		            </div>
+			        </div>
+			        <div class="col-sm-2 col-xs-4">
+		            <div class="panel panel-default">
+	                <img id="microphone_switch" onclick="listen()" src="res/icons/microphone.png" class="img-thumbnail" width="100%">
+									<div class="progress" style="margin-bottom:0px;">
+                  	<div id="microphone" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                  		<strong>Off</strong>
+                  	</div>
+				          </div>
+					      </div>
 					    </div>
+					  </div>
 					</div>
 				</div>
 			</div>
@@ -235,39 +226,39 @@
 			<div id="data" class="panel panel-default">
 				<div class="panel-body">
 					<div class="container">
-  						<h4><span class="glyphicon glyphicon-stats"></span> Data Telemetry</h4>
-			            <div class="panel panel-default">
+  					<h4><span class="glyphicon glyphicon-stats"></span> Data Telemetry</h4>
+			      <div class="panel panel-default">
 			 				<canvas id="grapher" width="100%" height="60%"></canvas>
-			            </div>
-			            <div class="panel panel-default">
-			            	<div class="btn-group btn-group-justified">
-			            		<div class="btn-group">
+			      </div>
+			      <div class="panel panel-default">
+			        <div class="btn-group btn-group-justified">
+			          <div class="btn-group">
 									<input class="btn btn-primary btn-lg" type="text" id="VALUE" name="VALUE" value="1">
 								</div>
 								 <div class="btn-group">
 									<select class="btn btn-primary btn-lg" id="RANGE" name="RANGE">
-									    <option value="hours">hours</option>
-									    <option value="seconds">seconds</option>
-									    <option value="minutes">minutes</option>
-									    <option value="days">days</option>
-									    <option value="months">months</option>
-									    <option value="years">years</option>
+								    <option value="hours">hours</option>
+								    <option value="seconds">seconds</option>
+								    <option value="minutes">minutes</option>
+								    <option value="days">days</option>
+								    <option value="months">months</option>
+								    <option value="years">years</option>
 									</select>
 								</div>
-								 <div class="btn-group">
+								<div class="btn-group">
 									<button class="btn btn-primary btn-lg" onclick="plot_graph()">Plot</button>
 								</div>
 							</div>
-    					</div>
+    				</div>
 					</div>
 				</div>
 			</div>
 
 			<div id="footer" class="text-center">
-  				<a href="mailto:dragland@stanford.edu" target="_blank" class="btn btn-default" role="button">
-  					<span class="glyphicon glyphicon-envelope"></span> dragland@stanford.edu</a>
-  				<a href="https://web.stanford.edu/~dragland/" target="_blank" class="btn btn-default" role="button">
-  					Made with <span class="glyphicon glyphicon-heart"></span> in Stanford, CA</a>
+				<a href="mailto:dragland@stanford.edu" target="_blank" class="btn btn-default" role="button">
+					<span class="glyphicon glyphicon-envelope"></span> dragland@stanford.edu</a>
+				<a href="https://web.stanford.edu/~dragland/" target="_blank" class="btn btn-default" role="button">
+					Made with <span class="glyphicon glyphicon-heart"></span> in Stanford, CA</a>
 			</div>
 		</div>
 	</body>

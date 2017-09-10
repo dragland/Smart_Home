@@ -95,6 +95,12 @@ def read_memory():
 	output = subprocess.check_output(["df -h | grep /dev/root | cut -d ' ' -f 14-"], shell=True)
 	config.memory = str(output)[:2]
 
+#Function: read_signal
+#This function reads the wifi signal quality on the raspberry pi.
+def read_signal():
+	output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d "=" -f 2 | cut -f 1 -d "/""], shell=True)
+	config.wifi = str(output)
+
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
 def read_door(PIN_NUMBER):
