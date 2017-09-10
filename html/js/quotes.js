@@ -1,9 +1,7 @@
 //Davy Ragland | dragland@stanford.edu
 //Home Automation System version 3.0 | 2017
 
-/*********************************************************************
-                           SETUP
-*********************************************************************/
+//***********************************SETUP**************************************
 var greeting = [
 	"Hello Davy, How may I be of assistance?",
 	"Hello and, again, welcome to the Aperture Science computer-aided enrichment center.",
