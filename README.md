@@ -26,8 +26,6 @@ Set the IP address to static & enabling I2C:
 sudo raspi-config
 ```
 
->Look up tutorial for your version of Raspbian
-
 Starting the script automatically:
 
 ```bash
@@ -38,27 +36,7 @@ sudo crontab -e
 
 >0 12 * * * /sbin/shutdown -r now
 
-Enabling I2C:
-
-```bash
-sudo vi /boot/config.txt
-```
-
->dtparam=i2c1=on
-
->dtparam=i2c_arm=on
-
-```bash
-sudo vi /etc/modules
-```
-
->i2c-dev
-
 Enabling CGI scripts:
-
-```bash
-sudo a2enmod cgi
-```
 
 ```bash
 sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf
