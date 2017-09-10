@@ -20,12 +20,6 @@ sudo ./install.sh
 ```
 
 ### You must manually setup the following:
-Set the IP address to static & enabling I2C:
-
-```bash
-sudo raspi-config
-```
-
 Starting the script automatically:
 
 ```bash
