@@ -25,8 +25,8 @@ function HTTP_GET(URL) {
 	return xmlHttp.responseText;
 }
 
-Function: switch
-This function toggles the relay CGI script.
+//Function: switch
+//This function toggles the relay CGI script.
 function switch_relay(URL) {
 	document.location = URL;
 }
