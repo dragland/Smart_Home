@@ -22,8 +22,7 @@ def header(TYPE):
 	print ""
 
 #Function: queryData
-#This function querries the SQL data base with the appropriate
-#HTTP GET parmeters.
+#This function querries the SQL data base with the appropriate HTTP GET parmeters.
 def queryData(DATABASE, RANGE, VALUE):
 	conn = sqlite3.connect(DATABASE)
 	curs = conn.cursor()
@@ -43,7 +42,7 @@ def formatData(ROWS):
 def queryBot(QUERY):
 	cb = cleverbot.Cleverbot()
 	print(cb.ask(QUERY))
-	
+
 #***********************************HELPERS*************************************
 #Function: get_value
 #This function gets the value from an HTTP GET call.

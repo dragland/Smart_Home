@@ -31,6 +31,12 @@ function switch_relay(URL) {
 	document.location = URL;
 }
 
+//Function: update_leds
+//This function pdates the RGB LED strip.
+function update_leds(picker) {
+	document.getElementById('leds_rgb').innerHTML = Math.round(picker.rgb[0]) + ", " + Math.round(picker.rgb[1]) + ", " + Math.round(picker.rgb[2]);
+}
+
 //************************************MAIN**************************************
 //Function: update_state
 //This function updates the values printed on the interface.
