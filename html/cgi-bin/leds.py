@@ -7,9 +7,11 @@ import smartHomeCGI
 
 #*************************************MAIN**************************************
 smartHomeCGI.header("BLANK")
-PIN_NUMBER = int(smartHomeCGI.get_value("PIN_NUMBER"))
-smartHomeCGI.set_mode(PIN_NUMBER)
-if smartHomeCGI.read_state(PIN_NUMBER) == "1":
-	smartHomeCGI.relay_on(PIN_NUMBER)
+RED_VAL   = smartHomeCGI.get_value("R")
+GREEN_VAL = smartHomeCGI.get_value("G")
+BLUE_VAL  = smartHomeCGI.get_value("B")
+PARTY_VAL = smartHomeCGI.get_value("P")
+if PARTY_VAL == "1":
+    smartHomeCGI.set_leds_party()
 else:
-	smartHomeCGI.relay_off(PIN_NUMBER)
+    smartHomeCGI.set_leds(RED_VAL,GREEN_VAL,BLUE_VAL)

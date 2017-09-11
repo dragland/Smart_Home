@@ -27,14 +27,24 @@ function HTTP_GET(URL) {
 
 //Function: switch
 //This function toggles the relay CGI script.
-function switch_relay(URL) {
-	document.location = URL;
+function switch_relay() {
+	document.location = "cgi-bin/relay.py";
 }
 
-//Function: update_leds
-//This function pdates the RGB LED strip.
-function update_leds(picker) {
-	document.getElementById('leds_rgb').innerHTML = Math.round(picker.rgb[0]) + ", " + Math.round(picker.rgb[1]) + ", " + Math.round(picker.rgb[2]);
+//Function: sets_leds
+//This function sets the LEDs to a specific RGB value.
+function set_leds(picker) {
+	var R = Math.round(picker.rgb[0]);
+	var G = Math.round(picker.rgb[1]);
+	var B = Math.round(picker.rgb[2]);
+	document.getElementById('leds_rgb').innerHTML = R + ", " + G + ", " + B;
+	document.location = "cgi-bin/leds.py?R=" + R + "&G=" + G + "&B=" + B + "&P=0";
+}
+
+//Function: set_leds_party
+//This function turns on the party mode LED setting.
+function set_leds_party() {
+	document.location = "cgi-bin/leds.py?R=0&G=0&B=0&P=1";
 }
 
 //************************************MAIN**************************************
@@ -308,14 +318,20 @@ function listen() {
 
 		var fan = function() {
 		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
-		  document.location = "cgi-bin/switch.py?PIN_NUMBER=4";
+		  document.location = "cgi-bin/relay.py";
 		}
 
 		var lights = function(COLOR) {
 			responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
-			if(COLOR == "red"){document.location = "cgi-bin/switch.py?PIN_NUMBER=0";}
-			if(COLOR == "green"){document.location = "cgi-bin/switch.py?PIN_NUMBER=2";}
-			if(COLOR == "blue" || COLOR == "on" || COLOR == "off"){document.location = "cgi-bin/switch.py?PIN_NUMBER=3";}
+			if(COLOR == "red"){document.location = "cgi-bin/leds.py?R=255&G=0&B=0&P=0";}
+			if(COLOR == "green"){document.location = "cgi-bin/leds.py?R=0&G=255&B=0&P=0";}
+			if(COLOR == "blue" || COLOR == "on" ){document.location = "cgi-bin/leds.py?R=0&G=0&B=255&P=0";}
+			if(COLOR == "off"){document.location = "cgi-bin/leds.py?R=0&G=0&B=0&P=0";}
+		}
+
+		var party = function() {
+		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
+		  document.location = "cgi-bin/leds.py?R=0&G=0&B=0&P=1";
 		}
 
 		var plot = function(VALUE, RANGE) {
@@ -338,6 +354,7 @@ function listen() {
 			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
 			"(eve) (can you) (could you) (please) (turn) (on) (off) (set) (make) (switch) (the) lights :COLOR (please)" : lights,
 			"(eve) (can you) (could you) (please) (turn) (on) (off) (set) (make) (switch) (the) :COLOR lights (on) (off) (please)" : lights,
+			"(eve) (lets) (get) (make) (this) (party) (started) (lit) (turnt)" : party,
 			"(eve) (plot) (graph) (show me) (all) (the) (data) (from) (last) :VALUE :RANGE (ago)" : plot,
 			"(eve) *QUERY": queryBot
 		};
