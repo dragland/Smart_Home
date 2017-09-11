@@ -116,7 +116,7 @@ def read_door(PIN_NUMBER):
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
 	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.co2, config.energy, config.cpu, config.memory, config.door, config.fan, config.lights_red, config.lights_green, config.lights_blue))
-	state = open("html/state.txt", "w")
+	state = open("html/state", "w")
 	state.write(data + "\n")
 	state.close()
 	print ">> System Status:",
@@ -127,7 +127,7 @@ def write_state():
 #Function: write_archive
 #This function writes the current data from each sensor module to a SQL database.
 def write_archive():
-	conn = sqlite3.connect("html/archive.db")
+	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
 	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(config.temp_f), "{0:.2f}".format(config.rh), "{0:.2f}".format(config.co2), "{0:.2f}".format(config.energy), config.cpu, config.memory, config.door, config.fan, config.lights_red, config.lights_green, config.lights_blue))
 	conn.commit()
@@ -209,7 +209,7 @@ def init_lights():
 #Function: init_archive
 #This function initializes the SQL database.
 def init_archive():
-	conn = sqlite3.connect("html/archive.db")
+	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
 	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, co2 NUMERIC, energy NUMERIC, cpu NUMERIC, memory NUMERIC, door INTEGER, fan INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER)")
 	conn.commit()

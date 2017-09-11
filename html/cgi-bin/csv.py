@@ -9,5 +9,5 @@ import smartHomeCGI
 smartHomeCGI.header("HTML")
 RANGE = smartHomeCGI.get_value("RANGE")
 VALUE = smartHomeCGI.get_value("VALUE")
-rows = smartHomeCGI.queryData("../archive.db", RANGE, VALUE)
+rows = smartHomeCGI.queryData("../db/archive.db", RANGE, VALUE)
 smartHomeCGI.formatData(rows)

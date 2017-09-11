@@ -71,12 +71,12 @@ def relay_on(PIN_NUMBER):
 def relay_off(PIN_NUMBER):
 	os.system("gpio write %i 1" % (PIN_NUMBER))
 
-#Function: set_leds_party
-#This function turns on the party mode LED setting.
-def set_leds_party():
-	print("TODO")
-
 #Function: set_leds
 #This function sets the LEDs to a specific RGB value.
 def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
+	print("TODO")
+
+#Function: set_leds_party
+#This function turns on the party mode LED setting.
+def set_leds_party():
 	print("TODO")

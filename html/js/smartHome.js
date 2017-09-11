@@ -51,7 +51,7 @@ function set_leds_party() {
 //Function: update_state
 //This function updates the values printed on the interface.
 function update_state() {
-	var data = HTTP_GET("state.txt");
+	var data = HTTP_GET("state");
 	if (data === ""){data = "_,_,_,_,_,_,_,_,_,_";}
 	var state = data.split(",");
 	document.getElementById("time").innerHTML   = state[ 0];
