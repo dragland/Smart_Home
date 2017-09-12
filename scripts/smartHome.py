@@ -10,24 +10,24 @@ import serial
 import datetime
 import subprocess
 import sqlite3
-import Adafruit_DHT
 import RPi.GPIO
-import notsmb
 import xbee
 import config
 
 #**********************************FUNCTIONS************************************
 #Function: read_rh_temp
-#This function reads the data from a DHT22 AM2302 humidity and temperature sensor.
-def read_rh_temp(PIN_NUMBER):
-	r_h, temp = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, PIN_NUMBER, 5, 3)
+#This function reads the data from a HIH6130 humidity and temperature sensor.
+def read_rh_temp():
+	# TODO
+	r_h = 45.1
+	temp = 32
 	if r_h and temp is not None:
 		config.rh = r_h
 		config.temp_f = temp * 1.8 + 32.0
 	time.sleep(2)
 
 #Function: read_co2
-#This function reads the data from a AN168-S8 CO2 sensor.
+#This function reads the data from a SenseAir S8 CO2 sensor.
 def read_co2():
 	while True:
 		ser = serial.Serial("/dev/ttyS0",baudrate =9600,timeout = .5)
@@ -95,9 +95,9 @@ def read_memory():
 	output = subprocess.check_output(["df -h | grep /dev/root | cut -d ' ' -f 14-"], shell=True)
 	config.memory = str(output)[:2]
 
-#Function: read_signal
+#Function: read_wifi
 #This function reads the wifi signal quality on the raspberry pi.
-def read_signal():
+def read_wifi():
 	output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d "=" -f 2 | cut -f 1 -d "/""], shell=True)
 	config.wifi = str(output)
 
@@ -115,7 +115,7 @@ def read_door(PIN_NUMBER):
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%d,%d,%d,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.co2, config.energy, config.cpu, config.memory, config.door, config.fan, config.lights_red, config.lights_green, config.lights_blue))
+	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.co2, config.energy, config.cpu, config.memory, config.wifi, config.door, config.fan))
 	state = open("html/state", "w")
 	state.write(data + "\n")
 	state.close()
@@ -129,7 +129,7 @@ def write_state():
 def write_archive():
 	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
-	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(config.temp_f), "{0:.2f}".format(config.rh), "{0:.2f}".format(config.co2), "{0:.2f}".format(config.energy), config.cpu, config.memory, config.door, config.fan, config.lights_red, config.lights_green, config.lights_blue))
+	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(config.temp_f), "{0:.2f}".format(config.rh), "{0:.2f}".format(config.co2), "{0:.2f}".format(config.energy), config.cpu, config.memory, config.wifi, config.door, config.fan))
 	conn.commit()
 	conn.close()
 
@@ -142,33 +142,6 @@ def automate(PIN_NUMBER):
 		relay_off(int(PIN_NUMBER))
 
 #***********************************HELPERS*************************************
-#Function: read_lights_red
-#This function reads the data from a relay.
-def read_lights_red(PIN_NUMBER):
-	if read_state(int(PIN_NUMBER)) == "1":
-		config.lights_red = 0
-	else:
-		config.lights_red = 1
-	time.sleep(0.1)
-
-#Function: read_lights_green
-#This function reads the data from a relay.
-def read_lights_green(PIN_NUMBER):
-	if read_state(int(PIN_NUMBER)) == "1":
-		config.lights_green = 0
-	else:
-		config.lights_green = 1
-	time.sleep(0.1)
-
-#Function: read_lights_blue
-#This function reads the data from a relay.
-def read_lights_blue(PIN_NUMBER):
-	if read_state(int(PIN_NUMBER)) == "1":
-		config.lights_blue = 0
-	else:
-		config.lights_blue = 1
-	time.sleep(0.1)
-
 #Function: read_fan
 #This function reads the data from a relay.
 def read_fan(PIN_NUMBER):
@@ -197,20 +170,13 @@ def relay_off(PIN_NUMBER):
 #Function: init_lights
 #This function initializes the lights to the default configuration.
 def init_lights():
-	os.system("gpio mode 0 out")
-	relay_off(0)
-	os.system("gpio mode 2 out")
-	relay_off(2)
-	os.system("gpio mode 3 out")
-	relay_off(3)
-	os.system("gpio mode 4 out")
-	relay_off(4)
+	print("TODO")
 
 #Function: init_archive
 #This function initializes the SQL database.
 def init_archive():
 	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
-	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, co2 NUMERIC, energy NUMERIC, cpu NUMERIC, memory NUMERIC, door INTEGER, fan INTEGER, lights_red INTEGER, lights_green INTEGER, lights_blue INTEGER)")
+	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, co2 NUMERIC, energy NUMERIC, cpu NUMERIC, memory NUMERIC, wifi NUMERIC, door INTEGER)")
 	conn.commit()
 	conn.close()
