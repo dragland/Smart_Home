@@ -1,0 +1,10 @@
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [[No Variations]] of Project [Smart_Home.PrjPcb]
+   Generated File[Bill of Materials-Smart_Home.xlsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 3:49:39 PM On 9/9/2017
