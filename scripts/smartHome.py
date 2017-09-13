@@ -136,7 +136,7 @@ def write_archive():
 #Function: automate
 #This function automates the relay control based on setpoint values.
 def automate(PIN_NUMBER):
-	if config.temp_f > 80:
+	if config.temp_f > 95:
 		relay_on(int(PIN_NUMBER))
 	if config.temp_f < 40:
 		relay_off(int(PIN_NUMBER))
@@ -146,9 +146,9 @@ def automate(PIN_NUMBER):
 #This function reads the data from a relay.
 def read_fan(PIN_NUMBER):
 	if read_state(int(PIN_NUMBER)) == "1":
-		config.fan = 0
-	else:
 		config.fan = 1
+	else:
+		config.fan = 0
 	time.sleep(0.1)
 
 #Function: read_state
@@ -160,12 +160,12 @@ def read_state(PIN_NUMBER):
 #Function: relay_on
 #This function turns on a relay.
 def relay_on(PIN_NUMBER):
-	os.system("gpio write %i 0" % (PIN_NUMBER))
+	os.system("gpio write %i 1" % (PIN_NUMBER))
 
 #Function: relay_off
 #This function turns off a relay.
 def relay_off(PIN_NUMBER):
-	os.system("gpio write %i 1" % (PIN_NUMBER))
+	os.system("gpio write %i 0" % (PIN_NUMBER))
 
 #Function: init_lights
 #This function initializes the lights to the default configuration.

@@ -64,12 +64,12 @@ def read_state(PIN_NUMBER):
 #Function: relay_on
 #This function turns on a relay.
 def relay_on(PIN_NUMBER):
-	os.system("gpio write %i 0" % (PIN_NUMBER))
+	os.system("gpio write %i 1" % (PIN_NUMBER))
 
 #Function: relay_off
 #This function turns off a relay.
 def relay_off(PIN_NUMBER):
-	os.system("gpio write %i 1" % (PIN_NUMBER))
+	os.system("gpio write %i 0" % (PIN_NUMBER))
 
 #Function: set_leds
 #This function sets the LEDs to a specific RGB value.
