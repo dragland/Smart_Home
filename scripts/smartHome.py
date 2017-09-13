@@ -170,6 +170,8 @@ def relay_off(PIN_NUMBER):
 #Function: init_lights
 #This function initializes the lights to the default configuration.
 def init_lights():
+	os.system("gpio mode 5 out")
+	relay_off(5)
 	print("TODO")
 
 #Function: init_archive
