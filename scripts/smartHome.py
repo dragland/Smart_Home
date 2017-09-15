@@ -148,15 +148,9 @@ def read_state(PIN_NUMBER):
 	output = subprocess.check_output(["gpio read %i" % (PIN_NUMBER)], shell=True)
 	return str(output)[:1]
 
-#Function: relay_on
-#This function turns on a relay.
-def relay_on(PIN_NUMBER):
-	os.system("gpio mode %i out" % (PIN_NUMBER))
-	os.system("gpio write %i 1" % (PIN_NUMBER))
-
-#Function: relay_off
-#This function turns off a relay.
-def relay_off(PIN_NUMBER):
+#Function: init_relay
+#This function initializes the relay to the default configuration.
+def init_lights(PIN_NUMBER):
 	os.system("gpio mode %i out" % (PIN_NUMBER))
 	os.system("gpio write %i 0" % (PIN_NUMBER))
 

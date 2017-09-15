@@ -30,6 +30,7 @@ t5.start()
 t6.start()
 t7.start()
 t8.start()
+smartHome.init_relay(5)
 smartHome.init_lights()
 while True:
 	if t1.is_alive() is False:
