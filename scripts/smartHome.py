@@ -48,40 +48,39 @@ def read_co2():
 #This function reads the data from a Kill-A-Watt P3 sensor.
 def read_energy():
 	xb = xbee.XBee(serial.Serial("/dev/ttyUSB0", 9600))
-	while True:
-		packet = xb.wait_read_frame()
-		voltagedata = [-1] * (len(packet["samples"]) - 1)
-		ampdata = [-1] * (len(packet["samples"]) - 1)
-		for i in range(len(voltagedata)):
-			voltagedata[i] = packet["samples"][i + 1]["adc-0"]
-			ampdata[i] = packet["samples"][i + 1]["adc-0"]
-		min_v = 1024
-		max_v = 0
-		for i in range(len(voltagedata)):
-			if (min_v > voltagedata[i]):
-				min_v = voltagedata[i]
-			if (max_v < voltagedata[i]):
-				max_v = voltagedata[i]
-		avgv = (max_v + min_v) / 2
-		vpp =  max_v - min_v
-		for i in range(len(voltagedata)):
-			voltagedata[i] -= avgv
-			voltagedata[i] = (voltagedata[i] * 340) / vpp
-		for i in range(len(ampdata)):
-			ampdata[i] -= 470
-			ampdata[i] /= 15.5
-		wattdata = [0] * len(voltagedata)
-		for i in range(len(wattdata)):
-			wattdata[i] = voltagedata[i] * ampdata[i]
-		avgamp = 0
-		for i in range(17):
-			avgamp += abs(ampdata[i])
-		avgamp /= 17.0
-		avgwatt = 0
-		for i in range(17):
-			avgwatt += abs(wattdata[i])
-		avgwatt /= 17.0
-		config.energy = avgwatt
+	packet = xb.wait_read_frame()
+	voltagedata = [-1] * (len(packet["samples"]) - 1)
+	ampdata = [-1] * (len(packet["samples"]) - 1)
+	for i in range(len(voltagedata)):
+		voltagedata[i] = packet["samples"][i + 1]["adc-0"]
+		ampdata[i] = packet["samples"][i + 1]["adc-0"]
+	min_v = 1024
+	max_v = 0
+	for i in range(len(voltagedata)):
+		if (min_v > voltagedata[i]):
+			min_v = voltagedata[i]
+		if (max_v < voltagedata[i]):
+			max_v = voltagedata[i]
+	avgv = (max_v + min_v) / 2
+	vpp =  max_v - min_v
+	for i in range(len(voltagedata)):
+		voltagedata[i] -= avgv
+		voltagedata[i] = (voltagedata[i] * 340) / vpp
+	for i in range(len(ampdata)):
+		ampdata[i] -= 470
+		ampdata[i] /= 15.5
+	wattdata = [0] * len(voltagedata)
+	for i in range(len(wattdata)):
+		wattdata[i] = voltagedata[i] * ampdata[i]
+	avgamp = 0
+	for i in range(17):
+		avgamp += abs(ampdata[i])
+	avgamp /= 17.0
+	avgwatt = 0
+	for i in range(17):
+		avgwatt += abs(wattdata[i])
+	avgwatt /= 17.0
+	config.energy = avgwatt
 
 #Function: read_cpu
 #This function reads the percent memory used by the CPU.
@@ -98,8 +97,9 @@ def read_memory():
 #Function: read_wifi
 #This function reads the wifi signal quality on the raspberry pi.
 def read_wifi():
-	output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
-	config.wifi = str(output)
+	# output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
+	# config.wifi = str(output)
+	config.wifi = str(2)
 
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
