@@ -97,8 +97,10 @@ def read_memory():
 #Function: read_wifi
 #This function reads the wifi signal quality on the raspberry pi.
 def read_wifi():
-	output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
-	# state.wifi = str(output)
+	output = subprocess.check_output(["df -h | grep /dev/root | cut -d ' ' -f 14-"], shell=True)
+	state.wifi = str(output)[:2]
+	# output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
+	# # state.wifi = str(output)
 
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
@@ -115,9 +117,9 @@ def read_door(PIN_NUMBER):
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
 	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), state.temp_f, state.rh, state.co2, state.energy, state.cpu, state.memory, state.wifi, state.door, state.fan))
-	state = open("html/state", "w")
-	state.write(data + "\n")
-	state.close()
+	stateFile = open("html/state", "w")
+	stateFile.write(data + "\n")
+	stateFile.close()
 	print ">> System Status:",
 	print data,
 	sys.stdout.flush()
@@ -131,14 +133,6 @@ def write_archive():
 	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(state.temp_f), "{0:.2f}".format(state.rh), "{0:.2f}".format(state.co2), "{0:.2f}".format(state.energy), state.cpu, state.memory, state.wifi, state.door, state.fan))
 	conn.commit()
 	conn.close()
-
-#Function: automate
-#This function automates the relay control based on setpoint values.
-def automate(PIN_NUMBER):
-	if state.temp_f > 95:
-		relay_on(int(PIN_NUMBER))
-	if state.temp_f < 40:
-		relay_off(int(PIN_NUMBER))
 
 #***********************************HELPERS*************************************
 #Function: read_fan
@@ -159,17 +153,18 @@ def read_state(PIN_NUMBER):
 #Function: relay_on
 #This function turns on a relay.
 def relay_on(PIN_NUMBER):
+	os.system("gpio mode %i out" % (PIN_NUMBER))
 	os.system("gpio write %i 1" % (PIN_NUMBER))
 
 #Function: relay_off
 #This function turns off a relay.
 def relay_off(PIN_NUMBER):
+	os.system("gpio mode %i out" % (PIN_NUMBER))
 	os.system("gpio write %i 0" % (PIN_NUMBER))
 
 #Function: init_lights
 #This function initializes the lights to the default configuration.
 def init_lights():
-	os.system("gpio mode 5 out")
 	relay_off(5)
 	print("TODO")
 
