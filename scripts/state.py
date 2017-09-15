@@ -9,6 +9,6 @@ co2          = 0
 energy       = 0
 cpu          = 0
 memory       = 0
-wifi         = 0
+signal       = 0
 door         = 0
 fan          = 0
