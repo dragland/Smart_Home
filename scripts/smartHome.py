@@ -111,10 +111,19 @@ def read_door(PIN_NUMBER):
 		state.door = 0
 	time.sleep(0.1)
 
+#Function: read_relay
+#This function reads the data from a relay.
+def read_relay(PIN_NUMBER):
+	if read_state(int(PIN_NUMBER)) == "1":
+		state.relay = 1
+	else:
+		state.relay = 0
+	time.sleep(0.1)
+
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), state.temp_f, state.rh, state.co2, state.energy, state.cpu, state.memory, state.wifi, state.door, state.fan))
+	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), state.temp_f, state.rh, state.co2, state.energy, state.cpu, state.memory, state.wifi, state.door, state.relay))
 	stateFile = open("html/state", "w")
 	stateFile.write(data + "\n")
 	stateFile.close()
@@ -128,20 +137,11 @@ def write_state():
 def write_archive():
 	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
-	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(state.temp_f), "{0:.2f}".format(state.rh), "{0:.2f}".format(state.co2), "{0:.2f}".format(state.energy), state.cpu, state.memory, state.wifi, state.door, state.fan))
+	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(state.temp_f), "{0:.2f}".format(state.rh), "{0:.2f}".format(state.co2), "{0:.2f}".format(state.energy), state.cpu, state.memory, state.wifi, state.door, state.relay))
 	conn.commit()
 	conn.close()
 
 #***********************************HELPERS*************************************
-#Function: read_fan
-#This function reads the data from a relay.
-def read_fan(PIN_NUMBER):
-	if read_state(int(PIN_NUMBER)) == "1":
-		state.fan = 1
-	else:
-		state.fan = 0
-	time.sleep(0.1)
-
 #Function: read_state
 #This function reads the state of a relay.
 def read_state(PIN_NUMBER):
@@ -163,7 +163,6 @@ def relay_off(PIN_NUMBER):
 #Function: init_lights
 #This function initializes the lights to the default configuration.
 def init_lights():
-	relay_off(5)
 	print("TODO")
 
 #Function: init_archive
@@ -171,6 +170,6 @@ def init_lights():
 def init_archive():
 	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
-	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, co2 NUMERIC, energy NUMERIC, cpu NUMERIC, memory NUMERIC, wifi NUMERIC, door INTEGER, fan INTEGER)")
+	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, co2 NUMERIC, energy NUMERIC, cpu NUMERIC, memory NUMERIC, wifi NUMERIC, door INTEGER, relay INTEGER)")
 	conn.commit()
 	conn.close()

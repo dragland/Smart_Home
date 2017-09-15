@@ -63,7 +63,7 @@ function update_state() {
 	document.getElementById("memory").innerHTML = state[ 6] + " %";
 	document.getElementById("wifi").innerHTML   = state[ 7] + " %";
 	document.getElementById("door").innerHTML   = state[ 8];
-	document.getElementById("fan").innerHTML    = state[ 9];
+	document.getElementById("relay").innerHTML  = state[ 9];
 }
 
 //Function: plot_graph
@@ -78,20 +78,20 @@ function plot_graph() {
 	var memory_data       = [];
 	var wifi_data         = [];
 	var door_data         = [];
-	var fan_data          = [];
+	var relay_data        = [];
 
 	var lines = HTTP_GET("cgi-bin/csv.py?RANGE=" + document.getElementById("RANGE").value + "&VALUE=" + document.getElementById("VALUE").value).split("\n");
     for (var i = 0; i < lines.length; i++) {
-       timestamp_data.push(       lines[i].split(",")[0]);
-       temp_f_data.push(          lines[i].split(",")[1]);
-       rh_data.push(              lines[i].split(",")[2]);
-       co2_data.push(             lines[i].split(",")[3]);
-       energy_data.push(          lines[i].split(",")[4]);
-       cpu_data.push(             lines[i].split(",")[5]);
-       memory_data.push(          lines[i].split(",")[6]);
-       wifi_data.push(            lines[i].split(",")[7]);
-       door_data.push(40 * Number(lines[i].split(",")[8]));
-       fan_data.push( 30 * Number(lines[i].split(",")[9]));
+       timestamp_data.push(        lines[i].split(",")[0]);
+       temp_f_data.push(           lines[i].split(",")[1]);
+       rh_data.push(               lines[i].split(",")[2]);
+       co2_data.push(              lines[i].split(",")[3]);
+       energy_data.push(           lines[i].split(",")[4]);
+       cpu_data.push(              lines[i].split(",")[5]);
+       memory_data.push(           lines[i].split(",")[6]);
+       wifi_data.push(             lines[i].split(",")[7]);
+       door_data.push(40 *  Number(lines[i].split(",")[8]));
+       relay_data.push(30 * Number(lines[i].split(",")[9]));
     }
 
 	var ctx = document.getElementById("grapher");
@@ -237,8 +237,8 @@ function plot_graph() {
           pointBackgroundColor: "rgba(255,255,255,1)",
         },
         {
-          data: fan_data,
-          label: "fan",
+          data: relay_data,
+          label: "relay",
           borderColor: "rgba(59,234,166,1)",
           pointHoverBackgroundColor: "rgba(59,234,166,1)",
           backgroundColor: "rgba(59,234,166,.1)",
@@ -316,7 +316,7 @@ function listen() {
 		  responsiveVoice.speak(about[Math.floor(Math.random() * about.length) + 0]);
 		}
 
-		var fan = function() {
+		var relay = function() {
 		  responsiveVoice.speak(affirmative[Math.floor(Math.random() * affirmative.length) + 0]);
 		  document.location = "cgi-bin/relay.py";
 		}
@@ -351,7 +351,7 @@ function listen() {
 			"(eve) (what) (how) (wet) (dry) (is) (it) (the) (current) (relative) (humidity) (right now)" : rh,
 			"(eve) (what) (how) (is) (the) (current) (air) (quality) (co2) (carbon dioxide) (level) (concentration) (right now)" : co2,
 			"(eve) (what) (how) (is) (the) (current) (power) (electricity) (energy) (level) (usage) (consumption) (right now)" : energy,
-			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) fan (on) (off) (please)" : fan,
+			"(eve) (can you) (could you) (please) (get) (turn) (on) (off) (switch) (toggle) (the) relay (on) (off) (please)" : relay,
 			"(eve) (can you) (could you) (please) (turn) (on) (off) (set) (make) (switch) (the) lights :COLOR (please)" : lights,
 			"(eve) (can you) (could you) (please) (turn) (on) (off) (set) (make) (switch) (the) :COLOR lights (on) (off) (please)" : lights,
 			"(eve) (lets) (get) (make) (this) (party) (started) (lit) (turnt)" : party,

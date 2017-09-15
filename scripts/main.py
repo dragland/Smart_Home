@@ -21,7 +21,7 @@ t4  = threading.Thread(target = smartHome.read_cpu)
 t5  = threading.Thread(target = smartHome.read_memory)
 t6  = threading.Thread(target = smartHome.read_wifi)
 t7  = threading.Thread(target = smartHome.read_door, args = (23,))
-t8  = threading.Thread(target = smartHome.read_fan, args = (5,))
+t8  = threading.Thread(target = smartHome.read_relay, args = (5,))
 t1.start()
 t2.start()
 t3.start()
@@ -62,7 +62,7 @@ while True:
 		t7.start()
 	if t8.is_alive() is False:
 		del t8
-		t8 = threading.Thread(target = smartHome.read_fan, args = (5,))
+		t8 = threading.Thread(target = smartHome.read_relay, args = (5,))
 		t8.start()
 	smartHome.write_state()
 	smartHome.write_archive()

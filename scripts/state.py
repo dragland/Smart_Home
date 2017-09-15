@@ -11,4 +11,4 @@ cpu          = 0
 memory       = 0
 wifi         = 0
 door         = 0
-fan          = 0
+relay        = 0

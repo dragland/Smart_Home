@@ -9,7 +9,7 @@ import smartHomeCGI
 smartHomeCGI.header("BLANK")
 PIN_NUMBER = 5
 smartHomeCGI.set_mode(PIN_NUMBER)
-if smartHomeCGI.read_state(PIN_NUMBER) == "1":
+if smartHomeCGI.read_state(PIN_NUMBER) == "0":
 	smartHomeCGI.relay_on(PIN_NUMBER)
 else:
 	smartHomeCGI.relay_off(PIN_NUMBER)
