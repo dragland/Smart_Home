@@ -12,7 +12,7 @@ import subprocess
 import sqlite3
 import RPi.GPIO
 import xbee
-import config
+import state
 
 #**********************************FUNCTIONS************************************
 #Function: read_rh_temp
@@ -22,8 +22,8 @@ def read_rh_temp():
 	r_h = 45.1
 	temp = 32
 	if r_h and temp is not None:
-		config.rh = r_h
-		config.temp_f = temp * 1.8 + 32.0
+		state.rh = r_h
+		state.temp_f = temp * 1.8 + 32.0
 	time.sleep(2)
 
 #Function: read_co2
@@ -39,7 +39,7 @@ def read_co2():
 			high = ord(resp[3])
 			low = ord(resp[4])
 			co2Value = (high*256) + low
-			config.co2 = co2Value
+			state.co2 = co2Value
 			break
 		except:
 			blank =0;
@@ -80,27 +80,25 @@ def read_energy():
 	for i in range(17):
 		avgwatt += abs(wattdata[i])
 	avgwatt /= 17.0
-	config.energy = avgwatt
+	state.energy = avgwatt
 
 #Function: read_cpu
 #This function reads the percent memory used by the CPU.
 def read_cpu():
 	output = subprocess.check_output(["grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}'"], shell=True)
-	config.cpu = str(output)[:2]
+	state.cpu = str(output)[:2]
 
 #Function: read_memory
 #This function reads the percent memory available on the raspberry pi.
 def read_memory():
 	output = subprocess.check_output(["df -h | grep /dev/root | cut -d ' ' -f 14-"], shell=True)
-	config.memory = str(output)[:2]
-	config.wifi = 90
+	state.memory = str(output)[:2]
 
 #Function: read_wifi
 #This function reads the wifi signal quality on the raspberry pi.
 def read_wifi():
-	# output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
-	# config.wifi = str(output)
-	config.wifi = str(2)
+	output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
+	state.wifi = str(output)
 
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
@@ -108,15 +106,15 @@ def read_door(PIN_NUMBER):
 	RPi.GPIO.setmode(RPi.GPIO.BCM)
 	RPi.GPIO.setup(PIN_NUMBER, RPi.GPIO.IN, pull_up_down = RPi.GPIO.PUD_UP)
 	if RPi.GPIO.input(PIN_NUMBER):
-		config.door = 1
+		state.door = 1
 	else:
-		config.door = 0
+		state.door = 0
 	time.sleep(0.1)
 
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), config.temp_f, config.rh, config.co2, config.energy, config.cpu, config.memory, config.wifi, config.door, config.fan))
+	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), state.temp_f, state.rh, state.co2, state.energy, state.cpu, state.memory, state.wifi, state.door, state.fan))
 	state = open("html/state", "w")
 	state.write(data + "\n")
 	state.close()
@@ -130,16 +128,16 @@ def write_state():
 def write_archive():
 	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
-	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(config.temp_f), "{0:.2f}".format(config.rh), "{0:.2f}".format(config.co2), "{0:.2f}".format(config.energy), config.cpu, config.memory, config.wifi, config.door, config.fan))
+	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(state.temp_f), "{0:.2f}".format(state.rh), "{0:.2f}".format(state.co2), "{0:.2f}".format(state.energy), state.cpu, state.memory, state.wifi, state.door, state.fan))
 	conn.commit()
 	conn.close()
 
 #Function: automate
 #This function automates the relay control based on setpoint values.
 def automate(PIN_NUMBER):
-	if config.temp_f > 95:
+	if state.temp_f > 95:
 		relay_on(int(PIN_NUMBER))
-	if config.temp_f < 40:
+	if state.temp_f < 40:
 		relay_off(int(PIN_NUMBER))
 
 #***********************************HELPERS*************************************
@@ -147,9 +145,9 @@ def automate(PIN_NUMBER):
 #This function reads the data from a relay.
 def read_fan(PIN_NUMBER):
 	if read_state(int(PIN_NUMBER)) == "1":
-		config.fan = 1
+		state.fan = 1
 	else:
-		config.fan = 0
+		state.fan = 0
 	time.sleep(0.1)
 
 #Function: read_state
