@@ -98,7 +98,7 @@ def read_memory():
 #This function reads the wifi signal quality on the raspberry pi.
 def read_wifi():
 	output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
-	state.wifi = str(output)
+	# state.wifi = str(output)
 
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
