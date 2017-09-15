@@ -150,7 +150,7 @@ def read_state(PIN_NUMBER):
 
 #Function: init_relay
 #This function initializes the relay to the default configuration.
-def init_lights(PIN_NUMBER):
+def init_relay(PIN_NUMBER):
 	os.system("gpio mode %i out" % (PIN_NUMBER))
 	os.system("gpio write %i 0" % (PIN_NUMBER))
 
