@@ -93,7 +93,7 @@ def read_cpu():
 def read_memory():
 	output = subprocess.check_output(["df -h | grep /dev/root | cut -d ' ' -f 14-"], shell=True)
 	config.memory = str(output)[:2]
-	config.wifi = str(90)
+	config.wifi = 90
 
 #Function: read_wifi
 #This function reads the wifi signal quality on the raspberry pi.
