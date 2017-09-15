@@ -98,7 +98,7 @@ def read_memory():
 #This function reads the wifi signal quality on the raspberry pi.
 def read_wifi():
 	output = subprocess.check_output(["iwconfig wlan0 | grep Quality | cut -d '=' -f 2 | cut -f 1 -d '/'"], shell=True)
-	state.signal = str(output)
+	state.wifi = str(output)
 
 #Function: read_door
 #This function reads the data from a magnetic door sensor.
@@ -114,7 +114,7 @@ def read_door(PIN_NUMBER):
 #Function: write_state
 #This function prints and writes the current data from each sensor module to a state CSV.
 def write_state():
-	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), state.temp_f, state.rh, state.co2, state.energy, state.cpu, state.memory, state.signal, state.door, state.fan))
+	data = str("%s,%3.1f,%3.1f,%4.0f,%4.2f,%s,%s,%s,%d,%d" % (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), state.temp_f, state.rh, state.co2, state.energy, state.cpu, state.memory, state.wifi, state.door, state.fan))
 	state = open("html/state", "w")
 	state.write(data + "\n")
 	state.close()
@@ -128,7 +128,7 @@ def write_state():
 def write_archive():
 	conn = sqlite3.connect("html/db/archive.db")
 	curs = conn.cursor()
-	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(state.temp_f), "{0:.2f}".format(state.rh), "{0:.2f}".format(state.co2), "{0:.2f}".format(state.energy), state.cpu, state.memory, state.signal, state.door, state.fan))
+	curs.execute("INSERT INTO data values((?), (?), (?), (?), (?), (?), (?), (?), (?), (?))", (datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "{0:.2f}".format(state.temp_f), "{0:.2f}".format(state.rh), "{0:.2f}".format(state.co2), "{0:.2f}".format(state.energy), state.cpu, state.memory, state.wifi, state.door, state.fan))
 	conn.commit()
 	conn.close()
 
