@@ -14,6 +14,7 @@ sudo apt-get install git-core -y
 sudo apt-get install sqlite3 -y
 sudo apt-get install python-serial -y
 sudo apt-get install python-rpi.gpio -y
+sudo apt-get install speedtest-cli -y
 
 echo "Installing..."
 cd /home/pi
