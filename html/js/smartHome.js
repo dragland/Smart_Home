@@ -61,7 +61,7 @@ function update_state() {
 	document.getElementById("energy").innerHTML = state[ 4] + " W";
 	document.getElementById("cpu").innerHTML    = state[ 5] + " %";
 	document.getElementById("memory").innerHTML = state[ 6] + " %";
-	document.getElementById("wifi").innerHTML   = state[ 7] + " %";
+	document.getElementById("wifi").innerHTML   = state[ 7] + " MBps";
 	document.getElementById("door").innerHTML   = state[ 8];
 	document.getElementById("relay").innerHTML  = state[ 9];
 }
