@@ -23,7 +23,7 @@ def read_rh_temp():
 	rht.read()
 	state.rh = rht.rh
 	state.temp_f = rht.t * 1.8 + 32.0
-	time.sleep(5)
+	time.sleep(1)
 
 #Function: read_co2
 #This function reads the data from a SenseAir S8 CO2 sensor.
