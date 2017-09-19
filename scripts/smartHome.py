@@ -11,6 +11,7 @@ import datetime
 import subprocess
 import sqlite3
 import RPi.GPIO
+from   HIH6130.io import HIH6130
 import xbee
 import state
 
@@ -18,32 +19,24 @@ import state
 #Function: read_rh_temp
 #This function reads the data from a HIH6130 humidity and temperature sensor.
 def read_rh_temp():
-	# TODO
-	r_h = 45.1
-	temp = 32
-	if r_h and temp is not None:
-		state.rh = r_h
-		state.temp_f = temp * 1.8 + 32.0
-	time.sleep(2)
+	rht = HIH6130()
+	rht.read()
+	state.rh = rht.rh
+	state.temp_f = rht.t * 1.8 + 32.0
+	time.sleep(5)
 
 #Function: read_co2
 #This function reads the data from a SenseAir S8 CO2 sensor.
 def read_co2():
-	# TODO
-	while True:
-		ser = serial.Serial("/dev/ttyS0",baudrate =9600,timeout = .5)
-		ser.flushInput()
-		ser.write("\xFE\x44\x00\x08\x02\x9F\x25")
-		time.sleep(0.1)
-		try:
-			resp = ser.read(7)
-			high = ord(resp[3])
-			low = ord(resp[4])
-			co2Value = (high*256) + low
-			state.co2 = co2Value
-			break
-		except:
-			blank =0;
+	ser = serial.Serial("/dev/ttyS0",baudrate =9600,timeout = .5)
+	ser.flushInput()
+	ser.write("\xFE\x44\x00\x08\x02\x9F\x25")
+	time.sleep(0.1)
+	resp = ser.read(7)
+	high = ord(resp[3])
+	low = ord(resp[4])
+	co2Value = (high*256) + low
+	state.co2 = co2Value
 
 #Function: read_energy
 #This function reads the data from a Kill-A-Watt P3 sensor.
