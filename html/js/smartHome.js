@@ -58,7 +58,7 @@ function update_state() {
 	document.getElementById("temp").innerHTML   = state[ 1] + " &deg;";
 	document.getElementById("rh").innerHTML     = state[ 2] + " %";
 	document.getElementById("co2").innerHTML    = state[ 3] + " ppm";
-	document.getElementById("energy").innerHTML = state[ 4] + " W";
+	document.getElementById("energy").innerHTML = state[ 4] + " Watts";
 	document.getElementById("cpu").innerHTML    = state[ 5] + " %";
 	document.getElementById("memory").innerHTML = state[ 6] + " %";
 	document.getElementById("wifi").innerHTML   = state[ 7] + " MBps";

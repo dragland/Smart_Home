@@ -1,4 +1,4 @@
-# Smart_Home:
+# Smart Home:
 ### A Home Automation system for the Raspberry Pi written in Python and JavaScript
 [click here for a demo](https://htmlpreview.github.io/?https://github.com/dragland/Smart_Home/blob/master/html/index.html)
 
@@ -6,11 +6,23 @@
 
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/system.jpg "Electronics")
 
-![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/hologram.png "Hologram")
-
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/PCB.png "Circuit Board")
 
-#Instalation:
+# Features:
+1. Frontend web interface that shows live sensor readings.
+2. Frontend graphing utility to plot readings from SQL database.
+3. Frontend voice controls for interacting with system. 
+4. Backend Python SQL logging script.
+5. Backend robust multithreaded architecture.
+2. Temperature and Humidity readings from HIH6130 sensor.
+2. CO2 readings from SenseAir S8 sensor.
+3. Power consumption readings from XBEE Tweet-A-Watt sensor.
+4. Door state readings from magnetic switch.
+5. Raspberry Pi system vitals readings from Linux.
+6. Remote control of Relay through web interface.
+7. Remote control of RGB LED strip through web interface.
+
+# Instalation:
 
 ```bash
 cd /home/pi
@@ -20,7 +32,7 @@ sudo ./install.sh
 ```
 
 ### You must manually setup the following:
-Starting the script automatically:
+##### Starting the script automatically:
 
 ```bash
 sudo crontab -e
@@ -30,10 +42,10 @@ sudo crontab -e
 
 >0 12 * * * /sbin/shutdown -r now
 
-Enabling CGI scripts:
+##### Enabling CGI scripts:
 
 ```bash
-sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf
+sudo vim /etc/apache2/conf-available/serve-cgi-bin.conf
 ```
 
 >ScriptAlias /cgi-bin/ /var/www/html/cgi-bin/
