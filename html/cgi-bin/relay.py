@@ -5,11 +5,13 @@
 #************************************SETUP**************************************
 import smartHomeCGI
 
+#*****************************Raspberry Pi Pinout*******************************
+RELAY_PIN = 5
+
 #*************************************MAIN**************************************
 smartHomeCGI.header("BLANK")
-PIN_NUMBER = 5
-smartHomeCGI.set_mode(PIN_NUMBER)
-if smartHomeCGI.read_state(PIN_NUMBER) == "0":
-	smartHomeCGI.relay_on(PIN_NUMBER)
+smartHomeCGI.set_mode(RELAY_PIN)
+if smartHomeCGI.read_state(RELAY_PIN) == "0":
+	smartHomeCGI.relay_on(RELAY_PIN)
 else:
-	smartHomeCGI.relay_off(PIN_NUMBER)
+	smartHomeCGI.relay_off(RELAY_PIN)

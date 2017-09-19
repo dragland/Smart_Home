@@ -29,6 +29,7 @@ def read_rh_temp():
 #Function: read_co2
 #This function reads the data from a SenseAir S8 CO2 sensor.
 def read_co2():
+	# TODO
 	while True:
 		ser = serial.Serial("/dev/ttyS0",baudrate =9600,timeout = .5)
 		ser.flushInput()
@@ -157,6 +158,7 @@ def init_relay(PIN_NUMBER):
 #Function: init_lights
 #This function initializes the lights to the default configuration.
 def init_lights():
+	# TODO
 	print("TODO")
 
 #Function: init_archive

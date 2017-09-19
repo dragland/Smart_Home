@@ -7,9 +7,9 @@ import time
 import threading
 import smartHome
 
-#TODO
-#DOOR SENSOR IS PIN 23
-#RELAY IS PIN 24 (5 for WiringPi)
+#*****************************Raspberry Pi Pinout*******************************
+DOOR_PIN = 23
+RELAY_PIN = 5
 
 #*************************************MAIN**************************************
 print("Executing program:")
@@ -20,8 +20,8 @@ t3  = threading.Thread(target = smartHome.read_energy)
 t4  = threading.Thread(target = smartHome.read_cpu)
 t5  = threading.Thread(target = smartHome.read_memory)
 t6  = threading.Thread(target = smartHome.read_wifi)
-t7  = threading.Thread(target = smartHome.read_door, args = (23,))
-t8  = threading.Thread(target = smartHome.read_relay, args = (5,))
+t7  = threading.Thread(target = smartHome.read_door, args = (DOOR_PIN,))
+t8  = threading.Thread(target = smartHome.read_relay, args = (RELAY_PIN,))
 t1.start()
 t2.start()
 t3.start()
@@ -59,11 +59,11 @@ while True:
 		t6.start()
 	if t7.is_alive() is False:
 		del t7
-		t7 = threading.Thread(target = smartHome.read_door, args = (23,))
+		t7 = threading.Thread(target = smartHome.read_door, args = (DOOR_PIN,))
 		t7.start()
 	if t8.is_alive() is False:
 		del t8
-		t8 = threading.Thread(target = smartHome.read_relay, args = (5,))
+		t8 = threading.Thread(target = smartHome.read_relay, args = (RELAY_PIN,))
 		t8.start()
 	smartHome.write_state()
 	smartHome.write_archive()

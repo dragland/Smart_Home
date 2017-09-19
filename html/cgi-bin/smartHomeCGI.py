@@ -74,9 +74,11 @@ def relay_off(PIN_NUMBER):
 #Function: set_leds
 #This function sets the LEDs to a specific RGB value.
 def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
+	# TODO
 	print("TODO")
 
 #Function: set_leds_party
 #This function turns on the party mode LED setting.
 def set_leds_party():
+	# TODO
 	print("TODO")
