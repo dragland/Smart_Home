@@ -2,11 +2,11 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 3.0 | 2017
 
-#***************************SETUP*************************************
+#*********************************** SETUP *************************************
 echo "var posters =" > ../html/js/posters.js
 echo "[" >> ../html/js/posters.js
 
-#****************************MAIN*************************************
+#************************************ MAIN *************************************
 (IFS='
 '
 for x in `ls ../html/res/posters $1`;

@@ -2,7 +2,7 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 3.0 | 2017
 
-#************************************SETUP**************************************
+#*********************************** SETUP *************************************
 import os
 import cgi
 import sqlite3
@@ -10,7 +10,7 @@ import datetime
 import subprocess
 import cleverbot
 
-#**********************************FUNCTIONS************************************
+#********************************* FUNCTIONS ***********************************
 #Function: header
 #This function returns the apropriate header.
 def header(TYPE):
@@ -43,7 +43,7 @@ def queryBot(QUERY):
 	cb = cleverbot.Cleverbot()
 	print(cb.ask(QUERY))
 
-#***********************************HELPERS*************************************
+#********************************** HELPERS ************************************
 #Function: get_value
 #This function gets the value from an HTTP GET call.
 def get_value(KEY):

@@ -2,10 +2,10 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 3.0 | 2017
 
-#************************************SETUP**************************************
+#*********************************** SETUP *************************************
 import smartHomeCGI
 
-#*************************************MAIN**************************************
+#************************************ MAIN *************************************
 smartHomeCGI.header("HTML")
 QUERY = smartHomeCGI.get_value("QUERY")
 smartHomeCGI.queryBot(QUERY)

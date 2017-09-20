@@ -2,7 +2,7 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 3.0 | 2017
 
-#***************************SETUP*************************************
+#*********************************** SETUP *************************************
 echo "Home Automation System version 3.0"
 echo "Davy Ragland | dragland@stanford.edu"
 
@@ -35,7 +35,7 @@ echo "Updating..."
 sudo apt-get update -y
 sudo apt-get upgrade -y
 
-#****************************MAIN*************************************
+#************************************ MAIN *************************************
 echo "Setting up..."
 sudo chown -R -v pi /var/www
 sudo rm -rf /var/www/html/*

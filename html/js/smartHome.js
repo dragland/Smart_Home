@@ -1,7 +1,7 @@
 //Davy Ragland | dragland@stanford.edu
 //Home Automation System version 3.0 | 2017
 
-//*********************************FUNCTIONS************************************
+//******************************** FUNCTIONS ***********************************
 //Function: update_image
 //This function updates the modal with a random image.
 function update_image() {
@@ -15,7 +15,7 @@ function start_slideshow() {
 	var thread = setInterval(function(){update_image()}, 10 * 1000);
 }
 
-//**********************************HELPERS*************************************
+//********************************* HELPERS ************************************
 //Function: HTTP_GET
 //This function performs an HTTP GET call.
 function HTTP_GET(URL) {
@@ -47,7 +47,7 @@ function set_leds_party() {
 	document.location = "cgi-bin/leds.py?R=0&G=0&B=0&P=1";
 }
 
-//************************************MAIN**************************************
+//*********************************** MAIN *************************************
 //Function: update_state
 //This function updates the values printed on the interface.
 function update_state() {

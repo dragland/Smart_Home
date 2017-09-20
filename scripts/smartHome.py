@@ -2,7 +2,7 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 3.0 | 2017
 
-#************************************SETUP**************************************
+#*********************************** SETUP *************************************
 import os
 import sys
 import time
@@ -15,7 +15,7 @@ from   HIH6130.io import HIH6130
 import xbee
 import state
 
-#**********************************FUNCTIONS************************************
+#********************************* FUNCTIONS ***********************************
 #Function: read_rh_temp
 #This function reads the data from a HIH6130 humidity and temperature sensor.
 def read_rh_temp():
@@ -135,7 +135,7 @@ def write_archive():
 	conn.commit()
 	conn.close()
 
-#***********************************HELPERS*************************************
+#********************************** HELPERS ************************************
 #Function: read_state
 #This function reads the state of a relay.
 def read_state(PIN_NUMBER):

@@ -2,10 +2,10 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 3.0 | 2017
 
-#************************************SETUP**************************************
+#*********************************** SETUP *************************************
 import smartHomeCGI
 
-#*************************************MAIN**************************************
+#************************************ MAIN *************************************
 smartHomeCGI.header("BLANK")
 RED_VAL   = smartHomeCGI.get_value("R")
 GREEN_VAL = smartHomeCGI.get_value("G")

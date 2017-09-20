@@ -2,16 +2,16 @@
 #Davy Ragland | dragland@stanford.edu
 #Home Automation System version 3.0 | 2017
 
-#************************************SETUP**************************************
+#*********************************** SETUP *************************************
 import time
 import threading
 import smartHome
 
-#*****************************Raspberry Pi Pinout*******************************
+#**************************** Raspberry Pi Pinout ******************************
 DOOR_PIN = 23
 RELAY_PIN = 5
 
-#*************************************MAIN**************************************
+#************************************ MAIN *************************************
 print("Executing program:")
 smartHome.init_archive()
 t1  = threading.Thread(target = smartHome.read_rh_temp)
