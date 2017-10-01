@@ -79,4 +79,4 @@ def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
 #Function: set_leds_party
 #This function turns on the party mode LED setting.
 def set_leds_party():
-	subprocess.Popen(["/var/www/html/cgi-bin/RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100"], shell=False, stdin=None, stdout=None, stderr=None, close_fds=True)
+	subprocess.Popen(["./RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100"], cwd="/var/www/html/cgi-bin" , shell=False, stdin=None, stdout=None, stderr=None, close_fds=True)
