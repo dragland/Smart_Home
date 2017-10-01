@@ -14,4 +14,4 @@ PARTY_VAL = smartHomeCGI.get_value("P")
 if PARTY_VAL == "1":
     smartHomeCGI.set_leds_party()
 else:
-    smartHomeCGI.set_leds(RED_VAL,GREEN_VAL,BLUE_VAL)
+    smartHomeCGI.set_leds(RED_VAL * 16, GREEN_VAL * 16, BLUE_VAL * 16)

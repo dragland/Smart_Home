@@ -74,7 +74,7 @@ def relay_off(PIN_NUMBER):
 #Function: set_leds
 #This function sets the LEDs to a specific RGB value.
 def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
-	os.system("../../scripts/RGB_Driver.py -r 0 %i -g 0 %i -b 0 %i" % RED_VAL * 16, GREEN_VAL * 16, BLUE_VAL * 16)
+	os.system("../../scripts/RGB_Driver.py -r 0 %i -g 0 %i -b 0 %i" % RED_VAL, GREEN_VAL, BLUE_VAL)
 
 #Function: set_leds_party
 #This function turns on the party mode LED setting.
