@@ -20,7 +20,7 @@ import state
 #This function reads the data from a HIH6130 humidity and temperature sensor.
 def read_rh_temp():
 	bus = smbus.SMBus(1)
-	rh == 100
+	rh = 100
 	temp_f = 256.98
 	while (rh != 100) and (temp_f != 256.98):
 		data = bus.read_i2c_block_data(0x27, 0x00, 4)
