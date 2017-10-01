@@ -24,11 +24,11 @@ def read_rh_temp():
 	while ((rh == 100) and (temp_f == 256.98)):
 		rh = 50
 		temp_f = 60
-		# bus = smbus.SMBus(1)
-		# data = bus.read_i2c_block_data(0x27, 0x00, 4)
+		bus = smbus.SMBus(1)
+		data = bus.read_i2c_block_data(0x27, 0x00, 4)
 		# rh = ((((data[0] & 0x3F) * 256) + data[1]) * 100.0) / 16383.0
 		# temp_f = ((((((data[2] & 0xFF) * 256) + (data[3] & 0xFC)) / 4) / 16384.0) * 165.0 - 40.0) * 1.8 + 32
-		# time.sleep(0.1)
+		time.sleep(0.1)
 	state.rh = rh
 	state.temp_f = temp_f
 
