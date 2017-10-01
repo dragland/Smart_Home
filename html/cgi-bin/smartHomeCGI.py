@@ -9,6 +9,7 @@ import sqlite3
 import datetime
 import subprocess
 import cleverbot
+import RGB_Driver
 
 #********************************* FUNCTIONS ***********************************
 #Function: header
@@ -74,7 +75,8 @@ def relay_off(PIN_NUMBER):
 #Function: set_leds
 #This function sets the LEDs to a specific RGB value.
 def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
-	subprocess.Popen([("./RGB_Driver.py -r 0 %i -g 0 %i -b 0 %i" % RED_VAL, GREEN_VAL, BLUE_VAL)], shell=False, stdin=None, stdout=None, stderr=None, close_fds=True)
+	driver = RGB_Driver(red_pin = 0, green_pin = 1, blue_pin = 2)
+	driver.set_rgb(RED_VAL, GREEN_VAL, BLUE_VAL)
 
 #Function: set_leds_party
 #This function turns on the party mode LED setting.
