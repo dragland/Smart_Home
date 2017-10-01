@@ -158,7 +158,7 @@ def init_relay(PIN_NUMBER):
 #Function: init_lights
 #This function initializes the lights to the default configuration.
 def init_lights():
-	subprocess.Popen(["html/cgi-bin/RGB_Driver.py -r 0 0 -g 0 0 -b 0 4095"], shell=True, stdin=None, stdout=None, stderr=None, close_fds=True)
+	os.system("html/cgi-bin/RGB_Driver.py -r 0 0 -g 0 0 -b 0 4095")
 
 #Function: init_archive
 #This function initializes the SQL database.
