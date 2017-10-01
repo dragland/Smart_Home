@@ -24,9 +24,12 @@ sudo git clone git://git.drogon.net/wiringPi
 cd wiringPi
 sudo ./build
 cd /home/pi
+sudo git clone https://github.com/adafruit/Adafruit_Python_PCA9685.git
+cd Adafruit_Python_PCA9685
+sudo python setup.py install
+cd /home/pi
 sudo pip install cleverbot
 sudo pip install xbee
-
 echo "Updating..."
 sudo apt-get update -y
 sudo apt-get upgrade -y
