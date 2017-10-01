@@ -74,9 +74,9 @@ def relay_off(PIN_NUMBER):
 #Function: set_leds
 #This function sets the LEDs to a specific RGB value.
 def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
-	subprocess.Popen([("./RGB_Driver.py -r 0 %i -g 0 %i -b 0 %i" % RED_VAL, GREEN_VAL, BLUE_VAL)], shell=True, stdin=None, stdout=None, stderr=None, close_fds=True)
+	subprocess.Popen([("./RGB_Driver.py -r 0 %i -g 0 %i -b 0 %i" % RED_VAL, GREEN_VAL, BLUE_VAL)], shell=False, stdin=None, stdout=None, stderr=None, close_fds=True)
 
 #Function: set_leds_party
 #This function turns on the party mode LED setting.
 def set_leds_party():
-	subprocess.Popen(["/var/www/html/cgi-bin/RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100"], shell=True, stdin=None, stdout=None, stderr=None, close_fds=True)
+	subprocess.Popen(["/var/www/html/cgi-bin/RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100"], shell=False, stdin=None, stdout=None, stderr=None, close_fds=True)
