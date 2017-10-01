@@ -36,6 +36,7 @@ echo "Setting up..."
 sudo chown -R -v pi /var/www
 sudo rm -rf /var/www/html/*
 sudo git clone https://github.com/dragland/Smart_Home.git temp
+sudo mkdir temp/html/db
 sudo mv temp/* /var/www/
 sudo mv temp/.git /var/www/
 sudo rm -rf temp
