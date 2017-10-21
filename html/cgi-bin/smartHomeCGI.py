@@ -79,4 +79,19 @@ def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
 #Function: set_leds_party
 #This function turns on the party mode LED setting.
 def set_leds_party():
-	os.system("python /var/www/html/cgi-bin/RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100 --time 20")
+
+	import sys
+	sys.path.append('/var/www/html/cgi-bin')
+	from RGB_Driver import RGB_Driver
+
+    driver = RGB_Driver(red_pin = 0,  green_pin = 1, blue_pin = 2)
+    try:
+
+            # We need to sort the values to make sure randrange works correctly
+            args.red.sort()
+            args.green.sort()
+            args.blue.sort()
+            driver.random_walk(2000, 0, 0, 4095, 1024, 0, 20, 0.1, 100)
+    finally:
+		pass
+	#os.system("python /var/www/html/cgi-bin/RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100 --time 20")
