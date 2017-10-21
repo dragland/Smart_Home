@@ -79,4 +79,4 @@ def set_leds(RED_VAL,GREEN_VAL,BLUE_VAL):
 #Function: set_leds_party
 #This function turns on the party mode LED setting.
 def set_leds_party():
-	#os.system("sudo python /var/www/html/cgi-bin/RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100 --time 20")
+	os.system("sudo python /var/www/html/cgi-bin/RGB_Driver.py -r 2000 4095 -g 0 1024 -b 0 0 -s 100 -d 0.1 --random --max-random-walk 100 --time 20")
