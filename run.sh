@@ -13,6 +13,3 @@ until scripts/main.py; do
 	echo "main.py has failed with exit code $?. Restarting child process..." >&2
 	sleep 1
 done
-
-
-sudo chmod 777 /var/www/html/cgi-bin/RGB_Driver.py
