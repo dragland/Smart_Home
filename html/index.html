@@ -201,7 +201,7 @@
 			        </div>
 							<div class="col-sm-2 col-xs-4">
 		            <div class="panel panel-default">
-									<input id="rgb_picker" value="0000FF" type="image" src="res/icons/led_blank.png" class="img-thumbnail jscolor{onFineChange:'set_leds(this)', width:270, height:200, position:'top'}" style="border-radius: 5px; border: 5px solid #282828; display: block; margin: auto;" width="100%">
+									<input id="rgb_picker" value="0000FF" type="image" src="res/icons/led_blank.png" class="img-thumbnail jscolor{width:270, height:200, position:'top'}" onchange="set_leds(this.jscolor)" style="border-radius: 5px; border: 5px solid #282828; display: block; margin: auto;" width="100%">
                   <div class="progress" style="margin-bottom:0px;">
                   	<div id="leds_rgb" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
                   		<strong>RGB</strong>
