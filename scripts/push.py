@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+import time
 import subprocess
 import pushbullet
 import keys
 
 import os
 import datetime
+time.sleep(60)
 filename = '/var/www/html/log.txt'
 if os.path.exists(filename):
     append_write = 'a'
