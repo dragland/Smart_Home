@@ -52,5 +52,6 @@ echo "www-data ALL=NOPASSWD: /usr/bin/python" | sudo tee -a /etc/sudoers
 echo "i2c-dev" | sudo tee -a /etc/modules
 echo "PUSH = 'YOUR_API_KEY_HERE'" | sudo tee -a /var/www/scripts/keys.py
 echo "PHONE = 'YOUR_NUMBER_HERE'" | sudo tee -a /var/www/scripts/keys.py
+sudo chmod 755 /var/www/scripts/*.py
 echo "done! Restarting now..."
 sudo shutdown -r now
