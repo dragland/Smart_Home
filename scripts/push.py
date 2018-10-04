@@ -6,7 +6,7 @@ import keys
 import datetime
 
 f = file = open('/var/www/html/log.txt', 'w+')
-f.write(datetime.datetime.now())
+f.write(str(datetime.datetime.now()))
 
 ip = subprocess.check_output(["hostname -I"], shell=True)
 f.write(ip)
