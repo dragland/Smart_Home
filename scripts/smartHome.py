@@ -184,4 +184,4 @@ def push_alert(s):
 		pb = pushbullet.Pushbullet(keys.PUSH)
 		push = pb.push_sms(pb.devices[0], keys.PHONE, "EVE is online at http://" + ip)
 	except:
-		print(keys.push + " is incorrect...")
+		print(keys.PUSH + " is incorrect...")
