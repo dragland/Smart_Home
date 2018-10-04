@@ -10,6 +10,7 @@ clear
 
 #************************************ MAIN *************************************
 hostname -I
+scripts/push.py
 until scripts/main.py; do
 	echo "main.py has failed with exit code $?. Restarting child process..." >&2
 	sleep 1
