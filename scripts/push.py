@@ -3,9 +3,14 @@ import subprocess
 import pushbullet
 import keys
 
+import os
 import datetime
-
-f = file = open('/var/www/html/log.txt', 'w+')
+filename = '/var/www/html/log.txt'
+if os.path.exists(filename):
+    append_write = 'a'
+else:
+    append_write = 'w'
+f = file = open(filename,append_write)
 f.write(str(datetime.datetime.now()))
 
 ip = subprocess.check_output(["hostname -I"], shell=True)
