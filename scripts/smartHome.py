@@ -171,6 +171,12 @@ def init_archive():
 	conn.commit()
 	conn.close()
 
+#Function: read_ip
+#This function reads the ip adress on the raspberry pi.
+def read_ip():
+	output = subprocess.check_output(["hostname -I"], shell=True)
+	return output
+
 #Function: push_alert
 #This function pushes an alert to a mobile phone.
 def push_alert(s):
