@@ -177,7 +177,7 @@ def read_ip():
 	try:
 		output = subprocess.check_output(["hostname -I"], shell=True)
 	except subprocess.CalledProcessError as e:
-		print e.output
+		output = "127.0.0.1"
 	return output
 
 #Function: push_alert
