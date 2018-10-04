@@ -181,7 +181,7 @@ def read_ip():
 #This function pushes an alert to a mobile phone.
 def push_alert(s):
 	try:
-		pb = pushbullet.Pushbullet(keys.push)
-		push = pb.push_sms(pb.devices[0], "8086345946", "EVE is online at http://" + ip)
+		pb = pushbullet.Pushbullet(keys.PUSH)
+		push = pb.push_sms(pb.devices[0], keys.PHONE, "EVE is online at http://" + ip)
 	except:
 		print(keys.push + " is incorrect...")

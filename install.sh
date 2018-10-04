@@ -50,6 +50,7 @@ echo "dtparam=i2c1=on" | sudo tee -a /boot/config.txt
 echo "dtparam=i2c_arm=on" | sudo tee -a /boot/config.txt
 echo "www-data ALL=NOPASSWD: /usr/bin/python" | sudo tee -a /etc/sudoers
 echo "i2c-dev" | sudo tee -a /etc/modules
-echo "push = 'YOUR_API_KEY_HERE'" | sudo tee -a /var/www/scripts/keys.py
+echo "PUSH = 'YOUR_API_KEY_HERE'" | sudo tee -a /var/www/scripts/keys.py
+echo "PHONE = 'YOUR_NUMBER_HERE'" | sudo tee -a /var/www/scripts/keys.py
 echo "done! Restarting now..."
 sudo shutdown -r now
