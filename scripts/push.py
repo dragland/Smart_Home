@@ -6,7 +6,7 @@ import keys
 
 import os
 import datetime
-time.sleep(1)
+time.sleep(3)
 filename = '/var/www/html/log.txt'
 if os.path.exists(filename):
     append_write = 'a'
