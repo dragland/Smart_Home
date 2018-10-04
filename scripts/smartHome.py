@@ -174,7 +174,10 @@ def init_archive():
 #Function: read_ip
 #This function reads the ip adress on the raspberry pi.
 def read_ip():
-	output = subprocess.check_output(["hostname -I"], shell=True)
+	try:
+		output = subprocess.check_output(["hostname -I"], shell=True)
+	except subprocess.CalledProcessError as e:
+		print e.output
 	return output
 
 #Function: push_alert
