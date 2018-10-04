@@ -13,7 +13,7 @@ RELAY_PIN = 5
 
 #************************************ MAIN *************************************
 print("Executing program:")
-smartHome.push_alert(smartHome.read_ip)
+smartHome.push_alert(smartHome.read_ip())
 smartHome.init_archive()
 t1  = threading.Thread(target = smartHome.read_rh_temp)
 t2  = threading.Thread(target = smartHome.read_co2)
