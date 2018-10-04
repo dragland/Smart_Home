@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #Davy Ragland | dragland@stanford.edu
-#Home Automation System version 3.0 | 2017
+#Home Automation System version 4.0 | 2018
 
 #*********************************** SETUP *************************************
 import os
@@ -10,10 +10,12 @@ import smbus
 import serial
 import datetime
 import subprocess
+import pushbullet
 import sqlite3
 import RPi.GPIO
 import xbee
 import state
+import keys
 
 #********************************* FUNCTIONS ***********************************
 #Function: read_rh_temp
@@ -168,3 +170,9 @@ def init_archive():
 	curs.execute("CREATE TABLE IF NOT EXISTS data (timestamp DATETIME, temp_f NUMERIC, rh NUMERIC, co2 NUMERIC, energy NUMERIC, cpu NUMERIC, memory NUMERIC, wifi NUMERIC, door INTEGER, relay INTEGER)")
 	conn.commit()
 	conn.close()
+
+#Function: push_alert
+#This function pushes an alert to a mobile phone.
+def push_alert(s):
+	pb = pushbullet.Pushbullet(keys.push)
+	push = pb.push_note("EVE:", s)

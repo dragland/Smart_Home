@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #Davy Ragland | dragland@stanford.edu
-#Home Automation System version 3.0 | 2017
+#Home Automation System version 4.0 | 2018
 
 #*********************************** SETUP *************************************
 echo "Home Automation System version 3.0"
@@ -30,6 +30,7 @@ sudo python setup.py install
 cd /home/pi
 sudo pip install cleverbot
 sudo pip install xbee
+sudo pip install pushbullet.py
 echo "Updating..."
 sudo apt-get update -y
 sudo apt-get upgrade -y

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #Davy Ragland | dragland@stanford.edu
-#Home Automation System version 3.0 | 2017
+#Home Automation System version 4.0 | 2018
 
 #*********************************** SETUP *************************************
 import time
@@ -13,6 +13,7 @@ RELAY_PIN = 5
 
 #************************************ MAIN *************************************
 print("Executing program:")
+smartHome.push_alert(subprocess.check_output(["hostname -I"], shell=True))
 smartHome.init_archive()
 t1  = threading.Thread(target = smartHome.read_rh_temp)
 t2  = threading.Thread(target = smartHome.read_co2)

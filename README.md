@@ -56,6 +56,10 @@ sudo vim /etc/apache2/conf-available/serve-cgi-bin.conf
 
 >&lt;/Directory&gt;
 
+##### Enabling Push notifications:
+
+change the push variable inside keys.py to your pushbulet API KEY
+
 # Schematics:
 ![alt text](https://raw.githubusercontent.com/dragland/Smart_Home/master/html/res/github/schematics.png "Schematics")
 
