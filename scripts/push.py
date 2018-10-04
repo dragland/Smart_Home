@@ -20,8 +20,10 @@ try:
 	push = pb.push_sms(pb.devices[0], keys.PHONE, "EVE is online at http://" + ip)
 	print("sending...")
 	f.write("sending...\n")
-except:
-	print(keys.PUSH + " is incorrect...")
+except Exception, e:
+	print("send failled...")
 	f.write("send failled...\n")
+	f.write(repr(e))
+print("done...")
 f.write("done...\n")
 f.close()
