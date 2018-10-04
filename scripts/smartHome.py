@@ -174,14 +174,14 @@ def init_archive():
 #Function: read_ip
 #This function reads the ip adress on the raspberry pi.
 def read_ip():
-	try:
-		output = subprocess.check_output(["hostname -I"], shell=True)
-	except subprocess.CalledProcessError as e:
-		output = "127.0.0.1"
+	output = subprocess.check_output(["hostname -I"], shell=True)
 	return output
 
 #Function: push_alert
 #This function pushes an alert to a mobile phone.
 def push_alert(s):
-	pb = pushbullet.Pushbullet(keys.push)
-	push = pb.push_note("EVE:", s)
+	try:
+		pb = pushbullet.Pushbullet(keys.push)
+		push = pb.push_note("EVE:", s)
+	except:
+		print(keys.push + " is incorrect...")
